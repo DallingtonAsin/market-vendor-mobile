@@ -1,0 +1,232 @@
+import React, {useState, useEffect, useRef} from 'react';
+import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
+     Text, View, Pressable, TextInput, TouchableOpacity, FlatList} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import SearchableDropdown from 'react-native-searchable-dropdown';
+import {TimePicker} from 'react-native-simple-time-picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import design from '../../assets/css/styles';
+import { DataTable, Divider } from 'react-native-paper';
+import { Avatar, Button, Card, Title, Paragraph, Searchbar  } from 'react-native-paper';
+import {Monetize} from '../components/SharedCommons';
+import MainService from '../redux/services/main.service';
+import CustomLoader from '../components/CustomActivityIndicator';
+
+const initialFeesData = [];
+
+const ParkingFeesScreen = ({route, navigation}) => {
+    
+    const mounted = useRef();
+
+    // const { parking_area_id, parking_area } = route.params;
+        const parking_area_id = (typeof route.params.parking_area_id !== 'undefined')  ? route.params.parking_area_id :  0;
+        const parking_area = (typeof route.params.parking_area !== 'undefined')  ? route.params.parking_area : '';
+        const image_url = (typeof route.params.image !== 'undefined')  ? route.params.image : '';
+
+   
+     
+    const [fees, setFees] = useState(initialFeesData);
+    const [done, setDone] = useState(false);
+    const [refreshing, setRefreshing] = useState(false);
+    
+    const [searchQuery, setSearchQuery] = React.useState('');
+    const onChangeSearch = query => setSearchQuery(query);
+    
+    const onRefresh = React.useCallback(async () => {
+        setRefreshing(true);
+        const timer = setTimeout(() => {
+            setRefreshing(false);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }, [refreshing]);
+    
+    const getParkingFees = async() => {
+        if(parking_area_id){
+            console.log("Parking area is "+parking_area_id);
+            await MainService.fetchParkingFees(parking_area_id).then(res => {
+                console.log("Response for parking fees is", res);
+                if(res.statusCode == 1){
+                    setFees(res.data);
+                }
+                const timer = setTimeout(() => {
+                    setDone(true);
+                }, 1000);
+                return () => clearTimeout(timer);
+            }).catch(error => { 
+                setDone(true);
+                Alert.alert("Error","Unable to fetch parking fees: " + error);
+             });
+            }else{
+                console.log("Unable to get parking area id");
+            }
+    }
+    
+    const EmptyFlastListMessage = ({item}) => {
+        return (
+            <Text
+            style={styles.emptyListStyle}>
+               No fees Found
+            </Text>
+            );
+        };
+        
+        const CustomDataTable = (props) => (
+            <DataTable.Row style={{opacity:0.7}}>
+            <DataTable.Cell>{props.item.vehicle_type}</DataTable.Cell>
+            <DataTable.Cell>{Monetize(props.item.fee_per_hour)}</DataTable.Cell>
+            </DataTable.Row>
+            );
+            
+            const FlatListItemSeparator = () => {
+                return (
+                    <Divider/>
+                    );
+                }
+                
+                const FlatListHeader = () => {
+                    return (
+                        <>
+                        <DataTable.Header>
+                        {/* <DataTable.Title style={{color:'red', fontWeight:'bold'}}>Parking Area</DataTable.Title> */}
+                        <DataTable.Title>Vehicle Type</DataTable.Title>
+                        <DataTable.Title>Fee per hour</DataTable.Title>
+                        </DataTable.Header>
+                        <Divider />
+                        </>
+                        );
+                    };
+                    
+                    const updateFees = () => {
+                        getParkingFees();
+                        if(refreshing){
+                            getParkingFees();
+                        }
+                    }
+                    
+                    
+                    
+                    useEffect(() => {
+                        getParkingFees();
+                        if (!mounted.current) {
+                            updateFees();
+                        }else{
+                            updateFees();
+                        } 
+                    }, []);
+                    
+                    return (
+                        <View style={styles.container}>
+                       
+                        
+                        <View style={styles.semicontainer}>
+
+                        <Searchbar
+                        style={{borderColor:'lightblue', borderWidth:1, margin:5}}
+                        placeholder="Type parking for see fees..."
+                        onChangeText={onChangeSearch}
+                        value={searchQuery}
+                        />
+                        
+                        { done ?
+                            <>
+                            
+                            <Card>
+                            <Card.Content>
+                            <Title>{parking_area}</Title>
+                            </Card.Content>
+                            <Card.Cover source={{ uri: image_url }} style={{width:'90%', height:'40%', margin:5, borderRadius:5}}/>
+                            <Card.Actions>
+                            <Button onPress={() => navigation.navigate("RequestParking")} style={{ backgroundColor: design.colors.primary, 
+                                borderRadius:5, alignContent:'center', alignItems:'center', padding:5 }}>
+                            <Text style={{color:'#fff'}}>Request parking</Text> 
+                            </Button>
+                            </Card.Actions>
+                            </Card>
+
+                            <FlatList
+                            data={fees}
+                            renderItem={({item}) => <CustomDataTable item={item}/>}
+                            ItemSeparatorComponent = { FlatListItemSeparator }
+                            ListHeaderComponent={FlatListHeader}
+                            ListEmptyComponent={EmptyFlastListMessage}
+                            keyExtractor={(item, index) => index.toString()}
+                            refreshControl={
+                                <RefreshControl
+                                refreshing={refreshing}
+                                onRefresh={onRefresh}
+                                />}
+                                />
+                            
+                            
+                                </>
+                                : <CustomLoader color={design.colors.orange}/>
+                            }
+                            
+                            
+                            </View>
+                            </View>
+                            );
+                        };
+                        
+                        export default ParkingFeesScreen;
+                        
+                        const styles = StyleSheet.create({
+                            container: {
+                                flex: 1,
+                                backgroundColor: '#fff',
+                                padding: 10,
+                                
+                            },
+                            semicontainer:{
+                                flex:1,
+                                borderWidth:1,
+                                borderColor:'#e2e2e2',
+                                borderRadius:10,
+                                shadowColor: "#000",
+                                // height: '100%',
+                                shadowOpacity: 0.6,
+                                padding:10,
+                                margin:5,
+                                shadowRadius: 10.32,
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 8,
+                                }
+                            },
+                            titleText: {
+                                padding: 8,
+                                fontSize: 14,
+                                textAlign: 'left',
+                                fontWeight: 'bold',
+                            },
+                            headingText: {
+                                padding: 8,
+                                textTransform:'uppercase'
+                            },
+                            signIn: {
+                                width: '100%',
+                                height: 50,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderRadius: 50,
+                                backgroundColor: design.colors.primary
+                                
+                            },
+                            textSign: {
+                                fontSize: 15,
+                                fontWeight: 'bold'
+                            },
+                            input: {
+                                padding: 10,
+                                borderWidth: 1,
+                                borderColor: '#ccc',
+                                backgroundColor: '#FAF7F6',
+                                borderRadius:5,
+                            },
+                            emptyListStyle: {
+                             justifyContent: 'center',
+                             alignItems: 'center',
+                             alignSelf: 'center',
+                            }
+                            
+                        });

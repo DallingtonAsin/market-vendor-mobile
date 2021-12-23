@@ -1,0 +1,71 @@
+import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import CustomDrawer from '../../navigators/CustomDrawer';
+import { Dimensions } from 'react-native';
+
+import HomeStack from  './HomeStack';
+import AboutStack from  './AboutStack';
+import ParkingAreasStack from  './ParkingAreasStack';
+import ProfileStack from  './ProfileStack';
+import RequestParkingStack from  './RequestParkingStack';
+import ParkingFeesStack from  './ParkingFeesStack';
+
+import ExtraServicesStack from  './ExtraServicesStack';
+import PaymentStatementStack from  './PaymentStatementStack';
+import TopupStack from  './TopupStack';
+import HelpStack from  './HelpStack';
+import EditProfileStack from  './EditProfileStack';
+import NotificationStack from  './NotificationStack';
+import OrdersStack from  './OrdersStack';
+import OrderDetailsStack from  './OrderDetailsStack';
+
+import MessagesStack from  './MessagesStack';
+import SettingsStack from  './SettingsStack';
+import DetailsStack from  './DetailsStack';
+import ChangePasswordStack from  './ChangePasswordStack';
+import SuggestionsStack from  './SuggestionsStack';
+import LanguageStack from  './LanguageStack';
+import AppTabStack from  './AppTabStack';
+import WeatherStack from  './WeatherStack';
+import MapScreen from '../../screens/MapScreen';
+
+
+
+const Drawer = createDrawerNavigator();
+const DrawerScreenStack = () => {
+    return(
+        <Drawer.Navigator 
+        drawerStyle={{ width:Dimensions.get('window').width - 100, }}
+        drawerContent= {(props) => <CustomDrawer {...props} />
+        }>
+        <Drawer.Screen name="Home" component={AppTabStack} />
+        <Drawer.Screen name="Profile" component={ProfileStack}/>
+        <Drawer.Screen name="EditProfile" component={EditProfileStack}/>
+        <Drawer.Screen name="PaymentHistory" component={PaymentStatementStack}/>
+        <Drawer.Screen name="RequestParking" component={RequestParkingStack}/>
+        <Drawer.Screen name="ParkingAreas" component={ParkingAreasStack}/>
+        <Drawer.Screen name="ParkingFees" component={ParkingFeesStack}/>
+        <Drawer.Screen name="Weather" component={WeatherStack}/>
+
+        
+        <Drawer.Screen name="Map" options ={{ drawerLabel: 'Map' }} component={MapScreen}/>
+        <Drawer.Screen name="Help" options ={{ drawerLabel:'Help' }} component={HelpStack}/>
+        <Drawer.Screen name="Notifications" options ={{ drawerLabel: 'Notification' }} component={NotificationStack}/>
+        <Drawer.Screen name="Settings" options ={{ drawerLabel: 'Settings' }} component={SettingsStack}/>
+        <Drawer.Screen name="Messages" options ={{ drawerLabel: 'Messages' }} component={MessagesStack}/>
+        <Drawer.Screen name="ChangePassword" component={ChangePasswordStack}/>
+        <Drawer.Screen name="Languages" component={LanguageStack}/>
+        <Drawer.Screen name="Details" component={DetailsStack}/>
+        <Drawer.Screen name="Orders" component={OrdersStack}/>
+        <Drawer.Screen name="OrderDetails" component={OrderDetailsStack}/>
+
+        <Drawer.Screen name="Suggestions" component={SuggestionsStack}/>
+
+        
+        <Drawer.Screen name="OtherServices" component={ExtraServicesStack}/>
+        <Drawer.Screen name="TopUp" component={TopupStack}/>
+        <Drawer.Screen name="About" component={AboutStack}/>
+        </Drawer.Navigator>
+    )
+}
+export default DrawerScreenStack
