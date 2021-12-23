@@ -78,7 +78,7 @@ const AppTabStack = () => {
                                     backgroundColor: styles.colors.white,
                                 },
                                 labelStyle:{
-                                    fontSize:12,
+                                    fontSize:14,
                                     textAlign:'center',
                                 },
                                 labelPosition:'below-icon',
@@ -118,7 +118,7 @@ const AppTabStack = () => {
                                     />
                                     
                                     <BottomTab.Screen
-                                    name="Notifications"
+                                    name="Alerts"
                                     component={NotificationStack}
                                     options={{
                                         tabBarIcon: ({ color, size }) => (

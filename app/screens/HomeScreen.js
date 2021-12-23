@@ -87,7 +87,7 @@ const HomeScreen = props => {
   const [isParkingsLoading, setIsParkingsLoading] = useState(true);
   
   
-  const [vehicles, setVehicleState] = useState(null);
+  const [vehicles, setVehicleState] = useState({});
   const [vehicle, setVehicleData] = React.useState(initialVehicleState);
   const [nearByParkings, setNearByParkings] = useState([]);
 
@@ -133,8 +133,9 @@ const HomeScreen = props => {
               var temp = [];
               for (let i = 0; i < results.rows.length; ++i){
                 temp.push(results.rows.item(i));
-                setVehicleState(temp);
               }
+              setVehicleState(temp);
+              console.log("My vehicles", temp);
             }
             );
           });
@@ -262,7 +263,6 @@ const HomeScreen = props => {
                             );
                           } else {
                             alert('Unable to remove vehicle');
-                            populateVehicles();
                           }
                         }
                         );
@@ -417,8 +417,8 @@ const HomeScreen = props => {
                             style={design.vehicle.image}
                             />
                             <View style={design.vehicle.middleContainer}>
-                            <Text style={design.vehicle.text}>{item.number}</Text>
-                            <Text style={design.vehicle.name}>{item.name}</Text>
+                            <Text style={[design.vehicle.text, {color: '#000'}]}>{item.number}</Text>
+                            <Text style={[design.vehicle.name, {color: '#000'}]}>{item.name}</Text>
                             </View>
                             <View style={design.vehicle.rightContainer}>
                             <Pressable onPress={() => getVehicleNo(item) }>
@@ -894,6 +894,7 @@ const HomeScreen = props => {
                                           flex: 1,
                                           alignItems: 'center',
 
+
                                         },
                                         
                                         card:{
@@ -957,12 +958,12 @@ const HomeScreen = props => {
                                           borderWidth:1, 
                                           marginTop:15,
                                           marginBottom:60,
-                                          padding:12,
+                                          height:50,
+                                          padding:15,
                                           borderRadius:30,
                                           borderColor:design.colors.primary,
                                           justifyContent: 'center',
                                           alignItems: 'center',
-                                          backgroundColor:design.colors.white
                                         },
                                         
                                         inputContainer:{
