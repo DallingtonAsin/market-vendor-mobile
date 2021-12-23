@@ -15,13 +15,16 @@ import design from '../../assets/css/styles';
 const PhoneNumberInputScreen = ({ navigation }) => {
  const [value, setValue] = useState("");
  const [formattedValue, setFormattedValue] = useState("");
+ const [isSending, setIsSending] = useState(false);
  const phoneInput = useRef(null);
 
  const sendOTP = () => {
    if(formattedValue.length < 13){
     Alert.alert("Error", "Enter a valid phone number");
    }else{
+    setIsSending(true);
     sendSmsVerification(formattedValue).then((sent) => {
+      setIsSending(false);
       console.log("Response from server on sending sms", sent);
       navigation.navigate("Otp", { phoneNumber: formattedValue });
      });
@@ -55,7 +58,9 @@ const PhoneNumberInputScreen = ({ navigation }) => {
            style={styles.button}
            onPress={sendOTP}
          >
-           <Text style={styles.buttonText}>Sign Up</Text>
+           <Text style={styles.buttonText}>
+           { isSending ? 'Sending OTP...' :  'Sign Up' }
+             </Text>
          </TouchableOpacity>
        </SafeAreaView>
      </View>

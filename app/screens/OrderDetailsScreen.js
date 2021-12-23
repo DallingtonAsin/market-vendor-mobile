@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react';
 import {Text, SafeAreaView, Image, 
-  RefreshControl, View, FlatList,
+  RefreshControl, View, FlatList,ScrollView,
    TouchableWithoutFeedback, StyleSheet} from 'react-native';
   import { AuthContext } from '../context/context';
   import styles from '../../assets/css/styles';
@@ -52,7 +52,10 @@ import { icons } from '../../constants';
     
     const renderComponent = (item) => {
       return ( 
-        <View 
+
+
+        <SafeAreaView>
+        <ScrollView 
         style={{flexDirection: 'column'}}
         >
 
@@ -92,6 +95,13 @@ import { icons } from '../../constants';
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
         <Text style={innerStyles.subtitle}>Tel</Text>
         <Text style={innerStyles.info}>{item.telephone_no}</Text>
+        </View>
+
+        <View style={innerStyles.divider}></View>
+
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
+        <Text style={innerStyles.subtitle}>Order No</Text>
+        <Text style={innerStyles.info}>{item.order_no}</Text>
         </View>
 
         <View style={innerStyles.divider}></View>
@@ -146,12 +156,9 @@ import { icons } from '../../constants';
         </View>
   
         
-    
-   
+        </ScrollView>
         
-        </View>
-        
-        
+        </SafeAreaView>
         
         );
       }
