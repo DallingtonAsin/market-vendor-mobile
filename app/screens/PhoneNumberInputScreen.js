@@ -22,6 +22,7 @@ const PhoneNumberInputScreen = ({ navigation }) => {
     Alert.alert("Error", "Enter a valid phone number");
    }else{
     sendSmsVerification(formattedValue).then((sent) => {
+      console.log("Response from server on sending sms", sent);
       navigation.navigate("Otp", { phoneNumber: formattedValue });
      });
    }

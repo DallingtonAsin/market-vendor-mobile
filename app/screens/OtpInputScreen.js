@@ -24,6 +24,7 @@ const OtpInputScreen = ({ route, navigation }) => {
        codeInputHighlightStyle={styles.underlineStyleHighLighted}
        onCodeFilled={(code) => {
          checkVerification(phoneNumber, code).then((success) => {
+          console.log("Response from server on checking otp", success);
            if (!success) setInvalidCode(true);
            success && navigation.navigate("Register", { phoneNumber: phoneNumber });
          });
