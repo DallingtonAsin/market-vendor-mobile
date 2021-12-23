@@ -12,7 +12,6 @@ import { Text,
   StyleSheet} from 'react-native';
   import AsyncStorage from '@react-native-async-storage/async-storage';
   import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-  import { config } from '../config/env';
   import design from '../../assets/css/styles';
   import { TextInput as PtextInput, Avatar, Card, Title, Paragraph } from 'react-native-paper';
   import { FlutterwaveButton } from 'flutterwave-react-native';
@@ -22,6 +21,8 @@ import { Text,
   import { AuthContext } from '../context/context';
   import NumberFormat from 'react-number-format';
   import ProfileContext from '../context/index';
+  import {minTopAmount, maxTopAmount} from '@env';
+
   // import ReactDOM from "react-dom";
   
   
@@ -75,8 +76,8 @@ import { Text,
     const [isLoading, setIsLoading] = useState(false);
     const { asyncCustomerProfile, syncProfileData } = React.useContext(AuthContext);
     const {profile, setProfile} = useContext(ProfileContext);
-    const min_recharge_amount = config.minTopAmount;
-    const max_recharge_amount = config.maxTopAmount;
+    const min_recharge_amount = minTopAmount;
+    const max_recharge_amount = maxTopAmount;
 
 
 

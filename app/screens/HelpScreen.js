@@ -4,16 +4,15 @@ import design from '../../assets/css/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {callHelpLine, SendEmail, SendSms, inboxFromWhatsapp} from '../components/SharedCommons';
 import {Card, Paragraph} from 'react-native-paper';
-import { config } from '../config/env';
-
+import {companyLine, whatsapLine, companyEmail} from '@env';
 
 const Help = ({navigation}) => {
 
   const communicationChannels = [
-    {id: 1, iconName: "phone", name:'Phone', text: config.companyLine, 'method': () => {callHelpLine()}},
-    {id: 2, iconName: "whatsapp", name:'Whatsap', text: config.whatsapLine, 'method': () => {inboxFromWhatsapp()}},
+    {id: 1, iconName: "phone", name:'Phone', text: companyLine, 'method': () => {callHelpLine()}},
+    {id: 2, iconName: "whatsapp", name:'Whatsap', text: whatsapLine, 'method': () => {inboxFromWhatsapp()}},
     {id: 3, iconName: "sms", name:'SMS', text: 'Report a problem via sms', 'method': () => {SendSms()}},
-    {id: 4, iconName: "envelope", name:'Email', text: config.companyEmail, 'method': () => {SendEmail()}},
+    {id: 4, iconName: "envelope", name:'Email', text: companyEmail, 'method': () => {SendEmail()}},
     {id: 5, iconName: "comments", name:'Suggestion', text: 'Suggest something to us', 'method': () => navigation.navigate('Suggestions')},
 
   ];

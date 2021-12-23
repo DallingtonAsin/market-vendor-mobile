@@ -2,9 +2,9 @@ import React, {useState, useContext} from 'react';
 import { Text,TouchableOpacity,ScrollView,SafeAreaView, View, StyleSheet} from 'react-native';
 import design from '../../assets/css/styles';
 import { Avatar, Paragraph, Divider } from 'react-native-paper';
-import {config } from '../config/env';
 import ProfileContext from '../context/index';
 import ProfilePicture from 'react-native-profile-picture';
+import {APP_NAME} from '@env';
 
 const initialState = {
   id: '',
@@ -14,7 +14,7 @@ const initialState = {
   username: '',
   phone_number: '',
   email: '',
-  role: config.APP_NAME + " User",
+  role: APP_NAME + " User",
 };
 
 const Profile = props => {

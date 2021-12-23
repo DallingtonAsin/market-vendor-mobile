@@ -17,7 +17,7 @@ import { openDatabase } from 'react-native-sqlite-storage';
 import {  icons, mapStyles } from '../../constants';
 import Location from 'expo-location';
 import Geocoder from 'react-native-geocoding';
-import { config } from '../config/env';
+import {currency} from '@env';
 import { UIActivityIndicator } from 'react-native-indicators';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
@@ -536,7 +536,7 @@ const fetchVehicleCategories = async() => {
 
                     <View style={{flex:1, flexDirection: 'row', alignItems: 'center' }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <Text style={{color: theme.COLORS.white, fontSize: 11}}>{config.currency}</Text>
+                      <Text style={{color: theme.COLORS.white, fontSize: 11}}>{currency}</Text>
                       <Text style={[styles.buyTotalPrice, {fontSize: 15}]}>{totalPrice}</Text>
                       </View>
                   
@@ -820,7 +820,7 @@ const fetchVehicleCategories = async() => {
                         <View style={styles.orderInfo}>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Amount</Text>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.icon*1.15}}>
-                                 {config.currency}.{activeModal.fees[`${carType}`]}
+                                 {currency}.{activeModal.fees[`${carType}`]}
                              </Text>
                         </View>
 
@@ -887,7 +887,7 @@ const fetchVehicleCategories = async() => {
                                         styles.shadow, 
                                         state.active === parking.id ? styles.active: null
                                     ]}>
-                                        <Text style={[styles.markerStatus, {fontSize:9}]}>{config.currency} </Text>
+                                        <Text style={[styles.markerStatus, {fontSize:9}]}>{currency} </Text>
                                         <Text style={styles.markerPrice}>{parking.fees[`${carType}`]}</Text>
                                         <Text style={[styles.markerStatus, {fontSize:11}]}>({parking.free}/{parking.spots})</Text>
                                     </View>

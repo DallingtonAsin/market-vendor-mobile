@@ -11,9 +11,8 @@ import { config } from '../config/env'
 import design from '../../assets/css/styles';
 import {WEATHER_API_KEY} from '@env';
 
-// const WEATHER_API_KEY = config.WEATHER_API_KEY;
 const BASE_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?";
-const url =  `https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=minutely&appid=${config.WEATHER_API_KEY}`;
+const url =  `https://api.openweathermap.org/data/2.5/onecall?&units=metric&exclude=minutely&appid=${WEATHER_API_KEY}`;
 LogBox.ignoreAllLogs(true);
 
 const WeatherScreen = () => {

@@ -6,27 +6,29 @@ import { Avatar } from 'react-native-paper';
 import { SendEmail } from '../components/SharedCommons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import { AuthContext } from '../context/context';
-import { config } from '../config/env';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {APP_NAME} from '@env';
 import ProfileContext from '../context/index';
 import Rate, { AndroidMarket } from 'react-native-rate';
 import {  AirbnbRating } from 'react-native-elements';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 
+const initialState = {
+  user_id: '',
+  name: '',
+  firstname: '',
+  lastname: '',
+  phone_number: '',
+  email:'',
+  account_balance: '',
+  image: '',
+};
+
 const CustomDrawer = (props) => {
   
-  const initialState = {
-    user_id: '',
-    name: '',
-    firstname: '',
-    lastname: '',
-    phone_number: '',
-    email:'',
-    account_balance: '',
-    image: '',
-  };
+  
   
   const [state, setData] = useState(initialState);
-  const [rateResponse, setRateResponse] = useState({ rated: false });
   const { signOut } = React.useContext(AuthContext);
   const {profile, setProfile} = useContext(ProfileContext);
   const [isVisible, setIsVisible] = useState(false);
@@ -92,9 +94,9 @@ const logout = async() => {
   await signOut();
 }
   
-  useEffect(() => {
-       getProfile();
-  });
+  // useEffect(() => {
+  //      getProfile();
+  // }, []);
   
   const LoadPage = (page) => {
     props.navigation.navigate(page);
@@ -107,12 +109,12 @@ const logout = async() => {
   
   const ShareApp = () => {
     Share.share({
-      message:  "Share "+config.APP_NAME+" with Friends",
+      message:  "Share "+APP_NAME+" with Friends",
       title:'Find parking for your vehicle with ease',
       url:'http://parkproug.com',
       
     },{
-      dialogTitle: "Share "+config.APP_NAME+" with Friends",
+      dialogTitle: "Share "+APP_NAME+" with Friends",
     });
   }
 
@@ -229,7 +231,7 @@ const logout = async() => {
     <Text style={styles.sideMenuText}>Send Feedback</Text>
     </TouchableOpacity> */}
     
-    <TouchableOpacity style={styles.sideMenuItems} onPress={ShareApp}>
+    <TouchableOpacity style={styles.sideMenuItems} onPress={() => ShareApp}>
     <Icon name="share-alt" style={styles.navOptionThumb}/>
     <Text style={styles.sideMenuText}>Share</Text>
     </TouchableOpacity>

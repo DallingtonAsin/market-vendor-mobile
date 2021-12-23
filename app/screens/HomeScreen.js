@@ -23,14 +23,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Avatar, Modal, Divider, Portal  } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import design from '../../assets/css/styles';
-import { config } from '../config/env';
 import ProfileContext from '../context/index';
 import { AuthContext } from '../context/context';
 import { openDatabase } from 'react-native-sqlite-storage';
 import { UIActivityIndicator } from 'react-native-indicators';
 import FastImage from 'react-native-fast-image';
-import SkeletonContent from 'react-native-skeleton-content';
-import CustomLoader from '../components/CustomActivityIndicator';
+import {currency} from '@env';
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -711,7 +709,7 @@ const HomeScreen = props => {
                                           fontSize: 25,
                                           textAlign: 'center',
                                           fontWeight: "bold",
-                                        }}>{config.currency}. {state.account_balance }</Text>
+                                        }}>{currency}. {state.account_balance }</Text>
                                         </View>
                                         </View>
                                         

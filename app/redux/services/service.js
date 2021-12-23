@@ -1,6 +1,6 @@
 import {JSHash, CONSTANTS} from 'react-native-hash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { config } from '../../config/env';
+import {APP_URL} from '@env';
 const axios = require('axios');
 
 const headerConfig = {
@@ -27,7 +27,7 @@ export default class Service{
 
  // get data using fetch api
  static fetchData = async(endpoint) => {
-  const url = config.APP_URL+""+ endpoint;
+  const url = APP_URL+""+ endpoint;
   const data = {};
   const bearToken = await Service.getToken();
   const response = await fetch(url, {
@@ -44,7 +44,7 @@ export default class Service{
 
    // Post data using fetch api
     static PostData = async(endPoint, data) => {
-      const url = config.APP_URL+""+ endPoint;
+      const url = APP_URL+""+ endPoint;
       const bearToken = await Service.getToken();
       let response = await fetch(url, {
         method: 'POST', 
@@ -66,7 +66,7 @@ export default class Service{
 
       // put data using fetch api
       static PutData = async(endPoint, data) => {
-        const url = config.APP_URL+""+ endPoint;
+        const url = APP_URL+""+ endPoint;
         const bearToken = await Service.getToken();
         let response = await fetch(url, {
           method: 'PUT', 
@@ -88,7 +88,7 @@ export default class Service{
 
 // Post data with file using fetch api
   static postDataWithFile = async(endPoint, data) => {
-      const url = config.APP_URL+""+ endPoint;
+      const url = APP_URL+""+ endPoint;
       const bearToken = await Service.getToken();
       const response = await fetch(url, {
         method: 'POST',
@@ -111,7 +111,7 @@ export default class Service{
 
     // fetch data using axios
   static getRequest = async (endpoint) => {
-    const url = config.APP_URL+""+ endpoint;
+    const url = APP_URL+""+ endpoint;
     await axios.get(url, headerConfig).then(response => {
       return response.data;
     })
@@ -122,7 +122,7 @@ export default class Service{
   
   // post data using axios
   static postRequest = async (endpoint, body) => {
-    const url = config.APP_URL+""+ endpoint;
+    const url = APP_URL+""+ endpoint;
     await axios.post(url, body, headerConfig).then(function (response) {
       return response.data;
     })

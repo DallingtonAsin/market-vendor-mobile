@@ -1,4 +1,4 @@
-import React, {useState, forwardRef} from 'react';
+import React, {useState, useRef} from 'react';
 import { 
     View, 
     Text, 
@@ -15,12 +15,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import Feather from 'react-native-vector-icons/Feather';
 import { useTheme, Checkbox  } from 'react-native-paper';
 import { AuthContext } from '../context/context';
-// import { connect } from 'react-redux';
-// import { customerActions } from '../redux/actions/customer.actions';
 import design from '../../assets/css/styles';
 import { UIActivityIndicator } from 'react-native-indicators';
-import PhoneInput from 'react-native-phone-input';
-import CountryPicker from 'react-native-country-picker-modal';
+import PhoneInput from "react-native-phone-number-input";
 
 const initialState =  {
     phone_number: '',
@@ -43,6 +40,10 @@ const SigninScreen = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false);
     let countryPicker = React.createRef(null);
     let phone = React.createRef(null);
+
+    const phoneInput = useRef(null);
+    const [value, setValue] = useState("");
+    const [formattedValue, setFormattedValue] = useState("");
     
     const [data, setData] = useState(initialState);
     const [checked, setChecked] = useState(true);
@@ -84,7 +85,7 @@ const SigninScreen = ({ navigation }) => {
          }
     }
 
-    const onPhoneInputChange = (val, iso2) => {
+    const onPhoneInputChange = (val) => {
 
         if(validateStr(val.trim(), minPhoneChars)) {
             setData({
@@ -100,12 +101,7 @@ const SigninScreen = ({ navigation }) => {
             });
         }
 
-        if (iso2) {
-            setData({
-                ...data,
-                countryCode: iso2?.toUpperCase(),
-            });
-        }
+     
     }
 
     const handlePasswordInput = (val) => {
@@ -159,7 +155,6 @@ const SigninScreen = ({ navigation }) => {
         
         <>
         
-        {/* { loaded ? */}
         <View style={styles.container}>
         <StatusBar backgroundColor='#273746' barStyle="light-content"/>
         <View style={styles.header}>
@@ -184,45 +179,22 @@ const SigninScreen = ({ navigation }) => {
         <View style={styles.action2}>
 
 
-        {/* <FontAwesome 
-        name={"phone"}
-        color={colors.text}
-        size={20}
-        />
-        <TextInput 
-        placeholder="Phone Number"
-        placeholderTextColor="#666666"
-        style={[styles.textInput, {
-            color: colors.text
-        }]}
-        value={data.phone_number}
-        autoCapitalize="none"
-        onChangeText={(val) => handlePhoneInput(val)}
-        keyboardType='numeric'
-        maxLength={10}
-        /> */}
+<PhoneInput
+           ref={phoneInput}
+           defaultValue={value}
+           defaultCode="UG"
+           layout="first"
+           onChangeText={(text) => {
+             setValue(text);
+           }}
+           onChangeFormattedText={(text) => {
+            onPhoneInputChange(text);
+           }}
+           countryPickerProps={{ withAlphaFilter: true }}
+           withShadow
+           autoFocus
+         />
 
-          <PhoneInput
-                ref={node => { phone = node; }}
-                onPressFlag={onPressFlag}
-                initialCountry={'ug'}
-                // initialValue="13178675309"
-                onChangePhoneNumber={(val) => onPhoneInputChange(val)}
-                textProps={{
-                    placeholder: 'Enter a phone number...'
-                }}
-            />
-
-             <CountryPicker
-                ref={node => { countryPicker = node; }}
-                onChange={(value)=> selectCountry(value)}
-                translation='eng'
-                cca2={data.cca2}
-            >
-                <View></View>
-            </CountryPicker>
-
-         
 
         {data.check_textInputChange ? 
             <Animatable.View
@@ -352,7 +324,7 @@ const SigninScreen = ({ navigation }) => {
             
             <TouchableOpacity
             
-            onPress={() => navigation.navigate('Signup')}
+            onPress={() => navigation.navigate('PhoneNumber')}
             style={[styles.signIn, {
                 borderColor: '#273746',
                 borderWidth: 1,

@@ -2,12 +2,11 @@ import React, {useCallback, useState, useEffect} from 'react';
 import { Text,Image, Button, Linking, View, FlatList, ScrollView, TouchableOpacity, StyleSheet} from 'react-native';
 import design from '../../assets/css/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { config } from '../config/env';
 import {Card, Title} from 'react-native-paper';
 import OptionItem from '../components/OptionItem';
 import {icons, SIZES } from '../../constants';
 import { SocialIcon } from 'react-native-elements'
-
+import {APP_NAME} from '@env';
 
 const AboutScreen = (props) => {
     
@@ -25,7 +24,7 @@ const AboutScreen = (props) => {
         <Card.Content>
         <Title>Services</Title>
         <Text style={{  opacity:0.5, }}>
-        As {config.APP_NAME}, We aim to provide you easy access to 
+        As {APP_NAME}, We aim to provide you easy access to 
         better and affordable parking area without any sweat. Just recharge your account and get yourself
         afforable parking area in less than a minute. </Text>  
         </Card.Content>
@@ -36,7 +35,7 @@ const AboutScreen = (props) => {
         <Title>Usage</Title>
         <Text style={{  opacity:0.5, }}>
         To get started, search parking area and see one that is affordable for you.
-        Ensure your {config.APP_NAME}'s  account has enough money to pay for parking else you can recharge or top up your account
+        Ensure your {APP_NAME}'s  account has enough money to pay for parking else you can recharge or top up your account
         using this app.</Text>  
         </Card.Content>
         </Card>

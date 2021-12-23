@@ -10,9 +10,7 @@ import {Text, SafeAreaView, Image, ScrollView,RefreshControl, TouchableWithoutFe
   import Toast from 'react-native-simple-toast';
 import ProfileContext from '../context/index';
 import { icons } from '../../constants';
-  
-
-  import {config } from '../config/env';
+import {APP_NAME, currency} from '@env';
   
   
   const wait = (timeout) => {
@@ -97,7 +95,7 @@ import { icons } from '../../constants';
         <View style={{ flexDirection: 'column'}}>
         <Text style={{ fontWeight:'bold',opacity:0.9, fontSize:16, color:styles.colors.parksmart }}>Order</Text>
         <Text style={{color:'#808080', fontSize:15}}>{item.approval_date}</Text>
-        <Text style={{color:'#808080', fontSize:15}}>{config.APP_NAME} Wallet</Text>
+        <Text style={{color:'#808080', fontSize:15}}>{APP_NAME} Wallet</Text>
         </View>
         
         <View style={{ flexDirection: 'column'}}>
@@ -108,7 +106,7 @@ import { icons } from '../../constants';
         <FontAwesome name="angle-right" size={25} style={{right:0}} color={"#808080"}/>
         </View>
         <View>
-        <Text style={{color:'#808080', fontSize:15}}>{config.currency}</Text>
+        <Text style={{color:'#808080', fontSize:15}}>{currency}</Text>
         </View>
         
         </View>

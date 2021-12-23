@@ -13,7 +13,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useTheme } from 'react-native-paper';
 import design from '../../assets/css/styles';
-import { config } from '../config/env';
+import {APP_NAME} from '@env';
+
 
 const SplashScreen = ({navigation}) => {
     const { colors } = useTheme();
@@ -38,7 +39,7 @@ const SplashScreen = ({navigation}) => {
         >
         <Text style={[styles.title, {
             color: colors.text
-        }]}>Find parking using {config.APP_NAME}</Text>
+        }]}>Find parking using {APP_NAME}</Text>
         <Text style={styles.text}>Park your vehicle instantly without breaking a sweat!</Text>
         <View style={styles.button}>
         <TouchableOpacity onPress={()=>navigation.navigate('Signin')}>

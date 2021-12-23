@@ -19,12 +19,9 @@ import NotificationStack from  './NotificationStack';
 import OrdersStack from  './OrdersStack';
 import OrderDetailsStack from  './OrderDetailsStack';
 
-import MessagesStack from  './MessagesStack';
 import SettingsStack from  './SettingsStack';
-import DetailsStack from  './DetailsStack';
 import ChangePasswordStack from  './ChangePasswordStack';
 import SuggestionsStack from  './SuggestionsStack';
-import LanguageStack from  './LanguageStack';
 import AppTabStack from  './AppTabStack';
 import WeatherStack from  './WeatherStack';
 import MapScreen from '../../screens/MapScreen';
@@ -52,10 +49,7 @@ const DrawerScreenStack = () => {
         <Drawer.Screen name="Help" options ={{ drawerLabel:'Help' }} component={HelpStack}/>
         <Drawer.Screen name="Notifications" options ={{ drawerLabel: 'Notification' }} component={NotificationStack}/>
         <Drawer.Screen name="Settings" options ={{ drawerLabel: 'Settings' }} component={SettingsStack}/>
-        <Drawer.Screen name="Messages" options ={{ drawerLabel: 'Messages' }} component={MessagesStack}/>
         <Drawer.Screen name="ChangePassword" component={ChangePasswordStack}/>
-        <Drawer.Screen name="Languages" component={LanguageStack}/>
-        <Drawer.Screen name="Details" component={DetailsStack}/>
         <Drawer.Screen name="Orders" component={OrdersStack}/>
         <Drawer.Screen name="OrderDetails" component={OrderDetailsStack}/>
 

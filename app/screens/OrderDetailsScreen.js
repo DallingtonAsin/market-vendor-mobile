@@ -6,8 +6,7 @@ import {Text, SafeAreaView, Image,
   import styles from '../../assets/css/styles';
   import CustomLoader from '../components/CustomActivityIndicator';
 import { icons } from '../../constants';
-  import {config } from '../config/env';
-  
+  import {APP_NAME, currency} from '@env';
   
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
@@ -70,12 +69,12 @@ import { icons } from '../../constants';
 
         <Text style={innerStyles.headerTitle}>Order</Text>
         <Text style={innerStyles.headerText}>{item.approval_date}</Text>
-        <Text style={innerStyles.headerText}>{config.APP_NAME} Wallet</Text>
+        <Text style={innerStyles.headerText}>{APP_NAME} Wallet</Text>
         </View>
 
         <View>
         <Text style={innerStyles.headerTitle}>{item.amount}</Text>
-        <Text style={innerStyles.headerText}>{config.currency}</Text> 
+        <Text style={innerStyles.headerText}>{currency}</Text> 
         </View>
 
         </View>

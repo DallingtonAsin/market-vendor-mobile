@@ -5,7 +5,6 @@ import { Text,TextInput, TouchableOpacity,ScrollView, View, StyleSheet, SafeArea
   import Icon from 'react-native-vector-icons/FontAwesome5';
   import { Avatar, Paragraph, Divider } from 'react-native-paper';
   import Animated from 'react-native-reanimated';
-  import {config } from '../config/env';
   import { AuthContext } from '../context/context';
   import { UIActivityIndicator } from 'react-native-indicators';
   import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -15,7 +14,7 @@ import { Text,TextInput, TouchableOpacity,ScrollView, View, StyleSheet, SafeArea
   import ProfilePicture from 'react-native-profile-picture';
   // import BottomSheet from 'reanimated-bottom-sheet';
   import { BottomSheet } from 'react-native-btr';
-
+  import {APP_NAME} from '@env';
 
   const initialState = {
     user_id: '',
@@ -25,7 +24,7 @@ import { Text,TextInput, TouchableOpacity,ScrollView, View, StyleSheet, SafeArea
     username: '',
     phone_number: '',
     email: '',
-    role: config.APP_NAME + " Customer",
+    role: APP_NAME + " Customer",
     image: require('../../assets/user-profile9.png'), 
     balance:0,
     

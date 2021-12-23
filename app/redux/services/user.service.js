@@ -1,6 +1,7 @@
 
 import Service from './service';
-import { config } from '../../config/env';
+import {APP_URL} from '@env';
+
 export const customerService = {
     login,
     register,
@@ -38,9 +39,8 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    // const url = config.APP_URL+""+ endpoint;
 
-    return fetch(`${config.apiUrl}/customer`, requestOptions).then(handleResponse);
+    return fetch(`${APP_URL}/customer`, requestOptions).then(handleResponse);
     // const endpoint = "customer";
     // return Service.postData(endpoint, user)
     // .then(handleResponse)
