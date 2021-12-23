@@ -700,15 +700,17 @@ const HomeScreen = props => {
                                         <View style={{flexDirection: 'column' }}>
                                         <Text style={{
                                           color: '#fff',
-                                          fontSize: 22,
+                                          fontSize: 28,
                                           textAlign: 'center',
                                           fontWeight: "bold",
+                                          fontFamily: 'Helvetica',
                                         }}>Wallet Balance</Text>
                                         <Text style={{
                                           color: '#fff',
-                                          fontSize: 25,
+                                          fontSize: 28,
                                           textAlign: 'center',
                                           fontWeight: "bold",
+                                          fontFamily: 'Helvetica',
                                         }}>{currency}. {state.account_balance }</Text>
                                         </View>
                                         </View>
