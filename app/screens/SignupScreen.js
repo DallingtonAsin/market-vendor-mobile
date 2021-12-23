@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { 
     View, 
     Text, 
     Alert,
-    Button, 
     TouchableOpacity, 
-    Dimensions,
     TextInput,
     Platform,
     StyleSheet,
@@ -16,19 +14,14 @@ import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
-import { customerActions } from '../redux/actions/customer.actions';
-import { connect } from 'react-redux';
 import { AuthContext } from '../context/context';
 import { UIActivityIndicator } from 'react-native-indicators';
-import PhoneInput from 'react-native-phone-input';
-import CountryPicker from 'react-native-country-picker-modal';
-// import Service from '../actions/index';
 
-const SignupScreen = (props) => {
+const SignupScreen = ({route, navigation}) => {
 
-    const phoneRef = React.useRef();
-    const minPhoneChars = 10;
     const minPasswordLength = 8;
+    
+    const { phoneNumber } = route.params;
 
     let countryPicker = React.createRef(null);
     let phone = React.createRef(null);
@@ -91,39 +84,7 @@ const SignupScreen = (props) => {
         }
     }
     
-    const handlePhoneNumberInputChange = (val) => {
-        if( val.length !== 0 ) {
-            setData({
-                ...state,
-                phone_number: val,
-                check_phoneNoInputChange: true
-            });
-        } else {
-            setData({
-                ...state,
-                phone_number: val,
-                check_phoneNoInputChange: false
-            });
-        }
-    }
-    
-    const handleValidPhone = (phoneNo) =>{
-        if(phoneNo.trim() >= minPhoneChars){
-            setData({
-                ...state,
-                isValidPhone: true,
-                check_phoneNoInputChange: true
-            });
-        }else{
-            setData({
-                ...state,
-                isValidPhone: false,
-                check_phoneNoInputChange: false
-            });
-        }
-    }
-    
-    
+
     const handlePasswordChange = (val) => {
         setData({
             ...state,
@@ -164,29 +125,6 @@ const SignupScreen = (props) => {
          }
     }
 
-    const onPhoneInputChange = (val, iso2) => {
-
-        if(validateStr(val.trim(), minPhoneChars)) {
-            setData({
-                ...state,
-                phone_number: val,
-                isValidPhone: true
-            });
-        } else {
-            setData({
-                ...state,
-                phone_number: val,
-                isValidPhone: false
-            });
-        }
-
-        if (iso2) {
-            setData({
-                ...state,
-                countryCode: iso2?.toUpperCase(),
-            });
-        }
-    }
 
     const handlePasswordInput = (val) => {
         if(validateStr(val.trim(), minPasswordLength)) {
@@ -204,21 +142,13 @@ const SignupScreen = (props) => {
         }
     }
 
-    const selectCountry = (country) => {
-        phone.selectCountry(country.cca2.toLowerCase())
-        setData({
-            ...state,
-            cca2: country.cca2
-          });
-    }
-    
+
     const handleCustomerRegistration = async() =>{
         const first_name = state.first_name;
         const last_name = state.last_name;
-        const phone_number = state.phone_number;
         const password = state.password;
         const confirm_password = state.confirm_password;
-        if(first_name && last_name && phone_number && password && confirm_password) {
+        if(first_name && last_name && phoneNumber && password && confirm_password) {
             if(password == confirm_password){
                 const reqParams = {
                     first_name: first_name,
@@ -315,64 +245,8 @@ const SignupScreen = (props) => {
                 : null}
                 </View>
                 
-                <Text style={[styles.text_footer, {marginTop: 15}]}>Phone Number</Text>
+                <Text style={[styles.text_footer, {marginTop: 15}]}>Phone Number : {phoneNumber}</Text>
 
-                <PhoneInput
-                ref={node => { phone = node; }}
-                onPressFlag={onPressFlag}
-                initialCountry={'ug'}
-                // initialValue="13178675309"
-                onChangePhoneNumber={(val) => onPhoneInputChange(val)}
-                textProps={{
-                    placeholder: 'Enter phone number...'
-                }}
-            />
-
-             <CountryPicker
-                ref={node => { countryPicker = node; }}
-                onChange={(value)=> selectCountry(value)}
-                translation='eng'
-                cca2={state.cca2}
-            >
-                <View></View>
-            </CountryPicker>
-
-
-
-                {/* <PhoneInput ref={phoneRef}/> */}
-
-                {/* <View style={styles.action}>
-                <FontAwesome 
-                name="phone"
-                color="#05375a"
-                size={20}
-                />
-                <TextInput 
-                placeholder="Phone Number"
-                style={styles.textInput}
-                autoCapitalize="none"
-                value={state.phone_number}
-                keyboardType='numeric'
-                 maxLength={10}
-                onChangeText={(val) => handlePhoneNumberInputChange(val)}
-                />
-                
-                {state.isValidPhone ? 
-                    <Animatable.View
-                    animation="bounceIn"
-                    >
-                    <Feather 
-                    name="check-circle"
-                    color="green"
-                    size={20}
-                    />
-                    </Animatable.View>
-                    : null
-                }
-                </View> */}
-                
-                
-                
                 <Text style={[styles.text_footer, {
                     marginTop: 15
                 }]}>Password</Text>
@@ -485,7 +359,7 @@ const SignupScreen = (props) => {
                 </TouchableOpacity>
                 
                 <TouchableOpacity
-                onPress={() => props.navigation.goBack()}
+                onPress={() => navigation.goBack()}
                 style={[styles.signIn, {
                     borderColor: '#273746',
                     borderWidth: 1,
@@ -509,20 +383,10 @@ const SignupScreen = (props) => {
                 
             };
             
-            const mapStateToProps = state => {
-                const {customer} = state;
-                return {customer};
-            };
+       
             
-            const mapDispatchToProps = {
-                register: customerActions.register,
-                logout: customerActions.logout
-            };
-            
-            //  export default SignupScreen;
-            
-            export default connect(mapStateToProps, mapDispatchToProps)(SignupScreen)
-            
+             export default SignupScreen;
+          
             
             
             const styles = StyleSheet.create({

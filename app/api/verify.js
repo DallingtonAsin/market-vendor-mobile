@@ -1,4 +1,4 @@
-import { BASE_URL } from "@env";
+import { TWILIO_SMS_API } from "@env";
 
 const sendSmsVerification = async (phoneNumber) => {
  try {
@@ -7,7 +7,7 @@ const sendSmsVerification = async (phoneNumber) => {
      channel: "sms",
    });
 
-   const response = await fetch(`${BASE_URL}/start-verify`, {
+   const response = await fetch(`${TWILIO_SMS_API}/start-verify`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const checkVerification = async (phoneNumber, code) => {
      verification_code: code,
    });
 
-   const response = await fetch(`${BASE_URL}/check-verify`, {
+   const response = await fetch(`${TWILIO_SMS_API}/check-verify`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",

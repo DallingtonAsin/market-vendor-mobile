@@ -25,7 +25,7 @@ const OtpInputScreen = ({ route, navigation }) => {
        onCodeFilled={(code) => {
          checkVerification(phoneNumber, code).then((success) => {
            if (!success) setInvalidCode(true);
-           success && navigation.replace("Signup");
+           success && navigation.navigate("Register", { phoneNumber: phoneNumber });
          });
        }}
      />
