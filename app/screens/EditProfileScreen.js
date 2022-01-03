@@ -13,6 +13,7 @@ import { Text,TextInput, TouchableOpacity,ScrollView, View, StyleSheet, SafeArea
   import Toast from 'react-native-simple-toast';
   import ProfilePicture from 'react-native-profile-picture';
   // import BottomSheet from 'reanimated-bottom-sheet';
+import AsyncStorage from '@react-native-async-storage/async-storage';
   import { BottomSheet } from 'react-native-btr';
   import {APP_NAME} from '@env';
 
@@ -140,7 +141,9 @@ import { Text,TextInput, TouchableOpacity,ScrollView, View, StyleSheet, SafeArea
                   if(statusCode == 1){
                     const user_data = response.data;
                     await setProfile(user_data);
-                    await getProfile(user_data);
+                    await updateUserProfile(user_data);
+                    // await getProfile(user_data);
+
                     Alert.alert("Message", message);
                   }
                   setIsLoading(false);
@@ -168,6 +171,35 @@ import { Text,TextInput, TouchableOpacity,ScrollView, View, StyleSheet, SafeArea
                     email: email,
                     balance: account_balance
                   });
+              }
+
+              const updateUserProfile = async() => {
+                try{
+                    const profile = JSON.parse(await AsyncStorage.getItem("userProfile"));
+                  if(profile){
+                    const user_id = profile.user_id;
+                    const first_name = profile.first_name;
+                    const last_name = profile.last_name;
+                    const name = (first_name && last_name) ? first_name + " " + last_name : '';
+                    const phone_number = profile.phone_number;
+                    const email = profile.email;
+                    const balance = profile.account_balance;
+                    console.log("Balance: " + balance);
+                    
+                    setData({
+                      ...state,
+                      user_id: user_id,
+                      name: name,
+                      firstname: first_name,
+                      lastname: last_name,
+                      phoneNo: phone_number,
+                      email: email,
+                      account_balance: balance,
+                    });
+                  }
+                }catch(e){
+                  console.log("Error on async storage", e);
+                }
               }
               
               useEffect(() => {
