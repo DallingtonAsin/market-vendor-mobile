@@ -78,7 +78,7 @@ const AppTabStack = () => {
                                     backgroundColor: styles.colors.white,
                                 },
                                 labelStyle:{
-                                    fontSize:14,
+                                    fontSize:12,
                                     textAlign:'center',
                                 },
                                 labelPosition:'below-icon',
@@ -92,7 +92,7 @@ const AppTabStack = () => {
                                     <Icon
                                     name="home"
                                     style={{
-                                        fontSize: 22,
+                                        fontSize: 20,
                                         color: color
                                     }}
                                     />
@@ -109,7 +109,7 @@ const AppTabStack = () => {
                                         <Icon
                                             name="list-ul"
                                             style={{
-                                                fontSize: 22,
+                                                fontSize: 20,
                                                 color: color
                                             }}
                                             />
@@ -125,7 +125,7 @@ const AppTabStack = () => {
                                             <Icon
                                             name="bell"
                                             style={{
-                                                fontSize: 22,
+                                                fontSize: 20,
                                                 color: color
                                             }}
                                             />
@@ -141,7 +141,7 @@ const AppTabStack = () => {
                                                 <Icon
                                                 name="cloud-rain"
                                                 style={{
-                                                    fontSize: 22,
+                                                    fontSize: 20,
                                                     color: color
                                                 }}
                                                 />
@@ -158,7 +158,7 @@ const AppTabStack = () => {
                                                     <Icon
                                                     name="question-circle"
                                                     style={{
-                                                        fontSize: 22,
+                                                        fontSize: 20,
                                                         color: color
                                                     }}
                                                     />

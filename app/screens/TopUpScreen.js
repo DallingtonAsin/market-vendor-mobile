@@ -84,14 +84,18 @@ import { Text,
     const RechargeUserAccount = async() => {
       try{
         if(profile.id){
-          if (state.phone_number && state.rechargeAmount) {
-            if(state.rechargeAmount >= min_recharge_amount && state.rechargeAmount <= max_recharge_amount){
+
+          const rechargeAmount = parseFloat(state.rechargeAmount);
+
+          console.log(state.rechargeAmount);
+          console.log(minTopAmount);
+          console.log(maxTopAmount);
+
+          if (state.phone_number && state.rechargeAmount ) {
+            if(rechargeAmount >= minTopAmount && rechargeAmount <= maxTopAmount){
               let amount = state.rechargeAmount;
               amount = parseFloat(amount.replace(/[^\d.]+/g, ''));
-              let telNo = state.phone_number;
-              let telCode = telNo.substring(0, 3);
-              telCode === '256' ? telNo = telNo.replace('256', '0') : telNo = telNo;
-              
+    
               console.log('Mobile money', state.phone_number);
               console.log('Amount', state.rechargeAmount);
               setIsLoading(true);
