@@ -33,7 +33,6 @@ export default class Service{
   const response = await fetch(url, {
     method:'GET',
     headers: {
-      'Accept': 'application/json',
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${bearToken}`,
     },
@@ -44,13 +43,13 @@ export default class Service{
 
    // Post data using fetch api
     static PostData = async(endPoint, data) => {
+      console.log("Login data", data);
       const url = APP_URL+""+ endPoint;
       const bearToken = await Service.getToken();
       let response = await fetch(url, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
           'Authorization': `Bearer ${bearToken}`,
         },
         body: JSON.stringify(data)

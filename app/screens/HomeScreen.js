@@ -46,7 +46,7 @@ const initialUserState = {
   lastname: '',
   phoneNo: '',
   email: '',
-  account_balance: 0,
+  account_balance: '',
   image: '',
 }
 
@@ -91,8 +91,7 @@ const HomeScreen = props => {
   const [vehicle, setVehicleData] = React.useState(initialVehicleState);
   const [nearByParkings, setNearByParkings] = useState([]);
 
-  // console.log("Profile", profile.account_balance);
-  
+
   
   const handleVehicleNoChange = (val) => {
     setVehicleData({
@@ -121,8 +120,11 @@ const HomeScreen = props => {
       
       
       useEffect(() => {
+        getProfile();
+        fetchParkings();
         populateVehicles();
       }, []);
+
       
       const populateVehicles = () =>{
         db.transaction((tx) => {
@@ -282,12 +284,12 @@ const HomeScreen = props => {
                       });
                     }
                     
-                    React.useEffect(() => {
-                      const unsubscribe = props.navigation.addListener('focus', () => {
-                        getProfile();
-                      });
-                      return unsubscribe;
-                    }, [props.navigation]);
+                    // React.useEffect(() => {
+                    //   const unsubscribe = props.navigation.addListener('focus', () => {
+                    //     getProfile();
+                    //   });
+                    //   return unsubscribe;
+                    // }, [props.navigation]);
                     
                     const fetchParkings = async() => {
                       const parkings = await getParkingAreas();
@@ -298,14 +300,11 @@ const HomeScreen = props => {
                       
                     }
                     
-                    useEffect(() => {
-                      fetchParkings();
-                    },[]);
-                    
-                    
-                    
-                    const getProfile = () => {
+                   
+               
+                    const getProfile = async() => {
                       try{
+                          const profile = JSON.parse(await AsyncStorage.getItem("userProfile"));
                         if(profile){
                           const user_id = profile.user_id;
                           const first_name = profile.first_name;
@@ -313,7 +312,8 @@ const HomeScreen = props => {
                           const name = (first_name && last_name) ? first_name + " " + last_name : '';
                           const phone_number = profile.phone_number;
                           const email = profile.email;
-                          const balance = profile.account_balance
+                          const balance = profile.account_balance;
+                          console.log("Balance: " + balance);
                           
                           setData({
                             ...state,

@@ -159,8 +159,9 @@ const AppStack = ({token}) => {
         let userToken;
         userToken = null;
          return await MainService.login(userName, password).then(async(res) => {
-          // console.log("Response from login", res);
-          // console.log(userName);
+          console.log("Response from login", res);
+          console.log("Phone number "+userName+" and Password "+password);
+
           const statusCode = res.statusCode;
           const message = res.message;
           if(statusCode == 1){

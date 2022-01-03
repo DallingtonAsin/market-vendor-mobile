@@ -19,10 +19,10 @@ const initialState = {
   firstname: '',
   lastname: '',
   phone_number: '',
-  email:'',
+  email: '',
   account_balance: '',
   image: '',
-};
+}
 
 const CustomDrawer = (props) => {
   
@@ -64,39 +64,43 @@ const CustomDrawer = (props) => {
   ];
 
 
-    const getProfile = () => {
+  const getProfile = async() => {
+    try{
+        const profile = JSON.parse(await AsyncStorage.getItem("userProfile"));
       if(profile){
-    const user_id = profile.user_id;
-    const first_name = profile.first_name;
-    const last_name = profile.last_name;
-    const name = first_name + " " + last_name;
-    const phone_number = profile.phone_number;
-    const email = profile.email;
-    const account_balance = profile.account_balance;
-    const image = profile.image;
-
-    setData({
-      ...state,
-      user_id: user_id,
-      name: name,
-      firstname: first_name,
-      lastname: last_name,
-      phone_number: phone_number,
-      email: email,
-      account_balance: account_balance,
-      image: image,
-    });
+        const user_id = profile.user_id;
+        const first_name = profile.first_name;
+        const last_name = profile.last_name;
+        const name = (first_name && last_name) ? first_name + " " + last_name : '';
+        const phone_number = profile.phone_number;
+        const email = profile.email;
+        const balance = profile.account_balance;
+        console.log("Balance: " + balance);
+        
+        setData({
+          ...state,
+          user_id: user_id,
+          name: name,
+          firstname: first_name,
+          lastname: last_name,
+          phone_number: phone_number,
+          email: email,
+          account_balance: balance,
+        });
+      }
+    }catch(e){
+      console.log("Error on async storage", e);
+    }
   }
-}
 
 const logout = async() => {
   await setProfile({});
   await signOut();
 }
   
-  // useEffect(() => {
-  //      getProfile();
-  // }, []);
+  useEffect(() => {
+       getProfile();
+  }, []);
   
   const LoadPage = (page) => {
     props.navigation.navigate(page);
@@ -194,8 +198,8 @@ const logout = async() => {
   }
   
   
-  <Text style={{ marginTop:5, color:'#000', fontSize:16  }}>{ state.firstname ? state.firstname : '' }</Text>
-  <Text style={{ marginBottom:15, color:'#000', fontSize:16 }}>{ state.phone_number ? state.phone_number : '' }</Text>
+  <Text style={{ marginTop:5, color:'#000', fontSize:16  }}>{ state.firstname }</Text>
+  <Text style={{ marginBottom:15, color:'#000', fontSize:16 }}>{ state.phone_number}</Text>
   
   <View style={styles.divider}></View>
   <View style={{ width: '100%' }}>
