@@ -26,7 +26,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     phone_number: '',
     email: '',
     role: APP_NAME + " Customer",
-    image: require('../../assets/user-profile9.png'), 
+    image: '', 
     balance:0,
     
   }
@@ -185,6 +185,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                     const phone_number = profile.phone_number;
                     const email = profile.email;
                     const balance = profile.account_balance;
+                    const image = profile.image;
+
                     console.log("Balance: " + balance);
                     
                     setData({
@@ -196,6 +198,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                       phone_number: phone_number,
                       email: email,
                       account_balance: balance,
+                      image: image,
                     });
                   }
                 }catch(e){
@@ -262,11 +265,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 <View style={styles.header}>
              {
                   !isUpdatingImage ? 
-                  profile.image ?
+                  state.image ?
                   <Avatar.Image size={120} style={styles.avatar} 
-                  source={{uri: profile.image }} />
+                  source={{uri: state.image }} />
                   : <Avatar.Image size={120} style={styles.avatar} 
-                  source={{uri: image }} />
+                  source={require('../../assets/user-profile9.png')} />
                   : 
                     <View style={styles.avatar1}>
                     <UIActivityIndicator color='black' />
