@@ -75,7 +75,7 @@ const CustomDrawer = (props) => {
         const phone_number = profile.phone_number;
         const email = profile.email;
         const balance = profile.account_balance;
-        console.log("Balance: " + balance);
+        const image = profile.image;
         
         setData({
           ...state,
@@ -86,6 +86,7 @@ const CustomDrawer = (props) => {
           phone_number: phone_number,
           email: email,
           account_balance: balance,
+          image: image,
         });
       }
     }catch(e){
