@@ -178,7 +178,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                 try{
                     const profile = JSON.parse(await AsyncStorage.getItem("userProfile"));
                   if(profile){
-                    const user_id = profile.user_id;
+                    const user_id = profile.id;
                     const first_name = profile.first_name;
                     const last_name = profile.last_name;
                     const name = (first_name && last_name) ? first_name + " " + last_name : '';
