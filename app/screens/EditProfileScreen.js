@@ -104,8 +104,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       if(statusCode == 1){
         const customer = result.data;
         await syncProfileData(customer);
-        await setProfile(customer);
-        await getProfile(customer);
+        // await setProfile(customer);
+        await updateUserProfile(customer);
         Toast.show(message);
       }else{
           Alert.alert("Message", message);
@@ -140,7 +140,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                   }
                   if(statusCode == 1){
                     const user_data = response.data;
-                    await setProfile(user_data);
+                    // await setProfile(user_data);
+                    await syncProfileData(user_data);
                     await updateUserProfile(user_data);
                     // await getProfile(user_data);
 
@@ -205,7 +206,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
               useEffect(() => {
                 let isMounted = true;
                 if(isMounted) {
-                  getProfile(profile);
+                  updateUserProfile();
                 }
                 return () => { isMounted = false };
               }, []);
