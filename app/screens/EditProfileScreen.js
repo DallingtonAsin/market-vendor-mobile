@@ -191,9 +191,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                       ...state,
                       user_id: user_id,
                       name: name,
-                      firstname: first_name,
-                      lastname: last_name,
-                      phoneNo: phone_number,
+                      first_name: first_name,
+                      last_name: last_name,
+                      phone_number: phone_number,
                       email: email,
                       account_balance: balance,
                     });
