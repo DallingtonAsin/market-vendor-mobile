@@ -19,7 +19,6 @@ import Location from 'expo-location';
 import Geocoder from 'react-native-geocoding';
 import {currency} from '@env';
 import { UIActivityIndicator } from 'react-native-indicators';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 // const { Marker } = MapView;
 
@@ -47,6 +46,7 @@ const ParkingMap = (props) => {
         start_time: null,
         end_time: null,
         diff_hours : 0,
+        total_amount: 0,
     }
 
     const mapInitialState =
@@ -207,12 +207,14 @@ const ParkingMap = (props) => {
   const calculateAmount = (startTime, endTime) => {
           const { activeModal } = state;
           let res = diff_hours(endTime, startTime);
+          let total = res*activeModal.fees[`${carType}`];
           setState({
               ...state,
               diff_hours: res,
+              total_amount: total,
           });
           console.log("Diff in hours", res);
-          activeModal.fees[`${carType}`] = res*activeModal.fees[`${carType}`];
+          activeModal.fees[`${carType}`] = total;
       }
 
   const ResetAmount = () =>{
@@ -296,6 +298,11 @@ const ParkingMap = (props) => {
           const customer_id = profile.id;
           const telephone_no = profile.phone_number;
           const vehicle_details = state.selectedVehicle;
+          let account_balance = profile.account_balance.replace(/,/g, '');
+          let balance =  parseFloat(account_balance);
+          const total_amount =parseFloat(state.total_amount);
+          console.log("Balance: " + account_balance);
+          console.log("Total amount: " + total_amount);
   
           if (!parking_area_id) {
             alert('Please select parking');
@@ -334,6 +341,11 @@ const ParkingMap = (props) => {
 
           if (!customer_id) {
             alert('Unable to get your id');
+            return;
+          }
+
+          if(balance < total_amount){
+            Alert.alert('Message', 'You have insufficient account balance to submit parking order.');
             return;
           }
       
@@ -785,7 +797,9 @@ const fetchVehicleCategories = async() => {
                          <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1, fontWeight:'bold'}}>{startTime}</Text>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <View style={styles.modalVehiclesDropdown}>
+                               <View  style={{width:110}}>
                                <Button title="Start time" onPress={showStartTimePicker} />
+                               </View>
                                 <DateTimePickerModal
                                     isVisible={isStartTimePickerVisible}
                                     mode="time"
@@ -803,7 +817,9 @@ const fetchVehicleCategories = async() => {
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1, fontWeight:'bold'}}>{endTime}</Text>
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <View style={[styles.modalVehiclesDropdown, {marginLeft:10 }]}>
+                               <View  style={{width:110}}>
                                <Button title="End time" onPress={showEndTimePicker} />
+                               </View>
                                 <DateTimePickerModal
                                     isVisible={isEndTimePickerVisible}
                                     mode="time"
@@ -905,7 +921,7 @@ const fetchVehicleCategories = async() => {
                            :  <View style={[styles.parking, styles.shadow, {flexDirection: 'column',
                                         justifyContent:'center', alignItems: 'center',padding: 30}]}>
                                <UIActivityIndicator color='#FFA500' size={30} />
-                                <Text style={{fontSize:18, color: '#COCOCO', margin:15}}>Searching...</Text>
+                                <Text style={{fontSize:18, color: '#C0C0C0', margin:15}}>Searching...</Text>
                                </View>
                     }
 

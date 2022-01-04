@@ -17,6 +17,7 @@ import ProfileContext from './app/context/index';
 import {numberWithCommas} from './app/components/SharedCommons';
 import SplashScreen from 'react-native-splash-screen'
 import { images, icons, COLORS, FONTS, SIZES } from './constants';
+import GlobalFont from 'react-native-global-font'
 
 // import OfflineScreen from  './app/screens/OfflineScreen';
 
@@ -423,6 +424,9 @@ fetchOrderInfo: async(order_no, customer_id) => {
 
     useEffect(() => {
 
+
+  
+
       let isMounted = true;
       NetInfo.fetch().then(state => {
         if(isMounted){
@@ -436,6 +440,9 @@ fetchOrderInfo: async(order_no, customer_id) => {
       }
     });
     unsubscribe();
+
+    let fontName = 'AbrilFatface-Regular'
+    GlobalFont.applyGlobal(fontName);
 
 
 
