@@ -22,7 +22,6 @@ const SettingsStack = ({ navigation }) => {
         headerTitleStyle:{
           fontSize:18,
           fontWeight:'bold',
-          fontFamily:'Roboto',
         },
         headerTintColor: '#ffffff',
       })

@@ -182,7 +182,7 @@ import { icons } from '../../constants';
           
           if(!isLoading){
             return (<SafeAreaView style={{flex: 1, backgroundColor:'#fff'}}>
-            <FlatList style= {{ backgroundColor:'#ffffff', fontFamily:'Roboto', height:'100%' }}
+            <FlatList style= {{ backgroundColor:'#ffffff', height:'100%' }}
             data={orderInfo}
             renderItem={({ item }) => renderComponent(item)}
             keyExtractor={(item, index) => String(index)}

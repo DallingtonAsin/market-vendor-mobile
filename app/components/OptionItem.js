@@ -29,7 +29,7 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
         />
         </LinearGradient>
         </View>
-        <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'bold', fontSize:14 }}>{label}</Text>
+        <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'bold', fontSize:16 }}>{label}</Text>
         </TouchableOpacity>
         )
     }

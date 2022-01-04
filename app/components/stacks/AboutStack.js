@@ -18,7 +18,6 @@ const Stack = createStackNavigator();
         headerTitleStyle:{
           fontSize:20,
           fontWeight:'bold',
-          fontFamily:'Roboto',
         },
         headerTintColor: styles.colors.white,
       })}>

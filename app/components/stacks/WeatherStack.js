@@ -19,7 +19,6 @@ const WeatherStack = ({ navigation }) => {
         headerTitleStyle:{
           fontSize:19,
           fontWeight:'bold',
-          fontFamily:'Roboto',
           
         },
         headerTintColor: styles.colors.dark,

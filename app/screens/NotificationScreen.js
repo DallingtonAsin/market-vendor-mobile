@@ -82,7 +82,7 @@ const fetchNotifications = async() => {
   return ( 
   <>
   {  !isLoading ?
- <FlatList style= {{ backgroundColor:'#ffffff', fontFamily:'Roboto', height:'100%' }}
+ <FlatList style= {{ backgroundColor:'#ffffff', height:'100%' }}
  data={notifications}
  renderItem={({ item }) => renderComponent(item)}
  keyExtractor={(item, index) => String(index)}

@@ -19,7 +19,6 @@ const HomeStack = ({ navigation }) => {
         headerTitleStyle:{
           fontSize:18,
           fontWeight:'bold',
-          fontFamily:'Roboto',
         },
         headerTintColor: styles.colors.white,
       })}>

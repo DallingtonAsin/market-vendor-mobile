@@ -135,7 +135,7 @@ import {APP_NAME, currency} from '@env';
             <SafeAreaView style={{flex: 1, backgroundColor:'#fff'}}>
             <Text style={{fontSize:19, color:'#808080', padding:5, marginLeft:5}}>Last Orders</Text>
             {  !isLoading ?
-              <FlatList style= {{ backgroundColor:'#ffffff', fontFamily:'Roboto', height:'100%' }}
+              <FlatList style= {{ backgroundColor:'#ffffff', height:'100%' }}
               data={parkingRequests}
               renderItem={({ item }) => renderComponent(item)}
               keyExtractor={(item, index) => String(index)}

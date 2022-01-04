@@ -441,7 +441,7 @@ fetchOrderInfo: async(order_no, customer_id) => {
     });
     unsubscribe();
 
-    let fontName = 'AbrilFatface-Regular'
+    let fontName = 'RobotoCondensed-Regular'
     GlobalFont.applyGlobal(fontName);
 
 

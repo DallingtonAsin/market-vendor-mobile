@@ -18,7 +18,6 @@ const ProfileStack = ({ navigation }) => {
         headerTitleStyle:{
           fontSize:18,
           fontWeight:'bold',
-          fontFamily:'Roboto',
         },
         headerTintColor: '#fff',
       })
