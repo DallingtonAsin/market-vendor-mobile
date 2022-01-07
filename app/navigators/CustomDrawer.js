@@ -25,9 +25,9 @@ const initialState = {
   image: '',
 }
 
-const url = "https://awesome.contents.com/";
-const title = "Awesome Contents";
-const message = "Please check this out.";
+const url = "https://parkproug.com/";
+const title = "Check this cool "+APP_NAME+"";
+const message = "Hey, I found this cool app so please check it out.";
 
 const options = {
   title,
@@ -124,17 +124,7 @@ const logout = async() => {
     SendEmail();
   };
   
-  const ShareApp = () => {
-    Share.share({
-      message:  "Share "+APP_NAME+" with Friends",
-      title:'Find parking for your vehicle with ease',
-      url:'http://parkproug.com',
-      
-    },{
-      dialogTitle: "Share "+APP_NAME+" with Friends",
-    });
-  }
-
+ 
   const share = async (customOptions = options) => {
     try {
       await Share.open(customOptions);
