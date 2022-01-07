@@ -239,8 +239,8 @@ import { Text,
       <Card style={{ margin: 15, padding:30, borderWidth:1, borderRadius: 10, borderColor:'#e2e2e2',
        JustifyContent: 'center', backgroundColor:design.colors.primary, alignItems:'center' }}>
       <Card.Content>
-      <Title style={{color:'#fff', opacity:0.7, textAlign: 'center'}}>Wallet Balance</Title>
-      <Paragraph style={{color:'#fff', opacity:0.9, fontWeight:'bold', fontSize:25,padding:10, textAlign: 'center'}}>UGX.<Text>{profile.account_balance}</Text></Paragraph>
+      <Text style={{color:'#fff', opacity:0.7, textAlign: 'center', fontSize:22}}>Wallet Balance</Text>
+      <Paragraph style={{color:'#fff', opacity:0.9, fontWeight:'bold', fontSize:19,padding:10, textAlign: 'center'}}>UGX.<Text>{profile.account_balance}</Text></Paragraph>
       </Card.Content>
       </Card>
       
