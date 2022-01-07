@@ -761,7 +761,7 @@ const fetchVehicleCategories = async() => {
                     </View>
 
                     <View>
-                        <View style={styles.orderInfo}>
+                        {/* <View style={styles.orderInfo}>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Names</Text>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>{profile.first_name} {profile.last_name}</Text>
                         </View>
@@ -769,7 +769,7 @@ const fetchVehicleCategories = async() => {
                         <View style={styles.orderInfo}>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Telephone</Text>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>{profile.phone_number}</Text>
-                        </View>
+                        </View> */}
 
                 
                         <View style={styles.orderInfo}>

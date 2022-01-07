@@ -31,6 +31,7 @@ MERGED from [:react-native-pager-view] C:\npx\react\jre\node_modules\react-nativ
 MERGED from [:react-native-rate] C:\npx\react\jre\node_modules\react-native-rate\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-safe-area-context] C:\npx\react\jre\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] C:\npx\react\jre\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:react-native-sqlite-storage] C:\npx\react\jre\node_modules\react-native-sqlite-storage\platforms\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-vector-icons] C:\npx\react\jre\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:2:1-13:12
@@ -40,8 +41,11 @@ MERGED from [com.facebook.fresco:animated-gif:2.0.0] C:\Users\hp\.gradle\caches\
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\3b9ac7e74a876257638e4bc57b94e845\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\747f53e70e3372703b3570ac3dfbfb03\material-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:17:1-44:12
-MERGED from [com.google.android.gms:play-services-location:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\af8f4674533deaa310cd1672bcef7bcb\jetified-play-services-location-19.0.0\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-location:19.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2cd7dbfd5ce088e761d4c4e53b94aac7\jetified-play-services-location-19.0.1\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:16:1-24:12
+MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\99c6ff58ff6c83738ffbf8a18655305e\jetified-ucrop-2.2.6-native\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d14dbad7340cad958a2e361a440b498d\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [:react-native-linear-gradient] C:\npx\react\jre\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] C:\npx\react\jre\node_modules\react-native-reanimated\android\build\.transforms\02fda4e9cdab2c6f1523e2aed9e21533\jetified-react-native-reanimated-64-hermes\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\84c6a932a42f35f9b796c5d67e6eb742\jetified-flipper-2.2.0\AndroidManifest.xml:2:1-9:12
@@ -56,9 +60,6 @@ MERGED from [com.facebook.fresco:memory-type-java:2.2.0] C:\Users\hp\.gradle\cac
 MERGED from [com.facebook.fresco:imagepipeline-native:2.2.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\cf4b730f71bf97441bdf4ebe8cfeeb88\jetified-imagepipeline-native-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:soloader:2.2.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\c35a46a0a862651f1e0a89250dcee30d\jetified-soloader-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:2:1-13:12
-MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:2:1-11:12
-MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\99c6ff58ff6c83738ffbf8a18655305e\jetified-ucrop-2.2.6-native\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d14dbad7340cad958a2e361a440b498d\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ce476dc2f1f7d59691ad234de1ec2fb1\sqlite-framework-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\f66a3370e9e4f8cb0ae0c6936c538c41\jetified-imagepipeline-okhttp3-2.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:memory-type-ashmem:2.2.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\fc37ff7af2e3c5de8e592a9550a0df07\jetified-memory-type-ashmem-2.2.0\AndroidManifest.xml:2:1-9:12
@@ -79,7 +80,7 @@ MERGED from [com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\cac
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5021659003538b02d31bcb09efbe0ee4\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\82430f3ea8fe6f4ac3f996aa7a1a658b\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.firebase:firebase-installations-interop:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2d61a6dc39762aff9a7d05a63dabc5db\jetified-firebase-installations-interop-17.0.0\AndroidManifest.xml:15:1-23:12
-MERGED from [com.google.android.gms:play-services-tasks:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\21d56773ea7ff1f8d69fa7fb57b56024\jetified-play-services-tasks-18.0.0\AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\14acf34ea16e5ec7a7fd5f8c9596ab96\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\851cd8c44ebf76c5b47504ad4cc94222\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\0640b51297e5b78b6518267bb014c7ae\jetified-play-services-basement-18.0.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.2.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5e5754defa7ec1b661ffd11a17838c67\fragment-1.2.1\AndroidManifest.xml:17:1-24:12
@@ -229,20 +230,22 @@ MERGED from [:react-native-image-crop-picker] C:\npx\react\jre\node_modules\reac
 MERGED from [:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:5-32:19
 MERGED from [:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
 MERGED from [:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-19:19
+MERGED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:9:5-19:19
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\f48ad73390f9d41c4966ce25bccc3bb7\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\747f53e70e3372703b3570ac3dfbfb03\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\747f53e70e3372703b3570ac3dfbfb03\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:36:5-42:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:36:5-42:19
-MERGED from [com.google.android.gms:play-services-location:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\af8f4674533deaa310cd1672bcef7bcb\jetified-play-services-location-19.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-location:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\af8f4674533deaa310cd1672bcef7bcb\jetified-play-services-location-19.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:19:5-23:19
-MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
-MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
+MERGED from [com.google.android.gms:play-services-location:19.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2cd7dbfd5ce088e761d4c4e53b94aac7\jetified-play-services-location-19.0.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:19.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2cd7dbfd5ce088e761d4c4e53b94aac7\jetified-play-services-location-19.0.1\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
 MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:9:5-20
 MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:9:5-20
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
 MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\629940e457b50f17c0b576b730031afc\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:27:5-56:19
 MERGED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\629940e457b50f17c0b576b730031afc\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:27:5-56:19
 MERGED from [com.google.firebase:firebase-datatransport:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8071b3a7ab2694aeee7b574ec2e1522d\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:24:5-32:19
@@ -265,8 +268,8 @@ MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\hp\.gradl
 MERGED from [com.google.firebase:firebase-iid-interop:17.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5021659003538b02d31bcb09efbe0ee4\jetified-firebase-iid-interop-17.1.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\82430f3ea8fe6f4ac3f996aa7a1a658b\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\82430f3ea8fe6f4ac3f996aa7a1a658b\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-tasks:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\21d56773ea7ff1f8d69fa7fb57b56024\jetified-play-services-tasks-18.0.0\AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-tasks:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\21d56773ea7ff1f8d69fa7fb57b56024\jetified-play-services-tasks-18.0.0\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\14acf34ea16e5ec7a7fd5f8c9596ab96\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\14acf34ea16e5ec7a7fd5f8c9596ab96\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\851cd8c44ebf76c5b47504ad4cc94222\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\851cd8c44ebf76c5b47504ad4cc94222\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\0640b51297e5b78b6518267bb014c7ae\jetified-play-services-basement-18.0.0\AndroidManifest.xml:20:5-24:19
@@ -429,6 +432,8 @@ MERGED from [:react-native-safe-area-context] C:\npx\react\jre\node_modules\reac
 MERGED from [:react-native-safe-area-context] C:\npx\react\jre\node_modules\react-native-safe-area-context\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\npx\react\jre\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-screens] C:\npx\react\jre\node_modules\react-native-screens\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-sqlite-storage] C:\npx\react\jre\node_modules\react-native-sqlite-storage\platforms\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sqlite-storage] C:\npx\react\jre\node_modules\react-native-sqlite-storage\platforms\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-vector-icons] C:\npx\react\jre\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
@@ -447,10 +452,16 @@ MERGED from [com.google.android.material:material:1.1.0] C:\Users\hp\.gradle\cac
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\747f53e70e3372703b3570ac3dfbfb03\material-1.1.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-location:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\af8f4674533deaa310cd1672bcef7bcb\jetified-play-services-location-19.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-location:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\af8f4674533deaa310cd1672bcef7bcb\jetified-play-services-location-19.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-location:19.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2cd7dbfd5ce088e761d4c4e53b94aac7\jetified-play-services-location-19.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:19.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2cd7dbfd5ce088e761d4c4e53b94aac7\jetified-play-services-location-19.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
+MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\99c6ff58ff6c83738ffbf8a18655305e\jetified-ucrop-2.2.6-native\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\99c6ff58ff6c83738ffbf8a18655305e\jetified-ucrop-2.2.6-native\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d14dbad7340cad958a2e361a440b498d\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d14dbad7340cad958a2e361a440b498d\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [:react-native-linear-gradient] C:\npx\react\jre\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-linear-gradient] C:\npx\react\jre\node_modules\react-native-linear-gradient\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] C:\npx\react\jre\node_modules\react-native-reanimated\android\build\.transforms\02fda4e9cdab2c6f1523e2aed9e21533\jetified-react-native-reanimated-64-hermes\AndroidManifest.xml:5:5-7:41
@@ -479,12 +490,6 @@ MERGED from [com.facebook.fresco:soloader:2.2.0] C:\Users\hp\.gradle\caches\tran
 MERGED from [com.facebook.fresco:soloader:2.2.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\c35a46a0a862651f1e0a89250dcee30d\jetified-soloader-2.2.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\5fb5c0c623111e89d0cb2cc6cbe55df8\jetified-soloader-0.10.1\AndroidManifest.xml:7:5-9:41
-MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:5:5-7:41
-MERGED from [com.airbnb.android:lottie:4.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\248c317e515a2928d43da5388ab2e6e4\jetified-lottie-4.0.0\AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\99c6ff58ff6c83738ffbf8a18655305e\jetified-ucrop-2.2.6-native\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.yalantis:ucrop:2.2.6-native] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\99c6ff58ff6c83738ffbf8a18655305e\jetified-ucrop-2.2.6-native\AndroidManifest.xml:7:5-9:41
-MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d14dbad7340cad958a2e361a440b498d\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\d14dbad7340cad958a2e361a440b498d\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ce476dc2f1f7d59691ad234de1ec2fb1\sqlite-framework-2.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ce476dc2f1f7d59691ad234de1ec2fb1\sqlite-framework-2.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\f66a3370e9e4f8cb0ae0c6936c538c41\jetified-imagepipeline-okhttp3-2.0.0\AndroidManifest.xml:5:5-7:41
@@ -525,8 +530,8 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\82430f3ea8fe6f4ac3f996aa7a1a658b\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-installations-interop:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2d61a6dc39762aff9a7d05a63dabc5db\jetified-firebase-installations-interop-17.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-installations-interop:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2d61a6dc39762aff9a7d05a63dabc5db\jetified-firebase-installations-interop-17.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.google.android.gms:play-services-tasks:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\21d56773ea7ff1f8d69fa7fb57b56024\jetified-play-services-tasks-18.0.0\AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\21d56773ea7ff1f8d69fa7fb57b56024\jetified-play-services-tasks-18.0.0\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\14acf34ea16e5ec7a7fd5f8c9596ab96\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\14acf34ea16e5ec7a7fd5f8c9596ab96\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:4:5-43
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\851cd8c44ebf76c5b47504ad4cc94222\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-places-placereport:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\851cd8c44ebf76c5b47504ad4cc94222\jetified-play-services-places-placereport-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\0640b51297e5b78b6518267bb014c7ae\jetified-play-services-basement-18.0.0\AndroidManifest.xml:18:5-43
@@ -677,6 +682,16 @@ ADDED from [:react-native-image-picker] C:\npx\react\jre\node_modules\react-nati
 		ADDED from [:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
 	android:name
 		ADDED from [:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
+provider#cl.json.RNShareFileProvider
+ADDED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-18:20
+	android:grantUriPermissions
+		ADDED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-47
+	android:authorities
+		ADDED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-72
+	android:exported
+		ADDED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-37
+	android:name
+		ADDED from [:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-55
 uses-feature#0x00020000
 ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:26:5-28:35
 	android:glEsVersion
@@ -694,13 +709,13 @@ ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradl
 	android:name
 		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:40:13-50
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:20:9-22:45
+ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:22:19-43
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:21:19-78
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:18.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\e4db72f6ed5e563427a8e35b34ea7e7e\jetified-play-services-base-18.0.0\AndroidManifest.xml:20:19-85
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\8904237cf53d43ad174915da4a5cb60d\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
 uses-permission#android.permission.WAKE_LOCK
 ADDED from [com.google.firebase:firebase-messaging:23.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\629940e457b50f17c0b576b730031afc\jetified-firebase-messaging-23.0.0\AndroidManifest.xml:23:5-68
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\f0d1510508487765157204ee5b8e1e75\jetified-play-services-cloud-messaging-17.0.0\AndroidManifest.xml:9:5-68

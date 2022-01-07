@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {View, Text,ScrollView,Share, TouchableOpacity, Linking} from 'react-native'
+import {View, Text,ScrollView, TouchableOpacity, Linking} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from '../../assets/css/styles';
 import { Avatar } from 'react-native-paper';
@@ -12,6 +12,7 @@ import ProfileContext from '../context/index';
 import Rate, { AndroidMarket } from 'react-native-rate';
 import {  AirbnbRating } from 'react-native-elements';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
+import Share from "react-native-share";
 
 const initialState = {
   user_id: '',
@@ -23,6 +24,17 @@ const initialState = {
   account_balance: '',
   image: '',
 }
+
+const url = "https://awesome.contents.com/";
+const title = "Awesome Contents";
+const message = "Please check this out.";
+
+const options = {
+  title,
+  url,
+  message,
+};
+
 
 const CustomDrawer = (props) => {
   
@@ -122,6 +134,14 @@ const logout = async() => {
       dialogTitle: "Share "+APP_NAME+" with Friends",
     });
   }
+
+  const share = async (customOptions = options) => {
+    try {
+      await Share.open(customOptions);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const navigateToTerms = () => {
     Linking.openURL("https://www.parkproug.com");
@@ -236,7 +256,9 @@ const logout = async() => {
     <Text style={styles.sideMenuText}>Send Feedback</Text>
     </TouchableOpacity> */}
     
-    <TouchableOpacity style={styles.sideMenuItems} onPress={() => ShareApp}>
+    <TouchableOpacity style={styles.sideMenuItems}
+     onPress={() => share()}
+    >
     <Icon name="share-alt" style={styles.navOptionThumb}/>
     <Text style={styles.sideMenuText}>Share</Text>
     </TouchableOpacity>
