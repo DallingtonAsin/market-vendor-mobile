@@ -441,7 +441,7 @@ fetchOrderInfo: async(order_no, customer_id) => {
     });
     unsubscribe();
 
-    let fontName = 'RobotoCondensed-Regular'
+    let fontName = 'RobotoCondensed-Light'
     GlobalFont.applyGlobal(fontName);
 
 

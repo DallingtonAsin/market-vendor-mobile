@@ -26,8 +26,8 @@ const initialState = {
 }
 
 const url = "https://parkproug.com/";
-const title = "Check this cool "+APP_NAME+"";
-const message = "Hey, I found this cool app so please check it out.";
+const title = "Check this cool app "+APP_NAME+"";
+const message = "Hey, I found this cool app "+APP_NAME+" so please check it out.";
 
 const options = {
   title,

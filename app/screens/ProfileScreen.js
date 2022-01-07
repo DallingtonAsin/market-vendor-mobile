@@ -159,7 +159,7 @@ const Profile = props => {
       fontWeight:'bold',
     },
     userinfo: {
-      fontWeight: 'bold',
+      // fontWeight: 'bold',
       opacity:0.7,
       fontSize:15,
     },
