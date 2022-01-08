@@ -435,11 +435,16 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           
           
           setTimeout(async() => {
-            let userToken;
+            let user, userToken;
             userToken = null;
+            user = null;
             try{
               userToken = await AsyncStorage.getItem("userToken");
-              // console.log("User profile data xxxx", user);
+              if(userToken){
+                user = await AsyncStorage.getItem("userProfile");
+                user = JSON.parse(user);
+                setProfile(user);
+              }
             }catch(e){
               console.log("Error on async storage", e);
             }

@@ -144,7 +144,7 @@ import { icons } from '../../constants';
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
         <Text style={innerStyles.subtitle}>Total amount paid</Text>
-        <Text style={innerStyles.info}>{item.amount}</Text>
+        <Text style={innerStyles.info}>{currency} {item.amount}</Text>
         </View>
         </View>
 

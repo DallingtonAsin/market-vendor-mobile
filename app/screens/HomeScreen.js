@@ -768,6 +768,7 @@ const HomeScreen = props => {
                                         onChange={handleSheetChanges}
                                       >
                                         <SafeAreaView style={styles.contentContainer}>
+                                          
                                           <View>
                                            <Text style={{textAlign:'center'}}>My Vehicles</Text>
                                            <Divider style={styles.divider}/>

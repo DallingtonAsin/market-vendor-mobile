@@ -656,9 +656,10 @@ theme : {
       justifyContent: 'space-between',
     },
     middleContainer: {
-       flex:1,
-       marginHorizontal:10,
+       marginHorizontal:20,
        marginLeft:20,
+       justifyContent:'center',
+       alignItems: 'center',
     },
     image: { 
       width: 50,

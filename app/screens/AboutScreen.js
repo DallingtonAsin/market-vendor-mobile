@@ -35,7 +35,7 @@ const AboutScreen = (props) => {
         <Title>Usage</Title>
         <Text style={{  opacity:0.5, }}>
         To get started, search for a parking area and pick one that you prefer(depending on distance, price or spaciousness).
-        Ensure your {APP_NAME}'s  wallet has enough money to pay for parking. Else, you can recharge your account
+        Ensure your <Text style={{textTransform:'lowercase'}}>{APP_NAME}</Text> wallet has enough money to pay for parking. Else, you can recharge your account
         using the "Top Up" option in the app.</Text>  
         </Card.Content>
         </Card>
