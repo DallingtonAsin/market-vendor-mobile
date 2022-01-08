@@ -114,8 +114,11 @@ import { Text,
                   let result = await asyncCustomerProfile(state.id);
                   console.log("Async response on top up", result);
                   console.log("User data after topping up", data);
+
+                  setProfile(data);
                   await syncProfileData(data);
                   await getProfile(data);
+
                   Alert.alert("Message", message);
                   testPushNotification();
                   setData({

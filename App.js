@@ -171,14 +171,13 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
             
           },
           signOut: async() => {
-            
             try{
               await AsyncStorage.removeItem("userToken");
               await AsyncStorage.removeItem("userProfile");
+              setUser(null);
             }catch(e){
               console.log("Error on async storage", e);
             }
-            // setProfile(null);
             dispatch({ type: 'LOGOUT' });
           },
           
@@ -200,6 +199,26 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
                   await AsyncStorage.setItem("userProfile", JSON.stringify(respData));
                   dispatch({ type: 'LOGIN', id: userName, userToken: userToken});
                   return {"message": message, "statusCode": statusCode, "userName": userName};
+                }catch(e){
+                  return {"message": e.message, "statusCode": 0};
+                }
+              }else{
+                return {"message": message, "statusCode": statusCode};
+              }
+            });
+          },
+
+          UpdateProfileImage: async(data) => {
+            return await MainService.uploadProfilePicture(data)
+            .then( async(res) => {
+              // console.log("Change Profile Image response", res);
+              const statusCode = res.statusCode;
+              const message = res.message;
+
+              if(statusCode == 1){
+                try{
+                  const respData = res.data;
+                  return {"message": message, "statusCode": statusCode, "data": respData};
                 }catch(e){
                   return {"message": e.message, "statusCode": 0};
                 }
@@ -323,24 +342,6 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           },
           
           
-          UpdateProfileImage: async(data) => {
-            return await MainService.uploadProfilePicture(data)
-            .then( async(res) => {
-              // console.log("Change Profile Image response", res);
-              const statusCode = res.statusCode;
-              const message = res.message;
-              if(statusCode == 1){
-                try{
-                  return {"message": message, "statusCode": statusCode};
-                }catch(e){
-                  return {"message": e.message, "statusCode": 0};
-                }
-              }else{
-                return {"message": message, "statusCode": statusCode};
-              }
-            });
-          },
-          
           postSuggestion: async(data) => {
             const result = await MainService.postSuggestion(data);
             return result;
@@ -411,8 +412,8 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
         
         useEffect(() => {
           
-          
-          
+          // await AsyncStorage.removeItem("userToken");
+          // await AsyncStorage.removeItem("userProfile");
           
           let isMounted = true;
           NetInfo.fetch().then(state => {

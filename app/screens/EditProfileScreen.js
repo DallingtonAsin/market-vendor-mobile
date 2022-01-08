@@ -104,9 +104,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       const message = result.message;
       if(statusCode == 1){
         const customer = result.data;
+        console.log("On uploading picture here is the data", customer);
+        setProfile(customer);
         await syncProfileData(customer);
         await updateUserProfile(customer);
-        await setProfile(customer);
         Toast.show(message);
       }else{
           Alert.alert("Message", message);
@@ -144,9 +145,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                   }
                   if(statusCode == 1){
                     const customer = response.data;
+                    setProfile(customer);
                     await syncProfileData(customer);
                     await updateUserProfile(customer);
-                    await setProfile(customer);
                     Alert.alert("Message", message);
                   }
                   setIsLoading(false);

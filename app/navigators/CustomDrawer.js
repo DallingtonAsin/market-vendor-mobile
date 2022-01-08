@@ -63,7 +63,6 @@ const CustomDrawer = (props) => {
   ];
   
   const logout = async() => {
-    setProfile(null);
     await signOut();
   }
   
