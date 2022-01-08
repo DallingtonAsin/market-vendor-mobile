@@ -34,7 +34,7 @@ const AboutScreen = (props) => {
         <Card.Content>
         <Title>Usage</Title>
         <Text style={{  opacity:0.5, }}>
-        To get started, search for a parking area and pick one that you prefer(depending on distance, price or spaciousness).
+        To get started, search for a parking area and pick one that you prefer (depending on distance, price or spaciousness).
         Ensure your <Text style={{textTransform:'lowercase'}}>{APP_NAME}</Text> wallet has enough money to pay for parking. Else, you can recharge your account
         using the "Top Up" option in the app.</Text>  
         </Card.Content>
@@ -54,24 +54,30 @@ const AboutScreen = (props) => {
         icon={icons.web}
         bgColor={['#FFA500', '#FFA500']}
         label="Website"
-        iconWidth={25} 
-        iconHeight={25}
+        iconWidth={35} 
+        iconHeight={35}
+        XWidth={60} 
+        YHeight={60}
         onPress={() => Linking.openURL("http://www.parkpro.com")}
         />
         <OptionItem
         icon={icons.twitter}
         bgColor={['#1DA1F2', '#1DA1F2']}
         label="Twitter"
-        iconWidth={25} 
-        iconHeight={25}
+        iconWidth={35} 
+        iconHeight={35}
+        XWidth={60} 
+        YHeight={60}
         onPress={() =>  Linking.openURL("https://www.twitter.com") }
         />
         <OptionItem
         icon={icons.facebook}
         bgColor={['#43609C', '#43609C']}
         label="Facebook"
-        iconWidth={25} 
-        iconHeight={25}
+        iconWidth={35} 
+        iconHeight={35}
+        XWidth={60} 
+        YHeight={60}
         onPress={() =>  Linking.openURL("http://www.facebook.com") }
         />
         </View>

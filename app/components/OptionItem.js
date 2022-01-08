@@ -3,7 +3,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {TouchableOpacity, Image, View, Text, StyleSheet, Pressable} from 'react-native'
 import { COLORS, FONTS, SIZES } from '../../constants';
 import design from '../../assets/css/styles';
-const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, labelColor, iconWidth, iconHeight }) => {
+const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, labelColor, iconWidth, iconHeight, XWidth, YHeight }) => {
     return (
         
         <TouchableOpacity
@@ -11,7 +11,7 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
         onPress={onPress}
         activeOpacity={0.9}
         >
-        <View style={[styles.shadow, { width: 90, height: 80, borderColor:'#000' }]}>
+        <View style={[styles.shadow, { width: XWidth ? XWidth : 90, height: YHeight ? YHeight: 80, borderColor:'#000' }]}>
         <LinearGradient
         style={[{ flex: 1, alignItems: 'center', justifyContent: 'center', borderRadius: borderRadius ? borderRadius : 10, backgroundColor: 'red' }]}
         colors={bgColor}
