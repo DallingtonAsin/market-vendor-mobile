@@ -340,25 +340,13 @@ const SigninScreen = ({ navigation }) => {
             </Animatable.View>
             
             </View>
-            {/* : <ActivityIndicator animating={true} color={Colors.red800} style={{justifyContent: 'center', alignSelf:'center' }}/> } */}
+    
             </>
             );
 }
         
-        // const mapStateToProps = state => {
-        //     const {customer} = state;
-        //     return {customer};
-        //   };
-
-        // const mapDispatchToProps = {
-        //     login: customerActions.login,
-        //     logout: customerActions.logout
-        // };
-        
         export default SigninScreen
 
-        // export default connect(mapStateToProps, mapDispatchToProps)(SigninScreen)
-        
         const styles = StyleSheet.create({
             container: {
                 flex: 1, 

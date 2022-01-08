@@ -9,7 +9,7 @@ const { PRIMARY_COLOR, SECONDARY_COLOR, BORDER_COLOR } = colors
 
 export default function WeatherDetails({ currentWeather, currentWeatherDetails, unitsSystem }) {
     const {
-        main: { feels_like, humidity, pressure },
+        main: { temp, humidity, pressure },
         wind: { speed },
     } = currentWeatherDetails
 
@@ -23,7 +23,7 @@ export default function WeatherDetails({ currentWeather, currentWeatherDetails, 
                         <FontAwesome name="thermometer" size={25} color={SECONDARY_COLOR} />
                         <View style={styles.weatherDetailsItems}>
                             <Text>Feels like :</Text>
-                            <Text style={styles.textSecondary}>{feels_like} ° {units} </Text>
+                            <Text style={styles.textSecondary}>{temp} ° {units} </Text>
                         </View>
                     </View>
                 </View>

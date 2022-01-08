@@ -174,7 +174,7 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
             try{
               await AsyncStorage.removeItem("userToken");
               await AsyncStorage.removeItem("userProfile");
-              setUser(null);
+              setProfile(null);
             }catch(e){
               console.log("Error on async storage", e);
             }
