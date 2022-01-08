@@ -79,8 +79,6 @@ import { Text,
     const min_recharge_amount = minTopAmount;
     const max_recharge_amount = maxTopAmount;
 
-
-
     const RechargeUserAccount = async() => {
       try{
         if(profile.id){
@@ -188,8 +186,7 @@ import { Text,
     }
     
     
-    const getProfile = (user) => {
-                
+    const getProfile = (user) => {         
       const id = user.id;
       const first_name = user.first_name;
       const last_name = user.last_name;

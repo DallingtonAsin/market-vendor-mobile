@@ -107,7 +107,7 @@ import { icons } from '../../constants';
         <View style={innerStyles.divider}></View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
-        <Text style={innerStyles.subtitle}>Parking</Text>
+        <Text style={innerStyles.subtitle}>Parking Area</Text>
         <Text style={innerStyles.info}>{item.parking_area}</Text>
         </View>
 
@@ -129,7 +129,7 @@ import { icons } from '../../constants';
         <View style={innerStyles.divider}></View>
         
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
-        <Text style={innerStyles.subtitle}>Car Type</Text>
+        <Text style={innerStyles.subtitle}>Vehicle Type</Text>
         <Text style={innerStyles.info}>{item.car_type}</Text>
         </View>
 
@@ -137,13 +137,13 @@ import { icons } from '../../constants';
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
         <Text style={innerStyles.subtitle}>Fee per hour</Text>
-        <Text style={innerStyles.info}>{item.fee_per_hour}</Text>
+        <Text style={innerStyles.info}>{currency} {item.fee_per_hour}</Text>
         </View>
 
         <View style={innerStyles.divider}></View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
-        <Text style={innerStyles.subtitle}>Total Paid</Text>
+        <Text style={innerStyles.subtitle}>Total amount paid</Text>
         <Text style={innerStyles.info}>{item.amount}</Text>
         </View>
         </View>

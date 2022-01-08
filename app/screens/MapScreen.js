@@ -781,7 +781,7 @@ const fetchVehicleCategories = async() => {
                         </View>
 
                         <View style={styles.orderInfo}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Car Type</Text>
+                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}> Vehicle Type</Text>
                             <View style={styles.modalVehiclesDropdown}>
                                 {renderCarTypes()}
                                 <Text style={{color:theme.COLORS.gray}}></Text>

@@ -6,8 +6,7 @@ import {Card, Title} from 'react-native-paper';
 import OptionItem from '../components/OptionItem';
 import {icons, SIZES } from '../../constants';
 import { SocialIcon } from 'react-native-elements'
-import {APP_NAME} from '@env';
-
+import {APP_NAME, currency} from '@env';
 const AboutScreen = (props) => {
     
     return(
@@ -24,9 +23,10 @@ const AboutScreen = (props) => {
         <Card.Content>
         <Title>Services</Title>
         <Text style={{  opacity:0.5, }}>
-        As {APP_NAME}, We aim to provide you easy access to 
-        better and affordable parking area without any sweat. Just recharge your account and get yourself
-        afforable parking area in less than a minute. </Text>  
+         {APP_NAME} provides easy access to better and affordable parking areas without a hustle. Just recharge your account 
+         and get affordable parking in less than a minute!
+        
+         </Text>  
         </Card.Content>
         </Card>
         
@@ -34,9 +34,9 @@ const AboutScreen = (props) => {
         <Card.Content>
         <Title>Usage</Title>
         <Text style={{  opacity:0.5, }}>
-        To get started, search parking area and see one that is affordable for you.
-        Ensure your {APP_NAME}'s  account has enough money to pay for parking else you can recharge or top up your account
-        using this app.</Text>  
+        To get started, search for a parking area and pick one that you prefer(depending on distance, price or spaciousness).
+        Ensure your {APP_NAME}'s  wallet has enough money to pay for parking. Else, you can recharge your account
+        using the "Top Up" option in the app.</Text>  
         </Card.Content>
         </Card>
         
@@ -54,18 +54,24 @@ const AboutScreen = (props) => {
         icon={icons.web}
         bgColor={['#FFA500', '#FFA500']}
         label="Website"
+        iconWidth={25} 
+        iconHeight={25}
         onPress={() => Linking.openURL("http://www.parkpro.com")}
         />
         <OptionItem
         icon={icons.twitter}
         bgColor={['#1DA1F2', '#1DA1F2']}
         label="Twitter"
+        iconWidth={25} 
+        iconHeight={25}
         onPress={() =>  Linking.openURL("https://www.twitter.com") }
         />
         <OptionItem
         icon={icons.facebook}
         bgColor={['#43609C', '#43609C']}
         label="Facebook"
+        iconWidth={25} 
+        iconHeight={25}
         onPress={() =>  Linking.openURL("http://www.facebook.com") }
         />
         </View>

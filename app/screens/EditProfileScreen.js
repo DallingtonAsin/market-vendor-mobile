@@ -143,39 +143,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                       Alert.alert("Message", message);
                   }
                   if(statusCode == 1){
-                    const user_data = response.data;
-                    // await setProfile(user_data);
-                    await syncProfileData(user_data);
-                    await updateUserProfile(user_data);
-                    // await getProfile(user_data);
-
+                    const customer = response.data;
+                    await syncProfileData(customer);
+                    await updateUserProfile(customer);
+                    await setProfile(customer);
                     Alert.alert("Message", message);
                   }
                   setIsLoading(false);
                 }else{
                   Alert.alert("Profile Update Error", 'Unable to capture data to update profile');
                 }
-              }
-
-              const getProfile = (user) => {
-                
-                  const user_id = user.id;
-                  const first_name = user.first_name;
-                  const last_name = user.last_name;
-                  const name = (first_name && last_name) ? first_name + " " + last_name : '';
-                  const phone_number = user.phone_number;
-                  const email = user.email;
-                  const account_balance = user.account_balance;
-                  setData({
-                    ...state,
-                    user_id: user_id,
-                    name: name,
-                    first_name: first_name,
-                    last_name: last_name,
-                    phone_number: phone_number,
-                    email: email,
-                    balance: account_balance
-                  });
               }
 
               const updateUserProfile = async() => {

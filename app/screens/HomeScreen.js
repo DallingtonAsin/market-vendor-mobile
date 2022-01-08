@@ -92,6 +92,9 @@ const HomeScreen = props => {
   const [nearByParkings, setNearByParkings] = useState([]);
 
 
+  console.log("User profile", JSON.stringify(profile, null, 2));
+
+
   
   const handleVehicleNoChange = (val) => {
     setVehicleData({
@@ -120,7 +123,6 @@ const HomeScreen = props => {
       
       
       useEffect(() => {
-        getProfile();
         fetchParkings();
         populateVehicles();
       }, []);
@@ -283,13 +285,7 @@ const HomeScreen = props => {
                         name: val,
                       });
                     }
-                    
-                    // React.useEffect(() => {
-                    //   const unsubscribe = props.navigation.addListener('focus', () => {
-                    //     getProfile();
-                    //   });
-                    //   return unsubscribe;
-                    // }, [props.navigation]);
+                   
                     
                     const fetchParkings = async() => {
                       const parkings = await getParkingAreas();
@@ -300,40 +296,7 @@ const HomeScreen = props => {
                       
                     }
                     
-                   
-               
-                    const getProfile = async() => {
-                      try{
-                          const profile = JSON.parse(await AsyncStorage.getItem("userProfile"));
-                        if(profile){
-                          const user_id = profile.user_id;
-                          const first_name = profile.first_name;
-                          const last_name = profile.last_name;
-                          const name = (first_name && last_name) ? first_name + " " + last_name : '';
-                          const phone_number = profile.phone_number;
-                          const email = profile.email;
-                          const balance = profile.account_balance;
-                          console.log("Balance: " + balance);
-                          
-                          setData({
-                            ...state,
-                            user_id: user_id,
-                            name: name,
-                            firstname: first_name,
-                            lastname: last_name,
-                            phoneNo: phone_number,
-                            email: email,
-                            account_balance: balance,
-                          });
-                        }
-                      }catch(e){
-                        console.log("Error on async storage", e);
-                      }
-                    }
-                    
-                    
-                    
-                    
+              
                     const [visible, setVisible] = useState(false);
                     
                     const showModal = () => setVisible(true);
@@ -709,7 +672,7 @@ const HomeScreen = props => {
                                           fontSize: 28,
                                           textAlign: 'center',
                                           fontWeight: "bold",
-                                        }}>{currency}. {state.account_balance }</Text>
+                                        }}>{currency}. {profile.account_balance }</Text>
                                         </View>
                                         </View>
                                         
@@ -726,7 +689,7 @@ const HomeScreen = props => {
                                         <OptionItem
                                         icon={icons.request}
                                         bgColor={['#fff', '#fff']}
-                                        label="Request"
+                                        label="Place Request"
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
@@ -745,7 +708,7 @@ const HomeScreen = props => {
                                         <OptionItem
                                         icon={icons.uber}
                                         bgColor={['#fff', '#fff']}
-                                        label="Vehicles"
+                                        label="My Vehicles"
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
@@ -770,7 +733,7 @@ const HomeScreen = props => {
                                         <OptionItem
                                         icon={icons.topup}
                                         bgColor={['#fff', '#fff']}
-                                        label="Top up"
+                                        label="Top Up"
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
@@ -780,7 +743,7 @@ const HomeScreen = props => {
                                         <OptionItem
                                         icon={icons.statement}
                                         bgColor={['#fff', '#fff']}
-                                        label="Statement"
+                                        label="Statements"
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
@@ -806,7 +769,7 @@ const HomeScreen = props => {
                                       >
                                         <SafeAreaView style={styles.contentContainer}>
                                           <View>
-                                           <Text style={{textAlign:'center'}}>List of your vehicles you can park with</Text>
+                                           <Text style={{textAlign:'center'}}>My Vehicles</Text>
                                            <Divider style={styles.divider}/>
                                           </View>
                                        

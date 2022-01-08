@@ -1,20 +1,6 @@
 import React from 'react';
 
-const ProfileContext = React.createContext({
-    profile: {
-        user_id: '',
-        name: '',
-        firstname: '',
-        lastname: '',
-        phoneNo: '',
-        email: '',
-        account_balance: '',
-        image: '',
-      },
-    setProfile: (user) => {
-      
-    },
-});
+const ProfileContext = React.createContext(null);
 
 export const ProfileProvider = ProfileContext.Provider;
 
