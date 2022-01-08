@@ -11,7 +11,9 @@ const ProfileContext = React.createContext({
         account_balance: '',
         image: '',
       },
-    setProfile: () => {},
+    setProfile: (user) => {
+      
+    },
 });
 
 export const ProfileProvider = ProfileContext.Provider;

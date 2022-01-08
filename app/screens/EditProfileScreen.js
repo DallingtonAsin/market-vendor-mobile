@@ -78,9 +78,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
     const SubmitProfileUpdateDetails = async(image) => {
       const imagePath = image.path;
-      const fileData = image.data;
       const mimeType = image.mime;
-      const source = {url: image.path};
       const fileExtension = mime.extension(mimeType);
       setImage(imagePath);
       const ImageData = {
@@ -92,8 +90,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       }
 
       let formData = new FormData();
-      formData.append('id', profile.id);
-      formData.append('phone_number', profile.phone_number);
+      const user_id = state.user_id;
+      const phone_number = state.phone_number;
+      if(user_id && phone_number){
+      formData.append('id', user_id);
+      formData.append('phone_number', phone_number);
       formData.append('extension', fileExtension);
       formData.append('image', ImageData);
       console.log("Form data", formData);
@@ -104,14 +105,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       if(statusCode == 1){
         const customer = result.data;
         await syncProfileData(customer);
-        // await setProfile(customer);
         await updateUserProfile(customer);
+        await setProfile(customer);
         Toast.show(message);
       }else{
           Alert.alert("Message", message);
       }
       setIsUpdatingImage(false);
       setVisible(false);
+    }else{
+      alert("Unable to get your id and phone number");
+    }
     }
               
               const handleProfileUpdate = async() =>{

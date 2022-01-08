@@ -254,14 +254,11 @@ import { Text,
           
           
           <View style={{ margin: 20 }}>
-          <Text style={{ fontSize: 15, opacity: 0.7, textTransform: 'capitalize', fontWeight:'bold'  }}>Enter Amount </Text>
-          <TextInput mode={'outlined'} placeholder="Eg. 10,000" value={state.rechargeAmount} keyboardType='numeric'
+           <Text style={{ fontSize: 15, opacity: 0.7, textTransform: 'capitalize', fontWeight:'bold'  }}>Enter Amount </Text>
+           <TextInput mode={'outlined'} placeholder="Eg. 10,000" value={state.rechargeAmount} keyboardType='numeric'
           onChangeText={(text) => { onChangeAmount(text) }} style={styles.textInput} label="Topup amount" />
-          
-        <Text style={{ opacity: 0.5, color: state.warningColor }}>Min: {min_recharge_amount} and Max: {max_recharge_amount}</Text>
-
-     
-        </View>
+           <Text style={{ opacity: 0.5, color: state.warningColor }}>Min: {min_recharge_amount} and Max: {max_recharge_amount}</Text>
+           </View>
 
         
         
