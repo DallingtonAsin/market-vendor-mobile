@@ -172,9 +172,9 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           },
           signOut: async() => {
             try{
+              // setProfile(null);
               await AsyncStorage.removeItem("userToken");
               await AsyncStorage.removeItem("userProfile");
-              setProfile(null);
             }catch(e){
               console.log("Error on async storage", e);
             }

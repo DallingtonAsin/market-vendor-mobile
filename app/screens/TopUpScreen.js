@@ -21,7 +21,7 @@ import { Text,
   import NumberFormat from 'react-number-format';
   import ProfileContext from '../context/index';
   import {minTopAmount, maxTopAmount} from '@env';
-
+  
   // import ReactDOM from "react-dom";
   
   
@@ -41,7 +41,7 @@ import { Text,
   },
   (created) => {}
   );
-
+  
   
   const initialState = {
     
@@ -77,22 +77,22 @@ import { Text,
     const {profile, setProfile} = useContext(ProfileContext);
     const min_recharge_amount = minTopAmount;
     const max_recharge_amount = maxTopAmount;
-
+    
     const RechargeUserAccount = async() => {
       try{
         if(profile.id){
-
+          
           const rechargeAmount = parseFloat(state.rechargeAmount);
-
+          
           console.log(state.rechargeAmount);
           console.log(minTopAmount);
           console.log(maxTopAmount);
-
+          
           if (state.phone_number && state.rechargeAmount ) {
             if(rechargeAmount >= minTopAmount && rechargeAmount <= maxTopAmount){
               let amount = state.rechargeAmount;
               amount = parseFloat(amount.replace(/[^\d.]+/g, ''));
-    
+              
               console.log('Mobile money', state.phone_number);
               console.log('Amount', state.rechargeAmount);
               setIsLoading(true);
@@ -106,18 +106,18 @@ import { Text,
                 console.log("Response for top up is", res);
                 const statusCode = res.statusCode;
                 const message = res.message;
-                const data = res.data;
-
+                
                 setIsLoading(false);
                 if(statusCode == 1){
+                  const customer = res.data;
                   let result = await asyncCustomerProfile(state.id);
                   console.log("Async response on top up", result);
-                  console.log("User data after topping up", data);
-
-                  setProfile(data);
-                  await syncProfileData(data);
-                  await getProfile(data);
-
+                  console.log("User data after topping up", customer);
+                  
+                  setProfile(customer);
+                  await syncProfileData(customer);
+                  await getProfile(customer);
+                  
                   Alert.alert("Message", message);
                   testPushNotification();
                   setData({
@@ -150,8 +150,8 @@ import { Text,
         console.log('mobile money error', error);
       }
     }
-
-
+    
+    
     const onChangeAmount = (val) => {
       setData({
         ...state,
@@ -174,7 +174,7 @@ import { Text,
       });
     }
     
- 
+    
     const testPushNotification = () => {
       PushNotification.localNotification({
         channelId: "ParkPro256",
@@ -206,17 +206,17 @@ import { Text,
         email: email,
         balance: account_balance
       });
-  }
-  
-  useEffect(() => {
-    let isMounted = true;
-    if(isMounted) {
-      getProfile(profile);
     }
-    return () => { isMounted = false };
-  }, []);
-
-
+    
+    useEffect(() => {
+      let isMounted = true;
+      if(isMounted) {
+        getProfile(profile);
+      }
+      return () => { isMounted = false };
+    }, []);
+    
+    
     
     const editPhone = () => {
       setData({
@@ -229,14 +229,14 @@ import { Text,
     return (
       
       <SafeAreaView style={styles.container}>
-
-        <StatusBar
-        backgroundColor={design.colors.primary}
-        />
+      
+      <StatusBar
+      backgroundColor={design.colors.primary}
+      />
       
       <View style={styles.contentContainer}>
       <Card style={{ margin: 15, padding:30, borderWidth:1, borderRadius: 10, borderColor:'#e2e2e2',
-       JustifyContent: 'center', backgroundColor:design.colors.primary, alignItems:'center' }}>
+      JustifyContent: 'center', backgroundColor:design.colors.primary, alignItems:'center' }}>
       <Card.Content>
       <Text style={{color:'#fff', opacity:0.7, textAlign: 'center', fontSize:22}}>Wallet Balance</Text>
       <Paragraph style={{color:'#fff', opacity:0.9, fontWeight:'bold', fontSize:19,padding:10, textAlign: 'center'}}>UGX.<Text>{profile.account_balance}</Text></Paragraph>
@@ -253,124 +253,124 @@ import { Text,
           
           
           <View style={{ margin: 20 }}>
-           <Text style={{ fontSize: 15, opacity: 0.7, textTransform: 'capitalize', fontWeight:'bold'  }}>Enter Amount </Text>
-           <TextInput mode={'outlined'} placeholder="Eg. 10,000" value={state.rechargeAmount} keyboardType='numeric'
+          <Text style={{ fontSize: 15, opacity: 0.7, textTransform: 'capitalize', fontWeight:'bold'  }}>Enter Amount </Text>
+          <TextInput mode={'outlined'} placeholder="Eg. 10,000" value={state.rechargeAmount} keyboardType='numeric'
           onChangeText={(text) => { onChangeAmount(text) }} style={styles.textInput} label="Topup amount" />
-           <Text style={{ opacity: 0.5, color: state.warningColor }}>Min: {min_recharge_amount} and Max: {max_recharge_amount}</Text>
-           </View>
-
-        
-        
-        <Title style={{ fontSize: 15, opacity: 0.7, color: '#000', margin:15 }}>Mobile Money Number </Title>
-    
-        
-     
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15 }} >
-        
-        
-        <TouchableOpacity>
-        <Icon name="phone" style={design.helpIcon} />
-        </TouchableOpacity>
-        
-        
-        <TouchableOpacity>    
-        {
-          !state.editMode ? <Text style={{ fontSize: 16 }}>{state.phone_number}</Text>
-          : <TextInput mode={'outlined'} placeholder="Your phone number" value={state.phone_number} keyboardType='numeric'
-          onChangeText={(text) => { onChangePhoneNumber(text) }} style={styles.textInput}  />
-        }
-        </TouchableOpacity>  
-        
-        
-        
-        
-        {
-          !state.editMode ?  <TouchableOpacity onPress={editPhone}>
-          <Text style={{ color: '#5bc0de' }}><Icon name="pencil" size={30} /></Text>
+          <Text style={{ opacity: 0.5, color: state.warningColor }}>Min: {min_recharge_amount} and Max: {max_recharge_amount}</Text>
+          </View>
+          
+          
+          
+          <Title style={{ fontSize: 15, opacity: 0.7, color: '#000', margin:15 }}>Mobile Money Number </Title>
+          
+          
+          
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', margin: 15 }} >
+          
+          
+          <TouchableOpacity>
+          <Icon name="phone" style={design.helpIcon} />
           </TouchableOpacity>
-          :  <TouchableOpacity onPress={savePhoneNumber}>
-          <Text style={{ color: 'green' }}><Icon name="check-circle" size={30} /></Text>
-          </TouchableOpacity>
-        } 
-
-        </View>
-
-        </View>
-
-
-        <View style={styles.bottom}>
-        <FlutterwaveButton
-        style={design.btnSecondary}
-        onPress={RechargeUserAccount}
-        disabled={false}>
-        <Text style={styles.paymentButtonText}> 
-          {isLoading ? <UIActivityIndicator color='#000' /> : 'CONFIRM TOP UP' }
-        </Text>
-        </FlutterwaveButton>
-
-        </View>
-        
-       
-        
-        {/* <FlutterwaveButton
-          style={[{ backgroundColor: state.TopButtonBgColor, bottom:0, 
-            borderColor:state.TopButtonBgColor  , margin: 40 }, design.btn, styles.TopupBtn]}
-            onPress={RechargeUserAccount }
-            disabled={false}> <Text style={styles.paymentButtonText}>CONFIRM TOP UP</Text>
-          </FlutterwaveButton> */}
           
           
-          </SafeAreaView>
-          
-          );
-        }
-        
-        export default TopUpScreen
-        
-        
-        const styles = StyleSheet.create({
-          container:{
-            flex:1,
-            margin: 15, 
-            borderWidth:0.8,
-            borderRadius:10,
-            borderColor:'#C0C0C0',
-            backgroundColor:'#fff',
-          },
-          contentContainer:{
-            flex:1,
-          },
-          TopupBtn: {
-            alignSelf:'center' , 
-          },
-
-          paymentButton: {
-            color: '#fff',
-            borderRadius:5,
-            backgroundColor: design.colors.primary,
-            borderColor: design.colors.primary,
-            position: 'absolute',
-            bottom: 0,
-            width: '90%',
-          },
-
-          bottom:{
-             marginBottom: 30,
-             flexDirection: 'row',
-             alignItems: 'center',
-             alignSelf: 'center',
-             justifyContent: 'center',
-             
-         },
-          paymentButtonText: {
-            color: '#000',
-            textTransform: 'uppercase',
-          },
-        
-          
-          textInput: {
-            borderBottomColor: 'lightblue',
-            fontSize: 18,
-            borderBottomWidth: 2  
+          <TouchableOpacity>    
+          {
+            !state.editMode ? <Text style={{ fontSize: 16 }}>{state.phone_number}</Text>
+            : <TextInput mode={'outlined'} placeholder="Your phone number" value={state.phone_number} keyboardType='numeric'
+            onChangeText={(text) => { onChangePhoneNumber(text) }} style={styles.textInput}  />
           }
-        })
+          </TouchableOpacity>  
+          
+          
+          
+          
+          {
+            !state.editMode ?  <TouchableOpacity onPress={editPhone}>
+            <Text style={{ color: '#5bc0de' }}><Icon name="pencil" size={30} /></Text>
+            </TouchableOpacity>
+            :  <TouchableOpacity onPress={savePhoneNumber}>
+            <Text style={{ color: 'green' }}><Icon name="check-circle" size={30} /></Text>
+            </TouchableOpacity>
+          } 
+          
+          </View>
+          
+          </View>
+          
+          
+          <View style={styles.bottom}>
+          <FlutterwaveButton
+          style={design.btnSecondary}
+          onPress={RechargeUserAccount}
+          disabled={false}>
+          <Text style={styles.paymentButtonText}> 
+          {isLoading ? <UIActivityIndicator color='#000' /> : 'CONFIRM TOP UP' }
+          </Text>
+          </FlutterwaveButton>
+          
+          </View>
+          
+          
+          
+          {/* <FlutterwaveButton
+            style={[{ backgroundColor: state.TopButtonBgColor, bottom:0, 
+              borderColor:state.TopButtonBgColor  , margin: 40 }, design.btn, styles.TopupBtn]}
+              onPress={RechargeUserAccount }
+              disabled={false}> <Text style={styles.paymentButtonText}>CONFIRM TOP UP</Text>
+            </FlutterwaveButton> */}
+            
+            
+            </SafeAreaView>
+            
+            );
+          }
+          
+          export default TopUpScreen
+          
+          
+          const styles = StyleSheet.create({
+            container:{
+              flex:1,
+              margin: 15, 
+              borderWidth:0.8,
+              borderRadius:10,
+              borderColor:'#C0C0C0',
+              backgroundColor:'#fff',
+            },
+            contentContainer:{
+              flex:1,
+            },
+            TopupBtn: {
+              alignSelf:'center' , 
+            },
+            
+            paymentButton: {
+              color: '#fff',
+              borderRadius:5,
+              backgroundColor: design.colors.primary,
+              borderColor: design.colors.primary,
+              position: 'absolute',
+              bottom: 0,
+              width: '90%',
+            },
+            
+            bottom:{
+              marginBottom: 30,
+              flexDirection: 'row',
+              alignItems: 'center',
+              alignSelf: 'center',
+              justifyContent: 'center',
+              
+            },
+            paymentButtonText: {
+              color: '#000',
+              textTransform: 'uppercase',
+            },
+            
+            
+            textInput: {
+              borderBottomColor: 'lightblue',
+              fontSize: 18,
+              borderBottomWidth: 2  
+            }
+          })
