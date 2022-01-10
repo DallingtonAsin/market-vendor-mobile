@@ -42,7 +42,7 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
         {
             
             isSocialMedia
-             ? <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:12, textAlign: 'center'}}>{label}</Text>
+             ? <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:13, textAlign: 'center'}}>{label}</Text>
              :  <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:16 }}>{label}</Text>
     
        }

@@ -11,7 +11,7 @@ const AboutScreen = (props) => {
     
     return(
         
-        <View style={{padding: 10, flex: 1, backgroundColor:'#e2e2e2'}}>
+        <View style={{padding: 10, flex: 1, backgroundColor:'#e2e2e3'}}>
         
         <ScrollView contentContainerStyle={{ height:'auto', paddingBottom: 60 }} style={{flex: 1}}>
         {/* <Text style={{ textTransform:'uppercase',fontSize:12,
@@ -22,7 +22,7 @@ const AboutScreen = (props) => {
     <Card style={styles.card}>
     <Card.Content>
     <Title>Services</Title>
-    <Text style={{  opacity:0.5, }}>
+    <Text style={{  opacity:0.5, fontSize:17 }}>
     {APP_NAME} provides easy access to better and affordable parking areas without a hustle. Just recharge your account 
     and get affordable parking in less than a minute!
     
@@ -33,7 +33,7 @@ const AboutScreen = (props) => {
     <Card style={styles.card}>
     <Card.Content>
     <Title>Usage</Title>
-    <Text style={{  opacity:0.5, }}>
+    <Text style={{  opacity:0.5, fontSize:17 }}>
     To get started, search for a parking area and pick one that you prefer (depending on distance, price or spaciousness).
     Ensure your <Text style={{textTransform:'lowercase'}}>{APP_NAME}</Text> wallet has enough money to pay for parking. Else, you can recharge your account
     using the "Top Up" option in the app.</Text>  
@@ -122,9 +122,9 @@ const AboutScreen = (props) => {
     </Card.Content>
     </Card>
 
-    <View style={{justifyContent: 'center', alignItems: 'center', marginTop:40}}>
+    <View style={{justifyContent: 'center', alignItems: 'center', marginTop:20}}>
     <TouchableOpacity  onPress={() => Linking.openURL("http://www.parkpro.com")}>
-        <Text style={{fontSize:19, color:design.colors.primary, fontWeight: '900', textShadowColor: '#ffa500'}}>Visit out website</Text>
+        <Text style={{fontSize:19, color:design.colors.orange, fontWeight: 'bold', textShadowColor: '#ffa500', fontFamily: 'RobotoCondensed-Light'}}>Visit our website</Text>
     </TouchableOpacity>
     </View>
 

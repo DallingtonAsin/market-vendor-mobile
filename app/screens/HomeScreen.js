@@ -9,7 +9,7 @@ import {
   FlatList,
   ImageBackground,StatusBar,
   TouchableHighlight,TextInput,
-  Dimensions,Button,
+  Dimensions,Button,TouchOpacity,
   SafeAreaView,Keyboard,
   Alert, Pressable,
 } from 'react-native';
@@ -739,10 +739,20 @@ const HomeScreen = props => {
                                       >
                                         <SafeAreaView style={styles.contentContainer}>
                                           
-                                          <View>
-                                           <Text style={{textAlign:'center'}}>My Vehicles</Text>
-                                           <Divider style={styles.divider}/>
+                                          <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                                        
+                                            <Text style={{textAlign:'center'}}>My Vehicles</Text>
+                                       
+                                          
+                                            <TouchableOpacity style={{flexDirection: 'row', justifyContent: 'flex-end'}} onPress={() => bottomSheetModalRef.current.close()}>
+                                             <Text>Close</Text>
+                                           </TouchableOpacity>
+                                            
+                                        
+
                                           </View>
+                                          <Divider style={styles.divider}/>
+
                                        
                                         
                                         <FlatList
@@ -753,6 +763,7 @@ const HomeScreen = props => {
                                         ItemSeparatorComponent = { FlatListItemSeparator }
                                         keyExtractor={(item, index) => { return item.number.toString()}}
                                         />
+
                                         
                                         <Pressable style={styles.bottomSheetButton} onPress={() => {setIsSheetVisible(true)}}>
                                         <Text style={{fontSize:14, textAlign: 'center', textTransform:'uppercase'}}>

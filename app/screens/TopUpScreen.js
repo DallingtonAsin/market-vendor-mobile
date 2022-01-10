@@ -7,7 +7,7 @@ import { Text,
   Dimensions, 
   Alert,StatusBar,
   SafeAreaView,
-  Button,
+  Button,KeyboardAvoidingView ,
   StyleSheet} from 'react-native';
   import AsyncStorage from '@react-native-async-storage/async-storage';
   import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -228,13 +228,16 @@ import { Text,
     
     return (
       
-      <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : -200}>
       
       <StatusBar
       backgroundColor={design.colors.primary}
-      />
+      /> 
       
-      <View style={styles.contentContainer}>
+      <ScrollView  style={styles.contentContainer}
+       
+      >
       <Card style={{ margin: 15, padding:30, borderWidth:1, borderRadius: 10, borderColor:'#e2e2e2',
       JustifyContent: 'center', backgroundColor:design.colors.primary, alignItems:'center' }}>
       <Card.Content>
@@ -294,33 +297,27 @@ import { Text,
           } 
           
           </View>
+
+        
           
-          </View>
-          
+          </ScrollView >
           
           <View style={styles.bottom}>
-          <FlutterwaveButton
+          <TouchableOpacity
           style={design.btnSecondary}
           onPress={RechargeUserAccount}
           disabled={false}>
           <Text style={styles.paymentButtonText}> 
-          {isLoading ? <UIActivityIndicator color='#000' /> : 'CONFIRM TOP UP' }
+          {isLoading ? <UIActivityIndicator color='#000' size={22} /> : 'CONFIRM TOP UP' }
           </Text>
-          </FlutterwaveButton>
+          </TouchableOpacity>
           
           </View>
+        
           
           
-          
-          {/* <FlutterwaveButton
-            style={[{ backgroundColor: state.TopButtonBgColor, bottom:0, 
-              borderColor:state.TopButtonBgColor  , margin: 40 }, design.btn, styles.TopupBtn]}
-              onPress={RechargeUserAccount }
-              disabled={false}> <Text style={styles.paymentButtonText}>CONFIRM TOP UP</Text>
-            </FlutterwaveButton> */}
             
-            
-            </SafeAreaView>
+            </KeyboardAvoidingView>
             
             );
           }

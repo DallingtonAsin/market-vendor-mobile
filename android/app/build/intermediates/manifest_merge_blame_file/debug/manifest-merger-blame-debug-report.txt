@@ -218,8 +218,8 @@
 104-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:47:9-41
 105            android:launchMode="singleTask"
 105-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:49:9-40
-106            android:windowSoftInputMode="adjustResize" >
-106-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:50:9-51
+106            android:windowSoftInputMode="adjustPan" >
+106-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:50:9-48
 107            <intent-filter>
 107-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:51:9-54:25
 108                <action android:name="android.intent.action.MAIN" />

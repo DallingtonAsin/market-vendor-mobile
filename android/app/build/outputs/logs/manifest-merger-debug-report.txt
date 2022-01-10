@@ -361,7 +361,7 @@ ADDED from C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:45:7-55:18
 	android:launchMode
 		ADDED from C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:49:9-40
 	android:windowSoftInputMode
-		ADDED from C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:50:9-51
+		ADDED from C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:50:9-48
 	android:configChanges
 		ADDED from C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:48:9-86
 	android:name
