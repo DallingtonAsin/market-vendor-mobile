@@ -71,7 +71,7 @@ import { icons } from '../../constants';
         <View>
 
         <Text style={innerStyles.headerTitle}>Order</Text>
-        <Text style={innerStyles.headerText}>{item.approval_date}</Text>
+        <Text style={innerStyles.headerText}>{item.request_date}</Text>
         <Text style={innerStyles.headerText}>{APP_NAME} Wallet</Text>
         </View>
 
@@ -122,7 +122,7 @@ import { icons } from '../../constants';
         <View style={innerStyles.divider}></View>
 
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding:10}}>
-        <Text style={innerStyles.subtitle}>Total hours</Text>
+        <Text style={innerStyles.subtitle}>Total Time</Text>
         <Text style={innerStyles.info}>{item.parking_hours}</Text>
         </View>
 

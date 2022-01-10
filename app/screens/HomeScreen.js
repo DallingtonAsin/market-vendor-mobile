@@ -447,36 +447,6 @@ const HomeScreen = props => {
                                       );
                                     }
                                     
-                                    
-                                    function renderDestinations(item, index) {
-                                      var destinationStyle = {};
-                                      
-                                      if (index == 0) {
-                                        destinationStyle = { marginLeft: SIZES.padding, }
-                                      }
-                                      
-                                      return (
-                                        <TouchableOpacity
-                                        style={{ justifyContent: 'center', marginHorizontal: SIZES.base, ...destinationStyle }}
-                                        onPress={() => { props.navigation.navigate("DestinationDetail") }}
-                                        >
-                                        <FastImage
-                                        style={{
-                                          width: SIZES.width * 0.28,
-                                          height: '82%',
-                                          borderRadius: 15
-                                        }}
-                                        source={{
-                                          uri: item.image ,
-                                          priority: FastImage.priority.normal,
-                                        }}
-                                        resizeMode={FastImage.resizeMode.contain}
-                                        />
-                                        <Text style={{ textAlign: 'center', marginTop: SIZES.base / 2, ...FONTS.h4 }}>{item.name}</Text>
-                                        </TouchableOpacity>
-                                        )
-                                      }
-                                      
                                       return (
                                         <>
                                         
@@ -776,6 +746,8 @@ const HomeScreen = props => {
                                        
                                         
                                         <FlatList
+                                        scrollEnabled={true}
+                                        vertical={true}
                                         data={vehicles}
                                         renderItem={({item}) => VehicleComponent(item) }
                                         ItemSeparatorComponent = { FlatListItemSeparator }

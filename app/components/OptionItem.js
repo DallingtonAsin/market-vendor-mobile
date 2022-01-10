@@ -3,7 +3,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import {TouchableOpacity, Image, View, Text, StyleSheet, Pressable} from 'react-native'
 import { COLORS, FONTS, SIZES } from '../../constants';
 import design from '../../assets/css/styles';
-const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, labelColor, iconWidth, iconHeight, XWidth, YHeight }) => {
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, labelColor, iconWidth, iconHeight, XWidth, YHeight, isSocialMedia }) => {
     return (
         
         <TouchableOpacity
@@ -18,38 +20,53 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         >
-        <Image
-        source={icon}
-        resizeMode="cover"
-        style={{
-            tintColor: tintColor ? tintColor : '#fff',
-            width: iconWidth ? iconWidth : 45,
-            height: iconHeight ? iconHeight : 45,
-        }}
-        />
+        
+        {
+            
+            isSocialMedia ?
+            <FontAwesome name={icon} size={30} color={"#fff"}/>
+            :
+            <Image
+            source={icon}
+            resizeMode="cover"
+            style={{
+                tintColor: tintColor ? tintColor : '#fff',
+                width: iconWidth ? iconWidth : 45,
+                height: iconHeight ? iconHeight : 45,
+            }}
+            />
+              
+        } 
         </LinearGradient>
         </View>
-        <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:16 }}>{label}</Text>
+        {
+            
+            isSocialMedia
+             ? <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:12, textAlign: 'center'}}>{label}</Text>
+             :  <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:16 }}>{label}</Text>
+    
+       }
+       
         </TouchableOpacity>
         )
     }
-export default OptionItem;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.white,
-    },
-    shadow: {
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
+    export default OptionItem;
+    
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: COLORS.white,
         },
-        shadowOpacity: 0.25,
-        shadowRadius: 1.84,
-        
-        elevation: 8,
-    }
-});
-
+        shadow: {
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 1.84,
+            
+            elevation: 8,
+        }
+    });
+    

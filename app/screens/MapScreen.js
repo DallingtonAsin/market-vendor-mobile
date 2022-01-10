@@ -20,6 +20,7 @@ import Geocoder from 'react-native-geocoding';
 import {currency} from '@env';
 import { UIActivityIndicator } from 'react-native-indicators';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DropDownPicker from 'react-native-dropdown-picker';
 // const { Marker } = MapView;
 
 const {height, width} = Dimensions.get('screen');
@@ -83,6 +84,14 @@ const ParkingMap = (props) => {
     const [carTypes, setCarTypes] = useState();
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
+
+
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+      {label: 'Apple', value: 'apple'},
+      {label: 'Banana', value: 'banana'}
+    ]);
 
     const [mydate, setDate] = useState(new Date());
     const [displaymode, setMode] = useState('time');
@@ -777,7 +786,18 @@ const fetchVehicleCategories = async() => {
                             <View style={styles.modalVehiclesDropdown}>
                                 {renderVehicles()}
                                 <Text style={{color:theme.COLORS.gray}}></Text>
+                                {/* <DropDownPicker
+                              open={open}
+                              value={value}
+                              items={items}
+                              setOpen={setOpen}
+                              setValue={setValue}
+                              setItems={setItems}
+                            /> */}
+                            
                             </View>
+                            
+
                         </View>
 
                         <View style={styles.orderInfo}>

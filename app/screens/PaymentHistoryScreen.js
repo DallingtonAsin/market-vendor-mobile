@@ -50,7 +50,7 @@ const PaymentHistoryScreen = () => {
       <DataTable.Cell>{getDate(props.item.date)}</DataTable.Cell>
       <DataTable.Cell>{props.item.description}</DataTable.Cell>
       <DataTable.Cell>{props.item.credit}</DataTable.Cell>
-      <DataTable.Cell>{props.item.debt}</DataTable.Cell>
+      {/* <DataTable.Cell>{props.item.debt}</DataTable.Cell> */}
       <DataTable.Cell>{props.item.balance}</DataTable.Cell>
       </DataTable.Row>
       );
@@ -67,9 +67,9 @@ const PaymentHistoryScreen = () => {
             <DataTable.Header>
             <DataTable.Title>Date</DataTable.Title>
             <DataTable.Title>Description</DataTable.Title>
-            <DataTable.Title numeric  style={{ flex: 1.2}}>Credit</DataTable.Title>
-            <DataTable.Title numeric  style={{ flex: 1.2}}>Debt</DataTable.Title>
-            <DataTable.Title  style={{ flex: 1.2}}>Balance</DataTable.Title>
+            <DataTable.Title>Credit</DataTable.Title>
+            {/* <DataTable.Title numeric  style={{ flex: 1.2}}>Debt</DataTable.Title> */}
+            <DataTable.Title>Balance</DataTable.Title>
             </DataTable.Header>
             {/* <Divider /> */}
             </>
