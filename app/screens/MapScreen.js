@@ -1,5 +1,5 @@
 import React,{useEffect, useState, useContext, useRef} from 'react';
-import { StyleSheet, Text, View,Button,
+import { StyleSheet, Text, View,Button,Pressable,
          ScrollView, FlatList, Dimensions,Platform,
          TouchableOpacity, TouchableWithoutFeedback, 
          PermissionsAndroid, Alert, Image} from 'react-native';
@@ -917,7 +917,7 @@ const fetchVehicleCategories = async() => {
                                 description={parking.description}
                                 onPress={()=> openOrderInfoModal(parking)}
                             >
-                                <TouchableOpacity onPress={()=> openOrderInfoModal(parking)} >
+                                <TouchableWithoutFeedback onLongPress={()=> openOrderInfoModal(parking)} >
                                     <View style={[
                                         styles.marker,
                                         styles.shadow, 
@@ -927,7 +927,7 @@ const fetchVehicleCategories = async() => {
                                         <Text style={styles.markerPrice}>{parking.fees[`${carType}`]}</Text>
                                         <Text style={[styles.markerStatus, {fontSize:11}]}>({parking.free}/{parking.spots})</Text>
                                     </View>
-                                </TouchableOpacity>
+                                </TouchableWithoutFeedback>
                             </Marker>
                         ))
                         : null

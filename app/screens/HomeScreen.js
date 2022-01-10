@@ -17,7 +17,7 @@ import { images, icons, COLORS, FONTS, SIZES } from '../../constants';
 import OptionItem from '../components/OptionItem';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Animated from 'react-native-reanimated';
-import BottomSheet from 'reanimated-bottom-sheet';
+// import BottomSheet   from 'reanimated-bottom-sheet';
 import { BottomSheet as BrSheet } from 'react-native-btr';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Avatar, Modal, Divider, Portal  } from 'react-native-paper';
@@ -29,9 +29,11 @@ import { openDatabase } from 'react-native-sqlite-storage';
 import { UIActivityIndicator } from 'react-native-indicators';
 import FastImage from 'react-native-fast-image';
 import {currency} from '@env';
-import {
+import BottomSheet, {
   BottomSheetModal,
   BottomSheetModalProvider,
+  BottomSheetBackdrop,
+  BottomSheetScrollView
 } from '@gorhom/bottom-sheet';
 
 
@@ -62,18 +64,32 @@ const HomeScreen = props => {
   const vehicleSheetRef = useRef();
 
    // ref
-   const bottomSheetModalRef = useRef(null);
+   const vehicleBottomSheetRef = useRef(0);
+   const favouritesBottomSheetRef = useRef(0);
+
 
    // variables
    const snapPoints = useMemo(() => ['25%', '50%'], []);
  
    // callbacks
    const handlePresentModalPress = useCallback(() => {
-     bottomSheetModalRef.current?.present();
+     vehicleBottomSheetRef.current?.present();
    }, []);
    const handleSheetChanges = useCallback((index) => {
      console.log('handleSheetChanges', index);
    }, []);
+
+   const handleClosePress = useCallback(() => {
+    vehicleBottomSheetRef.current?.close();
+  }, []);
+
+  const openVehiclesSheet = useCallback((index) => {
+    vehicleBottomSheetRef.current?.snapToIndex(index);
+  }, []);
+
+  const openFavouritesSheet = useCallback((index) => {
+    favouritesBottomSheetRef.current?.snapToIndex(index);
+  }, []);
   
   const [state, setData] = useState(initialUserState);
   const [isSheetVisible, setIsSheetVisible] = useState(false);
@@ -94,7 +110,25 @@ const HomeScreen = props => {
 
   console.log("User profile", JSON.stringify(profile, null, 2));
 
+  const renderVehiclesBackdrop = useCallback(
+    props => (
+      <BottomSheetBackdrop
+        {...props}
+        opacity={0.2}
+      />
+    ),
+    []
+  );
 
+  const renderFavouritesBackdrop = useCallback(
+    props => (
+      <BottomSheetBackdrop
+        {...props}
+        opacity={0.2}
+      />
+    ),
+    []
+  );
   
   const handleVehicleNoChange = (val) => {
     setVehicleData({
@@ -411,31 +445,7 @@ const HomeScreen = props => {
                               
                               </View>
                               )
-                              
-                                const favParkings = () => (
-                                  <View style={styles.SheetContentContainer}>
-                                  <Text style={{textAlign:'center'}}>Favourite parking areas</Text>
-                                  <Divider style={styles.divider}/>
-                                  
-                                  <SafeAreaView>
-                                  <FlatList
-                                  data={nearByParkings}
-                                  renderItem={({item}) => parkingsComponent(item) }
-                                  keyExtractor={(item, index) => { return item.id.toString()}}
-                                  ItemSeparatorComponent = { FlatListItemSeparator }
-                                  />
-                                  </SafeAreaView>
-                                  
-                                  <Pressable style={styles.bottomSheetButton} onPress={showModal}>
-                                  <Text style={design.vehicle.textAdd}>
-                                  add favourite parking 
-                                  <FontAwesome name={"arrow-right"} size={10} style={design.vehicle.icon}/>
-                                  </Text>
-                                  </Pressable>
-                                  
-                                  
-                                  </View>
-                                  );
+                            
                                   
                                   const renderHeader = () => {
                                     return(
@@ -456,13 +466,13 @@ const HomeScreen = props => {
                                         
                                     
                                         
-                                        <BottomSheet
+                                        {/* <BottomSheet
                                         ref={favParkingRef}
                                         snapPoints={[450, 0]}
                                         renderContent={favParkings}
                                         renderHeader={renderHeader}
                                         initialSnap={1}
-                                        />
+                                        /> */}
                                         
                                         
                                         <BrSheet
@@ -682,7 +692,7 @@ const HomeScreen = props => {
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
-                                        onPress={handlePresentModalPress}
+                                        onPress={() => openVehiclesSheet(1)}
                                         />
                                         
                                         
@@ -697,7 +707,7 @@ const HomeScreen = props => {
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
-                                        onPress={() => favParkingRef.current.snapTo(0)}
+                                        onPress={() => openFavouritesSheet(1)}
                                         />
                                         
                                         <OptionItem
@@ -729,32 +739,29 @@ const HomeScreen = props => {
                                         </View>
 
 
-                                        <BottomSheetModalProvider>
                                       
-                                      <BottomSheetModal
-                                        ref={bottomSheetModalRef}
-                                        index={1}
+                                      <BottomSheet
+                                        ref={vehicleBottomSheetRef}
+                                        index={-1}
                                         snapPoints={snapPoints}
+                                        enablePanDownToClose={true}
+                                        backdropComponent={renderVehiclesBackdrop}
                                         onChange={handleSheetChanges}
                                       >
-                                        <SafeAreaView style={styles.contentContainer}>
-                                          
-                                          <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                                        
-                                            <Text style={{textAlign:'center'}}>My Vehicles</Text>
-                                       
-                                          
-                                            <TouchableOpacity style={{flexDirection: 'row', justifyContent: 'flex-end'}} onPress={() => bottomSheetModalRef.current.close()}>
-                                             <Text>Close</Text>
-                                           </TouchableOpacity>
-                                            
-                                        
+                                        <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
 
+                                          <View style={{flexDirection: 'row'}}>
+                                          <View>
+                                            <Text style={{fontSize:18, fontWeight: '900'}}>My Vehicles</Text>
                                           </View>
+                                          <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+                                          {/* <TouchableOpacity onPress={() => vehicleBottomSheetRef?.current.close()}>
+                                             <Text>Close</Text>
+                                           </TouchableOpacity> */}
+                                          </View>
+                                          </View>
+                                         
                                           <Divider style={styles.divider}/>
-
-                                       
-                                        
                                         <FlatList
                                         scrollEnabled={true}
                                         vertical={true}
@@ -763,19 +770,50 @@ const HomeScreen = props => {
                                         ItemSeparatorComponent = { FlatListItemSeparator }
                                         keyExtractor={(item, index) => { return item.number.toString()}}
                                         />
-
-                                        
                                         <Pressable style={styles.bottomSheetButton} onPress={() => {setIsSheetVisible(true)}}>
                                         <Text style={{fontSize:14, textAlign: 'center', textTransform:'uppercase'}}>
                                            add vehicle
                                         </Text>
                                         <FontAwesome name={"arrow-right"} size={18} style={design.vehicle.icon} color={"#808080"}/>
                                         </Pressable>
-                                      
+                                        </BottomSheetScrollView>
+                                      </BottomSheet>
 
-                                        </SafeAreaView>
-                                      </BottomSheetModal>
-                                  </BottomSheetModalProvider>
+
+                                      <BottomSheet
+                                        ref={favouritesBottomSheetRef}
+                                        index={-1}
+                                        snapPoints={snapPoints}
+                                        enablePanDownToClose={true}
+                                        backdropComponent={renderFavouritesBackdrop}
+                                        onChange={handleSheetChanges}
+                                      >
+                                        <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
+
+                                        <View style={styles.SheetContentContainer}>
+                                  <Text style={{textAlign:'center'}}>Favourite parking areas</Text>
+                                  <Divider style={styles.divider}/>
+                                  
+                                  <SafeAreaView>
+                                  <FlatList
+                                  data={nearByParkings}
+                                  renderItem={({item}) => parkingsComponent(item) }
+                                  keyExtractor={(item, index) => { return item.id.toString()}}
+                                  ItemSeparatorComponent = { FlatListItemSeparator }
+                                  />
+                                  </SafeAreaView>
+                                  
+                                  <Pressable style={styles.bottomSheetButton} onPress={showModal}>
+                                  <Text style={design.vehicle.textAdd}>
+                                  add favourite parking 
+                                  <FontAwesome name={"arrow-right"} size={10} style={design.vehicle.icon}/>
+                                  </Text>
+                                  </Pressable>
+                                  
+                                  
+                                  </View>
+                                        </BottomSheetScrollView>
+                                      </BottomSheet>
 
 
 
@@ -838,7 +876,7 @@ const HomeScreen = props => {
                                         },
                                         
                                         contentContainer: {
-                                          flex: 1,
+                                          // flex: 1,
                                           alignItems: 'center',
 
 

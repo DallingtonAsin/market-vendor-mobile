@@ -44,6 +44,7 @@ import { Text,Image,
       if(id && email && subject && description){
         const data = {
           id: id,
+          reaction:selectedEmojiValue,
           email: email,
           subject: subject,
           description: description,

@@ -1,4 +1,4 @@
-#Mon Jan 10 10:56:14 EAT 2022
+#Mon Jan 10 12:53:12 EAT 2022
 base.10=C\:\\npx\\react\\jre\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_15.dex
 path.30=classes2.dex
 base.9=C\:\\npx\\react\\jre\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_14.dex
