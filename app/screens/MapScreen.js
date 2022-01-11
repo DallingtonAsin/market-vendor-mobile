@@ -20,6 +20,7 @@ import Geocoder from 'react-native-geocoding';
 import {currency} from '@env';
 import { UIActivityIndicator } from 'react-native-indicators';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import {callHelpLine} from '../components/SharedCommons';
 import DropDownPicker from 'react-native-dropdown-picker';
 // const { Marker } = MapView;
 
@@ -44,8 +45,8 @@ const ParkingMap = (props) => {
         startTime: '',
         endTime: '',
 
-        start_time: null,
-        end_time: null,
+        start_time: '',
+        end_time: '',
         diff_hours : 0,
         total_amount: 0,
     }
@@ -82,8 +83,12 @@ const ParkingMap = (props) => {
     const [nearByParkings, setNearByParkings] = useState([]);
     const [carType, setCarType] = useState();
     const [carTypes, setCarTypes] = useState();
+
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
+
+    const [start_time, setStartHourTime] = useState(null);
+    const [end_time, setEndHourTime] = useState(null);
 
 
     const [open, setOpen] = useState(false);
@@ -144,28 +149,22 @@ const ParkingMap = (props) => {
 
 
   const handleConfirmStartTime = (selectedStartTime) => {
-    let start_time = getTime(selectedStartTime);
+    let start_hour_time = getTime(selectedStartTime);
      if(endTime){
-       if(start_time < endTime){
-        setStartTime(start_time);
-        setState({ 
-            ...state,
-            start_time: selectedStartTime,
-        });
-        if(state.end_time){
-            calculateAmount(selectedStartTime, state.end_time);
+       if(start_hour_time < endTime){
+        setStartTime(start_hour_time);
+        setStartHourTime(selectedStartTime);
+        if(end_time){
+            calculateAmount(selectedStartTime, end_time);
          }
        }else{
            Alert.alert("Message", "Start time must be less than end time");
        }
       }else{
-        setStartTime(start_time);
-        setState({ 
-            ...state,
-            start_time: selectedStartTime,
-        });  
-        if(state.end_time){
-            calculateAmount(selectedStartTime, state.end_time);
+        setStartTime(start_hour_time);
+        setStartHourTime(selectedStartTime);  
+        if(end_time){
+            calculateAmount(selectedStartTime, end_time);
          }
       }
     hideStartTimePicker();
@@ -173,43 +172,42 @@ const ParkingMap = (props) => {
 
 
   const handleConfirmEndTime = (selectedEndTime) => {
-    let end_time = getTime(selectedEndTime);
+    let end_hour_time = getTime(selectedEndTime);
       if(startTime){
-        if(end_time > startTime){
-            setEndTime(end_time);
-            setState({ 
-                ...state,
-                end_time: selectedEndTime,
-            });
-            if(state.start_time){
-                calculateAmount(state.start_time, selectedEndTime);
+        if(end_hour_time > startTime){
+            setEndTime(end_hour_time);
+            setEndHourTime(selectedEndTime);
+            if(start_time){
+                calculateAmount(start_time, selectedEndTime);
                }
         }else{
             Alert.alert("Message", "End time must be greater than start time");
         }
        }else{
-        setEndTime(end_time);
-        setState({ 
-            ...state,
-            end_time: selectedEndTime,
-        });  
+        setEndTime(end_hour_time);
+        setEndHourTime(selectedEndTime); 
 
-        if(state.start_time){
-            calculateAmount(state.start_time, selectedEndTime);
+        if(start_time){
+            calculateAmount(start_time, selectedEndTime);
            }
        }
        
-    console.warn("End time has been picked: ", end_time);
+    console.warn("End time has been picked: ", end_hour_time);
     hideEndTimePicker();
   };
 
 
   const diff_hours = (dt2, dt1) => {
-    dt1 = new Date(dt1);
-    dt2 = new Date(dt2);
-    var diff = (dt2.getTime() - dt1.getTime()) / 1000;
-    diff /= (60 * 60);
-    return Math.abs(Math.round(diff));
+    // dt1 = new Date(dt1);
+    // dt2 = new Date(dt2);
+    // var diff = (dt2.getTime() - dt1.getTime()) / 1000;
+    // diff /= (60 * 60);
+    // return Math.abs(Math.round(diff));
+    var diff = Math.abs(new Date(dt2) - new Date(dt1));
+    var minutes = Math.floor((diff/1000)/60);
+    var hours = minutes/60;
+    hours = Math.round(hours * 10) / 10
+    return hours;
  }
  
 
@@ -502,6 +500,7 @@ const fetchVehicleCategories = async() => {
         Alert.alert("Message", "Coming soon...");
     }
 
+   
     const renderParking = (item) => {
         const { hours }  = state;
         const totalPrice = item.fees[`${carType}`] * availableHours[1];
@@ -736,7 +735,7 @@ const fetchVehicleCategories = async() => {
                     </View> */}
 
                     <View style={{paddingVertical:theme.SIZES.base}}>
-                        <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>
+                        <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.2}}>
                             {activeModal.description}
                         </Text>
                     </View>
@@ -766,35 +765,24 @@ const fetchVehicleCategories = async() => {
                     </View>
 
                     <View style={{ marginTop:15, marginBottom:15  }}>
-                        <Text style={{fontSize: 15, fontWeight:'bold', opacity:0.7}}>ORDER REQUEST INFORMATION</Text>
+
+                        <TouchableOpacity style={styles.callBtn} onPress={() =>  callHelpLine(activeModal.phone_number)}>
+                          <Text style={{fontSize:16, color:design.colors.white}}>Call Now</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View>
-                        {/* <View style={styles.orderInfo}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Names</Text>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>{profile.first_name} {profile.last_name}</Text>
-                        </View>
+                    <Text style={{fontSize: 14, fontWeight:'bold', opacity:0.6}}>ORDER REQUEST INFORMATION</Text>
+                    </View>
 
-                        <View style={styles.orderInfo}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Telephone</Text>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>{profile.phone_number}</Text>
-                        </View> */}
-
+                    <View>
+                   
                 
                         <View style={styles.orderInfo}>
                             <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Vehicle</Text>
                             <View style={styles.modalVehiclesDropdown}>
                                 {renderVehicles()}
                                 <Text style={{color:theme.COLORS.gray}}></Text>
-                                {/* <DropDownPicker
-                              open={open}
-                              value={value}
-                              items={items}
-                              setOpen={setOpen}
-                              setValue={setValue}
-                              setItems={setItems}
-                            /> */}
-                            
                             </View>
                             
 
@@ -818,7 +806,7 @@ const fetchVehicleCategories = async() => {
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <View style={styles.modalVehiclesDropdown}>
                                <View  style={{width:110}}>
-                               <Button title="Start time" onPress={showStartTimePicker} />
+                               <Button title="Start time" onPress={showStartTimePicker} color={design.colors.primary}/>
                                </View>
                                 <DateTimePickerModal
                                     isVisible={isStartTimePickerVisible}
@@ -838,7 +826,7 @@ const fetchVehicleCategories = async() => {
                             <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                             <View style={[styles.modalVehiclesDropdown, {marginLeft:10 }]}>
                                <View  style={{width:110}}>
-                               <Button title="End time" onPress={showEndTimePicker} />
+                               <Button title="End time" onPress={showEndTimePicker} color={design.colors.primary} />
                                </View>
                                 <DateTimePickerModal
                                     isVisible={isEndTimePickerVisible}
@@ -867,19 +855,15 @@ const fetchVehicleCategories = async() => {
                              <TouchableOpacity style={[styles.payBtn,
                                  activeModal.is_open ? {backgroundColor: theme.COLORS.primary}: {backgroundColor: 'gray'}]} 
                                  disabled={activeModal.is_open ? false : true}
-                                 onPress={submitRequest}
+                                 onPress={() => submitRequest()}
                                  >  
                                 <Text style={styles.payText}> 
-                                    {isReqProcessing ? <UIActivityIndicator color='#fff' /> : 'Submit Request' }
+                                    {isReqProcessing ? <UIActivityIndicator color='#fff' size={25}/> : 'Submit Request' }
                                 </Text>
                                 <FontAwesome name='angle-right' size={theme.SIZES.icon*1.75} color={theme.COLORS.white} />
                             </TouchableOpacity> 
 
-                            {/* <Button title="Submit Request" 
-                            disabled={activeModal.is_open ? false : true}
-                             onPress={() => submitRequest()}/> */}
-
-
+                          
 
 
                     </ScrollView>
@@ -1069,15 +1053,19 @@ const styles = StyleSheet.create({
         borderRadius: theme.SIZES.base / 2,
         borderColor: theme.COLORS.overlay,
         borderWidth: 1,
-        padding: theme.SIZES.base,
-        width:150,
+        padding: theme.SIZES.base*1.3,
+        width:220,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     carsDropdown: {
         borderRadius: theme.SIZES.base / 2,
         borderColor: theme.COLORS.overlay,
         borderWidth: 1,
-        padding: theme.SIZES.base,
-        width:150,
+        padding: theme.SIZES.base*1.3,
+        width:220,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     hoursDropdownOption: {
         padding: 5,
@@ -1208,6 +1196,19 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding:10,
         borderRadius:40, 
+    },
+    callBtn:{
+        height:45,
+        borderWidth:1,
+        borderRadius:30,
+        borderColor: design.colors.success,
+        backgroundColor: design.colors.success,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width:'45%',
+        margin:10,
+        left:0,
+
     },
       dropdown1RowTxtStyle: { color: "#444", textAlign: "left" },
     

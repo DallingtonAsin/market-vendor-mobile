@@ -1,22 +1,21 @@
 import { Linking } from 'react-native';
 import Communications from 'react-native-communications';
 import Rate, { AndroidMarket } from 'react-native-rate';
-import {companyLine, whatsapLine, companyEmail} from '@env';
 
-export const callHelpLine = () => {
-  Communications.phonecall(companyLine, true);
+export const callHelpLine = (phoneNumber) => {
+  Communications.phonecall(phoneNumber, false);
 };
 
-export const SendEmail = () =>{
-  Communications.email([companyEmail],null,null,'', '');
+export const SendEmail = (email) =>{
+  Communications.email([email],null,null,'', '');
 };
 
-export const SendSms = () => {
-  Communications.text(companyLine, '');
+export const SendSms = (telephone_number) => {
+  Communications.text(telephone_number, '');
 }
 
-export const inboxFromWhatsapp = () => {
-   Linking.openURL(`whatsapp://send?text=&phone=${whatsapLine}`);
+export const inboxFromWhatsapp = (whatsappNumber) => {
+   Linking.openURL(`whatsapp://send?text=&phone=${whatsappNumber}`);
 }
 
 export const Monetize = (num) => {
