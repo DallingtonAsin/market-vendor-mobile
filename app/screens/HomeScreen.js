@@ -944,6 +944,7 @@ const HomeScreen = props => {
                                           marginTop:15,
                                           marginBottom:60,
                                           height:50,
+                                          width:'70%',
                                           padding:15,
                                           borderRadius:30,
                                           borderColor:design.colors.primary,
