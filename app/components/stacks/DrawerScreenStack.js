@@ -3,11 +3,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawer from '../../navigators/CustomDrawer';
 import { Dimensions } from 'react-native';
 
-import HomeStack from  './HomeStack';
 import AboutStack from  './AboutStack';
 import ParkingAreasStack from  './ParkingAreasStack';
 import ProfileStack from  './ProfileStack';
-import RequestParkingStack from  './RequestParkingStack';
 import ParkingFeesStack from  './ParkingFeesStack';
 
 import ExtraServicesStack from  './ExtraServicesStack';
@@ -39,7 +37,6 @@ const DrawerScreenStack = () => {
         <Drawer.Screen name="Profile" component={ProfileStack}/>
         <Drawer.Screen name="EditProfile" component={EditProfileStack}/>
         <Drawer.Screen name="PaymentHistory" component={PaymentStatementStack}/>
-        <Drawer.Screen name="RequestParking" component={RequestParkingStack}/>
         <Drawer.Screen name="ParkingAreas" component={ParkingAreasStack}/>
         <Drawer.Screen name="ParkingFees" component={ParkingFeesStack}/>
         <Drawer.Screen name="Weather" component={WeatherStack}/>

@@ -19,12 +19,10 @@ const ParkingFeesScreen = ({route, navigation}) => {
     const mounted = useRef();
 
     // const { parking_area_id, parking_area } = route.params;
-        const parking_area_id = (typeof route.params.parking_area_id !== 'undefined')  ? route.params.parking_area_id :  0;
-        const parking_area = (typeof route.params.parking_area !== 'undefined')  ? route.params.parking_area : '';
-        const image_url = (typeof route.params.image !== 'undefined')  ? route.params.image : '';
+    const parking_area_id = (typeof route.params.parking_area_id !== 'undefined')  ? route.params.parking_area_id :  0;
+    const parking_area = (typeof route.params.parking_area !== 'undefined')  ? route.params.parking_area : '';
+    const image_url = (typeof route.params.image !== 'undefined')  ? route.params.image : '';
 
-   
-     
     const [fees, setFees] = useState(initialFeesData);
     const [done, setDone] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
@@ -107,12 +105,7 @@ const ParkingFeesScreen = ({route, navigation}) => {
                     
                     useEffect(() => {
                         getParkingFees();
-                        if (!mounted.current) {
-                            updateFees();
-                        }else{
-                            updateFees();
-                        } 
-                    }, []);
+                    }, [parking_area_id]);
                     
                     return (
                         <View style={styles.container}>
@@ -120,29 +113,14 @@ const ParkingFeesScreen = ({route, navigation}) => {
                         
                         <View style={styles.semicontainer}>
 
-                        <Searchbar
-                        style={{borderColor:'lightblue', borderWidth:1, margin:5}}
-                        placeholder="Type parking for see fees..."
-                        onChangeText={onChangeSearch}
-                        value={searchQuery}
-                        />
-                        
                         { done ?
                             <>
                             
                             <Card>
+                          
+                            <Card.Cover source={{ uri: image_url }} style={{width:'90%', height:'40%', margin:5, borderRadius:5}}/>
                             <Card.Content>
                             <Title>{parking_area}</Title>
-                            </Card.Content>
-                            <Card.Cover source={{ uri: image_url }} style={{width:'90%', height:'40%', margin:5, borderRadius:5}}/>
-                            <Card.Actions>
-                            <Button onPress={() => navigation.navigate("RequestParking")} style={{ backgroundColor: design.colors.primary, 
-                                borderRadius:5, alignContent:'center', alignItems:'center', padding:5 }}>
-                            <Text style={{color:'#fff'}}>Request parking</Text> 
-                            </Button>
-                            </Card.Actions>
-                            </Card>
-
                             <FlatList
                             data={fees}
                             renderItem={({item}) => <CustomDataTable item={item}/>}
@@ -156,6 +134,19 @@ const ParkingFeesScreen = ({route, navigation}) => {
                                 onRefresh={onRefresh}
                                 />}
                                 />
+                            </Card.Content>
+                            <Card.Actions>
+                            <Button onPress={() => navigation.navigate("Map")} style={{ backgroundColor: design.colors.primary, 
+                                borderRadius:5, alignContent:'center', alignItems:'center', padding:5 }}>
+                            <Text style={{color:'#fff'}}>Request parking</Text> 
+                            </Button>
+
+                          
+
+                            </Card.Actions>
+                            </Card>
+
+                           
                             
                             
                                 </>

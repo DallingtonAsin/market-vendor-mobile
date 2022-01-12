@@ -70,7 +70,7 @@ export default class MainService{
         return await Service.fetchData(endpoint);
     }
     static fetchParkingFees = async(parking_area_id) => {
-        const endpoint = 'parking/fees?parking_area_id='+parking_area_id+'';
+        const endpoint = 'device/parking-area/fees?parking_area_id='+parking_area_id+'';
         return await Service.fetchData(endpoint);
     }
     

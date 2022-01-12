@@ -90,9 +90,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                 
                 const CardComponent = (item) => (
                     <TouchableOpacity onPress={() => GotoFeesPage(item)}>
-                    <Card>
-                    <Card.Content>
-                    
+                
                     <View style={{flexDirection:'row'}}>
 
                     {/* <Card.Cover source={{ uri: item.image }} style={{width:'45%', height:'98%'}}/> */}
@@ -121,12 +119,12 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                     Available:  <Text style={{color:design.colors.green}}>{item.free}</Text>
                     </Text> 
                     
-                    <Rating
+                    {/* <Rating
                     showRating={false}
                     imageSize={25}
                     readonly
                     style={{ paddingVertical: 10 }}
-                    />
+                    /> */}
                     
                         <Pressable onPress={() => GotoFeesPage(item)} style={{backgroundColor:design.colors.primary,
                         justifyContent:'center', alignItems:'center', padding:5, margin:5, width:80, borderRadius:5}}>
@@ -136,10 +134,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                         
                         </View>
                         
-                        </Card.Content>
-                        <Card.Actions>
-                        </Card.Actions>
-                        </Card>
+                      
                         </TouchableOpacity>
                         );
 

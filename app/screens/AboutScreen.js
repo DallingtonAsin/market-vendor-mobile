@@ -22,7 +22,7 @@ const AboutScreen = (props) => {
     <Card style={styles.card}>
     <Card.Content>
     <Title>Services</Title>
-    <Text style={{  opacity:0.5, fontSize:17 }}>
+    <Text style={{  opacity:0.5, fontSize:16 }}>
     {APP_NAME} provides easy access to better and affordable parking areas without a hustle. Just recharge your account 
     and get affordable parking in less than a minute!
     
@@ -33,7 +33,7 @@ const AboutScreen = (props) => {
     <Card style={styles.card}>
     <Card.Content>
     <Title>Usage</Title>
-    <Text style={{  opacity:0.5, fontSize:17 }}>
+    <Text style={{  opacity:0.5, fontSize:16 }}>
     To get started, search for a parking area and pick one that you prefer (depending on distance, price or spaciousness).
     Ensure your <Text style={{textTransform:'lowercase'}}>{APP_NAME}</Text> wallet has enough money to pay for parking. Else, you can recharge your account
     using the "Top Up" option in the app.</Text>  
@@ -48,19 +48,6 @@ const AboutScreen = (props) => {
     
     <View style={{ flexDirection: 'row', marginTop: SIZES.padding, paddingHorizontal: SIZES.base }}>
     
-    
-    
-    {/* <OptionItem
-    icon={"globe"}
-    bgColor={['#FFA500', '#FFA500']}
-    label="Website"
-    iconWidth={35} 
-    iconHeight={35}
-    XWidth={60} 
-    YHeight={60}
-    isSocialMedia={true}
-    onPress={() => Linking.openURL("http://www.parkpro.com")}
-    /> */}
 
 <OptionItem
     icon={"facebook"}
@@ -113,21 +100,19 @@ const AboutScreen = (props) => {
     onPress={() =>  Linking.openURL("http://www.linkedin.com") }
     />
     
-    
-    
-    
     </View>
 
     </View>
     </Card.Content>
     </Card>
 
-    <View style={{justifyContent: 'center', alignItems: 'center', marginTop:20}}>
-    <TouchableOpacity  onPress={() => Linking.openURL("http://www.parkpro.com")}>
-        <Text style={{fontSize:19, color:design.colors.orange, fontWeight: 'bold', textShadowColor: '#ffa500', fontFamily: 'RobotoCondensed-Light'}}>Visit our website</Text>
-    </TouchableOpacity>
-    </View>
-
+    <Card style={[styles.card, {justifyContent: 'center', alignItems: 'center'} ]}>
+    <Card.Content>
+    <TouchableOpacity  onPress={() => Linking.openURL("http://www.parkproug.com")}>
+        <Text style={{fontSize:18, color:design.colors.orange, fontWeight: 'bold', textShadowColor: '#ffa500', fontFamily: 'RobotoCondensed-Light'}}>Visit our website</Text>
+    </TouchableOpacity> 
+    </Card.Content>
+    </Card>
 
     </ScrollView>
     </View>
