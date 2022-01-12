@@ -649,6 +649,8 @@ import { StyleSheet, Text, View,Button,Pressable,
                     options={vehicles}
                     style={styles.vehiclesDropdown}
                     defaultValue={vehicles[0]}
+                    defaultTextStyle={{fontSize:16}}
+                    textStyle={{fontSize:16}}
                     onSelect={(index, value) => handleVehicle(value)}
                     renderRow={(option) => (
                       <Text style={styles.hoursDropdownOption}>{option}</Text>
@@ -677,6 +679,8 @@ import { StyleSheet, Text, View,Button,Pressable,
                         options={carTypes}
                         style={styles.carsDropdown}
                         defaultValue={carTypes[0]}
+                        defaultTextStyle={{fontSize:18}}
+                        textStyle={{fontSize:18}}
                         onSelect={(index, value) => onChangeCarType(value)}
                         renderRow={(option) => (
                           <Text style={styles.hoursDropdownOption}>{option}</Text>
@@ -717,7 +721,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                               
                               // style={{paddingHorizontal:0}}   
                               >
-                              <ScrollView style={styles.modal}>
+                              <ScrollView contentContainerStyle={styles.modal}>
                               <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                               <View>
                               <Text style={{fontSize: theme.SIZES.font *1.4}}>
@@ -746,8 +750,8 @@ import { StyleSheet, Text, View,Button,Pressable,
                             <View style={{ flexDirection: 'column'}}>
 
 
-                            <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-                            <View style={[styles.parkingIcon, {justifyContent: 'flex-start'} ]}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+                            <View style={[styles.parkingIcon,  ]}>
                             <FontAwesome name='clock-o' size={theme.SIZES.icon*1.3} color={theme.COLORS.orange} style={{paddingTop:5}}/>
                             {
                               activeModal.is_open
@@ -756,18 +760,18 @@ import { StyleSheet, Text, View,Button,Pressable,
                               
                             }
                             </View> 
-                            <View style={[styles.parkingIcon, {justifyContent: 'flex-start'} ]}>
+                            <View style={[styles.parkingIcon, ]}>
                             <FontAwesome name='star' size={theme.SIZES.icon*1.5} color={theme.COLORS.orange} style={{paddingTop:5}}/>
                             <Text style={{fontSize:theme.SIZES.icon*1.15}}> {activeModal.rating}</Text>
                             </View>
                             </View>
                             
                             <View style={{flexDirection: 'row',  justifyContent: 'space-evenly'}}>
-                            <View style={[styles.parkingIcon, {justifyContent: 'flex-start'} ]}>
+                            <View style={[styles.parkingIcon,  ]}>
                             <FontAwesome name='road' size={theme.SIZES.icon*1.3} color={theme.COLORS.orange} style={{paddingTop:5}}/>
                             <Text style={{fontSize:theme.SIZES.icon*1.05}}> {activeModal.distance}km</Text>
                             </View>
-                            <View style={[styles.parkingIcon, {justifyContent: 'flex-start', paddingLeft:10} ]}>
+                            <View style={[styles.parkingIcon, {paddingLeft:10} ]}>
                             <FontAwesome name='car' size={theme.SIZES.icon*1.3} color={theme.COLORS.orange} style={{paddingTop:5}}/>
                             <Text style={{fontSize:theme.SIZES.icon*1.05}}> {activeModal.free}/{activeModal.spots}</Text>
                             </View>
@@ -779,7 +783,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                             
                             <View>
                             <TouchableOpacity style={styles.callBtn} onPress={() =>  callHelpLine(activeModal.phone_number)}>
-                            <FontAwesome5 name="phone-volume" size={18} color={design.colors.white}/>
+                            <FontAwesome5 name="phone-alt" size={18} color={design.colors.white}/>
                             <Text style={{fontSize:16, paddingLeft:10, color:design.colors.white}}>Call Now</Text>
                             </TouchableOpacity>
                             </View>
@@ -792,8 +796,8 @@ import { StyleSheet, Text, View,Button,Pressable,
                             
                             <View>
                             
-                            <View>
-                            <Text style={{fontSize: 14, fontWeight:'bold', opacity:0.6, color:'#000'}}>ORDER REQUEST INFORMATION</Text>
+                            <View style={{marginTop:10}}>
+                            <Text style={{fontSize: 16, fontWeight:'bold', opacity:0.6, color:'#000', textTransform:'capitalize'}}>ORDER REQUEST INFORMATION</Text>
                             </View>
                             
                             
@@ -1067,6 +1071,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                   borderWidth: 1,
                                   padding: theme.SIZES.base,
                                   marginRight: theme.SIZES.base / 2,
+                                  fontSize: theme.SIZES.font*0.95,
                                 },
                                 vehiclesDropdown: {
                                   borderRadius: theme.SIZES.base / 2,
@@ -1076,6 +1081,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                   width:220,
                                   justifyContent: 'center',
                                   alignItems: 'center',
+                                  fontSize: theme.SIZES.font*0.95,
                                 },
                                 carsDropdown: {
                                   borderRadius: theme.SIZES.base / 2,
@@ -1088,7 +1094,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                 },
                                 hoursDropdownOption: {
                                   padding: 5,
-                                  fontSize: theme.SIZES.font*0.95,
+                                  fontSize: 18,
                                 },
                                 hoursDropdownStyle: {
                                   marginLeft: -theme.SIZES.base,
@@ -1110,7 +1116,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                 },
                                 modal: {
                                   flexDirection: 'column',
-                                  height: height*0.85,
+                                  height: '100%',
                                   padding: theme.SIZES.base * 2,
                                   backgroundColor: theme.COLORS.white,
                                   borderTopLeftRadius: theme.SIZES.base,
@@ -1132,7 +1138,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                 
                                 modalInfo1: {
                                   flexDirection: 'row',
-                                  justifyContent: 'space-evenly',
+                                  justifyContent: 'space-around',
                                   paddingVertical: theme.SIZES.base,
                                 },
                                 
@@ -1225,9 +1231,9 @@ import { StyleSheet, Text, View,Button,Pressable,
                                   backgroundColor: design.colors.success,
                                   justifyContent: 'center',
                                   alignItems: 'center',
-                                  width:'75%',
-                                  margin:10,
-                                  left:0,
+                                  width:'70%',
+                                  marginLeft:30,
+                               
                                   
                                 },
                                 dropdown1RowTxtStyle: { color: "#444", textAlign: "left" },

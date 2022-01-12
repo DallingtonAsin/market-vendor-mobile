@@ -5,11 +5,11 @@ import { COLORS, FONTS, SIZES } from '../../constants';
 import design from '../../assets/css/styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
-const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, labelColor, iconWidth, iconHeight, XWidth, YHeight, isSocialMedia }) => {
+const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, labelColor, iconWidth, iconHeight, XWidth, YHeight, isSocialMedia, color }) => {
     return (
         
         <TouchableOpacity
-        style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+        style={[{ flex: 1, alignItems: 'center', justifyContent: 'center' }]}
         onPress={onPress}
         activeOpacity={0.9}
         >
@@ -24,7 +24,7 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
         {
             
             isSocialMedia ?
-            <FontAwesome name={icon} size={30} color={"#fff"}/>
+            <FontAwesome name={icon} size={30} color={color}/>
             :
             <Image
             source={icon}
@@ -67,6 +67,9 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
             shadowRadius: 1.84,
             
             elevation: 8,
+        },
+        socialBg:{
+          backgroundColor:'red',
         }
     });
     

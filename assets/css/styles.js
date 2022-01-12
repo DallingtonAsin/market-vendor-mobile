@@ -193,9 +193,9 @@ bottom: {
 
       helpIcon:{
         color:'#FFA500',
-        fontSize:20,
+        // fontSize:20,
         borderRadius:30,
-        padding: 10,
+        padding: 13,
         borderWidth:0.5,
         backgroundColor:'#fff',
         borderColor:'#FFA500',

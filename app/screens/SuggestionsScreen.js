@@ -156,7 +156,7 @@ import { Text,Image,
       },
       
       top:{
-        flex:1,
+        flex:2,
         backgroundColor: styles.colors.primary,
         justifyContent: 'center', 
         alignItems: 'center',

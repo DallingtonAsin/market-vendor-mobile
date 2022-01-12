@@ -15,27 +15,29 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
     import { TabView,TabBar, SceneMap } from 'react-native-tab-view';
     import { AuthContext } from '../context/context';
     import FastImage from 'react-native-fast-image';
+    import FontAwesome from 'react-native-vector-icons/FontAwesome';
+    import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
     // const useIsMounted = () => {
     //     let isMounted = useRef(false);
     //     useEffect(() => {
     //       isMounted.current = true;
     //       return () => isMounted.current = false;
     //     }, []);
-      
+    
     //     return isMounted;
     //   }
     
     const ParkingAreasScreen = (props) => {
-
+        
         
         const { getParkingAreas } = React.useContext(AuthContext);
-       
+        
         // const isMounted = useIsMounted();
         const [refreshing, setRefreshing] = useState(false);
         const [parkingAreas, setParkingAreas] = useState([]);
         const [isLoading, setIsLoading] = useState(true);
         const [searchQuery, setSearchQuery] = useState('');
-       
+        
         
         const [index, setIndex] = React.useState(0);
         
@@ -48,8 +50,11 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
         
         
         const RecentParkings = () => (
-           !isLoading ? 
+            !isLoading ? 
+            <View style={{marginTop:10}}>
             <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             data={parkingAreas}
             renderItem={({item}) => CardComponent(item)}
             keyExtractor={(item, index) => index.toString()}
@@ -58,14 +63,19 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                 refreshing={refreshing}
                 onRefresh={onRefresh}
                 />
+                
             }
             />
+            </View>
             :  <CustomLoader color={design.colors.orange}/>
             );
             
             const favouriteParkings = () => (
                 !isLoading ? 
+                <View style={{marginTop:20}}>
                 <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
                 data={parkingAreas}
                 renderItem={({item}) => CardComponent(item)}
                 keyExtractor={(item, index) => index.toString()}
@@ -76,6 +86,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                     />
                 }
                 />
+                </View>
                 :  <CustomLoader color={design.colors.orange}/>
                 );
                 
@@ -90,43 +101,64 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                 
                 const CardComponent = (item) => (
                     <TouchableOpacity onPress={() => GotoFeesPage(item)}>
-                
+                    
                     <View style={{flexDirection:'row'}}>
-
+                    
                     {/* <Card.Cover source={{ uri: item.image }} style={{width:'45%', height:'98%'}}/> */}
                     <FastImage
-                       style={{
+                    style={{
                         width: '45%',
                         height: '98%',
                         borderRadius: 15
-                      }}
-                      source={{
-                          uri: item.image ,
-                          // headers: { Authorization: 'someAuthToken' },
-                          priority: FastImage.priority.normal,
-                      }}
-                      resizeMode={FastImage.resizeMode.contain}
-                  />
+                    }}
+                    source={{
+                        uri: item.image ,
+                        // headers: { Authorization: 'someAuthToken' },
+                        priority: FastImage.priority.normal,
+                    }}
+                    resizeMode={FastImage.resizeMode.contain}
+                    />
                     
                     <View style={{flexDirection:'column', padding:10}}>
+                    
+                    <View style={{flexDirection:'column'}}>
                     <Title>{item.name}</Title>
                     <Paragraph>{item.address}</Paragraph>
+                    </View>
+                    
+                    <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                    
+                    <View style={{justifyContent:'flex-start'}}>
                     <Text style={{color:design.colors.warning}}>
                     Capacity: <Text style={{color:design.colors.warning}}>{item.spots}</Text>
                     </Text> 
                     
                     <Text style={{color:design.colors.green}}>
                     Available:  <Text style={{color:design.colors.green}}>{item.free}</Text>
-                    </Text> 
+                    </Text>
+                    </View>
+                    
+                    <View style={{flexDirection:'column', justifyContent:'flex-end'}}>
+                    <FontAwesome name="star" size={30} color={design.colors.warning}/>
+                    <Text style={{color:design.colors.black, fontSize:14, textAlign: 'center'}}>{item.rating}%</Text>
+                    </View>
+                    
+                    </View>
+                    
+                    
+                    
+                    
+                    
+                    
                     
                     {/* <Rating
-                    showRating={false}
-                    imageSize={25}
-                    readonly
-                    style={{ paddingVertical: 10 }}
+                        showRating={false}
+                        imageSize={25}
+                        readonly
+                        style={{ paddingVertical: 10 }}
                     /> */}
                     
-                        <Pressable onPress={() => GotoFeesPage(item)} style={{backgroundColor:design.colors.primary,
+                    <Pressable onPress={() => GotoFeesPage(item)} style={{backgroundColor:design.colors.primary,
                         justifyContent:'center', alignItems:'center', padding:5, margin:5, width:80, borderRadius:5}}>
                         <Text style={{color:design.colors.white}}>Fees</Text> 
                         </Pressable>
@@ -134,10 +166,10 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                         
                         </View>
                         
-                      
+                        
                         </TouchableOpacity>
                         );
-
+                        
                         const filterParkings = async(searchItem) => {
                             await MainService.filterParkingAreas(searchItem).then(res => {
                                 console.log("Response for parking areas is", res);
@@ -158,29 +190,29 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                             setSearchQuery(query);
                             if(query && query.length > 1) {
                                 filterParkings(query);
-                             }
+                            }
                         };
-
+                        
                         const onClickSearchBtn = () => {
                             if(searchQuery && searchQuery.length > 1) {
                                 filterParkings(searchQuery);
-                             }else{ 
-                                 Alert.alert("Message", "Type atleast 3 characters to filter parkings");
-                             }
+                            }else{ 
+                                Alert.alert("Message", "Type atleast 3 characters to filter parkings");
+                            }
                         };
-
+                        
                         const GotoFeesPage = (item) => { 
                             console.log("Parking Area ID", item.id);
                             console.log("Parking Area", item.name);
                             console.log("Image", item.image);
-
-
+                            
+                            
                             props.navigation.navigate("ParkingFees", {
                                 screen: 'ParkingFees',
                                 params: { parking_area_id: item.id, 
-                                          parking_area: item.name,
-                                          image: item.image,
-                                    }
+                                    parking_area: item.name,
+                                    image: item.image,
+                                }
                             });
                         }
                         
@@ -199,11 +231,11 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                             }
                             setIsLoading(false);
                         }
-
+                        
                         React.useEffect(() => {
                             fetchParkings();
                         }, []);
-
+                        
                         const updateState = () => {
                             let isMounted = true;
                             if(isMounted || refreshing){
@@ -215,7 +247,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                             return () => { isMounted = false }
                         }
                         
-                     
+                        
                         
                         const renderTabBar = props => (
                             <TabBar
@@ -235,15 +267,24 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                                     <SafeAreaView
                                     style={styles.scrollView}
                                     >
+                                    
+                                    <View style={{flexDirection:'row', justifyContent: 'center', alignItems: 'center', marginTop:10}}>
                                     <Searchbar
-                                    placeholder="Search for parking area..."
+                                    placeholder="Search for parking..."
                                     onChangeText={onChangeSearch}
                                     value={searchQuery}
                                     onIconPress={onClickSearchBtn}
-                                    style={{marginTop:10}}
+                                    style={{ width: '85%'}}
                                     />
+                                    <TouchableOpacity onPress={()=>onRefresh()} style={{paddingLeft:10}}>
+                                    <FontAwesome name="refresh" size={25} color={design.colors.orange}/>
+                                    </TouchableOpacity>
+                                    </View>
                                     
-                                    <ScrollView horizontal={true}>
+                                    
+                                    <ScrollView 
+                                    horizontal={true} 
+                                    contentContainerStyle={{width: '100%'}}>
                                     <TabView
                                     renderTabBar={renderTabBar}
                                     navigationState={{ index, routes }}

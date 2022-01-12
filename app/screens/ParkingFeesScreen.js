@@ -137,8 +137,8 @@ const ParkingFeesScreen = ({route, navigation}) => {
                             </Card.Content>
                             <Card.Actions>
                             <Button onPress={() => navigation.navigate("Map")} style={{ backgroundColor: design.colors.primary, 
-                                borderRadius:5, alignContent:'center', alignItems:'center', padding:5 }}>
-                            <Text style={{color:'#fff'}}>Request parking</Text> 
+                                borderRadius:5, alignContent:'center', alignItems:'center', padding:5, borderRadius:35 }}>
+                            <Text style={{color:'#fff', fontSize:14, textTransform:'capitalize'}}>Request parking</Text> 
                             </Button>
 
                           

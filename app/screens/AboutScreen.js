@@ -51,37 +51,40 @@ const AboutScreen = (props) => {
 
 <OptionItem
     icon={"facebook"}
-    bgColor={['#43609C', '#43609C']}
+    bgColor={['#fff', '#fff']}
     label="Facebook"
     iconWidth={35} 
     iconHeight={35}
     XWidth={60} 
     YHeight={60}
     isSocialMedia={true}
+    color={'#43609C'}
     onPress={() =>  Linking.openURL("http://www.facebook.com") }
     />
 
 <OptionItem
     icon={"instagram"}
-    bgColor={['#8a3ab9', '#8a3ab9']}
+    bgColor={['#fff', '#fff']}
     label="Instagram"
     iconWidth={35} 
     iconHeight={35}
     XWidth={60} 
     YHeight={60}
     isSocialMedia={true}
+    color={'#8a3ab9'}
     onPress={() =>  Linking.openURL("http://www.instagram.com") }
     />
 
     <OptionItem
     icon={"twitter"}
-    bgColor={['#1DA1F2', '#1DA1F2']}
+    bgColor={['#fff', '#fff']}
     label="Twitter"
     iconWidth={35} 
     iconHeight={35}
     XWidth={60} 
     YHeight={60}
     isSocialMedia={true}
+    color={'#1DA1F2'}
     onPress={() =>  Linking.openURL("https://www.twitter.com") }
     />
   
@@ -90,13 +93,14 @@ const AboutScreen = (props) => {
     
     <OptionItem
     icon={"linkedin"}
-    bgColor={['#0e76a8', '#0e76a8']}
+    bgColor={['#fff', '#fff']}
     label="Linkedin"
     iconWidth={35} 
     iconHeight={35}
     XWidth={60} 
     YHeight={60}
     isSocialMedia={true}
+    color={'#0e76a8'}
     onPress={() =>  Linking.openURL("http://www.linkedin.com") }
     />
     

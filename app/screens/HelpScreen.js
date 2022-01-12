@@ -5,19 +5,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {callHelpLine, SendEmail, SendSms, inboxFromWhatsapp} from '../components/SharedCommons';
 import {companyLine, whatsapLine, companyEmail} from '@env';
 
-const communicationChannels = [
-  {id: 1, iconName: "phone-alt", name:'Phone', text: companyLine, 'method': () => {callHelpLine(companyLine)}},
-  {id: 2, iconName: "whatsapp", name:'Whatsap', text: whatsapLine, 'method': () => {inboxFromWhatsapp(whatsapLine)}},
-  {id: 3, iconName: "sms", name:'SMS', text: 'Report a problem via sms', 'method': () => {SendSms(companyLine)}},
-  {id: 4, iconName: "envelope", name:'Email', text: companyEmail, 'method': () => {SendEmail(companyEmail)}},
-  {id: 5, iconName: "comments", name:'Feedback', text: 'Suggest something to us', 'method': () => navigation.navigate('Suggestions')},
-  
-];
+
 
 const CardComponent = ({info}) => (
   <TouchableOpacity  style={{ backgroundColor:'#ffffff', borderWidth:1, borderColor:'#e2e2e2',margin:5, borderRadius:6 }} onPress={info.method}>
   <View style = { design.helpContainer} >
-  <Icon name={info.iconName} style={design.helpIcon}/>
+  <Icon name={info.iconName} style={design.helpIcon} size={20}/>
   <View style={{flexDirection: 'column', marginLeft:15}}>
   <Text style={styles.channel}>{info.name}</Text>
   <Text>{info.text}</Text>
@@ -26,8 +19,17 @@ const CardComponent = ({info}) => (
   </TouchableOpacity>
   );
   
-  const Help = () => {
+  const Help = ({navigation}) => {
   
+    const communicationChannels = [
+      {id: 1, iconName: "phone-alt", name:'Phone', text: companyLine, 'method': () => {callHelpLine(companyLine)}},
+      {id: 2, iconName: "whatsapp", name:'Whatsap', text: whatsapLine, 'method': () => {inboxFromWhatsapp(whatsapLine)}},
+      {id: 3, iconName: "sms", name:'SMS', text: 'Report a problem via sms', 'method': () => {SendSms(companyLine)}},
+      {id: 4, iconName: "envelope", name:'Email', text: companyEmail, 'method': () => {SendEmail(companyEmail)}},
+      {id: 5, iconName: "comments", name:'Feedback', text: 'Suggest something to us', 'method': () => navigation.navigate('Suggestions')},
+      
+    ];
+
     return(
       <View style={styles.container}>
       <View style={styles.top}>
