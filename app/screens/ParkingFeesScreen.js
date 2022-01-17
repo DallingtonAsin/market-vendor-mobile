@@ -7,7 +7,7 @@ import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
     import DateTimePicker from '@react-native-community/datetimepicker';
     import design from '../../assets/css/styles';
     import { DataTable, Divider } from 'react-native-paper';
-    import { Avatar, Button, Card, Title, Paragraph, Searchbar  } from 'react-native-paper';
+    import { Avatar, Button, Card, Title, RadioButton , Searchbar  } from 'react-native-paper';
     import {Monetize} from '../components/SharedCommons';
     import MainService from '../redux/services/main.service';
     import CustomLoader from '../components/CustomActivityIndicator';
@@ -25,13 +25,14 @@ import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
         const parking_area = (typeof route.params.parking_area !== 'undefined')  ? route.params.parking_area : '';
         const image_url = (typeof route.params.image !== 'undefined')  ? route.params.image : '';
         const phone_number = (typeof route.params.phone_number !== 'undefined')  ? route.params.phone_number : '';
-
+        
         
         const [fees, setFees] = useState(initialFeesData);
         const [done, setDone] = useState(false);
         const [refreshing, setRefreshing] = useState(false);
         
         const [searchQuery, setSearchQuery] = React.useState('');
+        const [checked, setChecked] = React.useState('first');
         const onChangeSearch = query => setSearchQuery(query);
         
         const onRefresh = React.useCallback(async () => {
@@ -76,6 +77,16 @@ import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
                 <DataTable.Row style={{opacity:0.7}}>
                 <DataTable.Cell>{props.item.vehicle_type}</DataTable.Cell>
                 <DataTable.Cell>{Monetize(props.item.fee_per_hour)}</DataTable.Cell>
+                {/* <DataTable.Cell>
+                <RadioButton
+                value="second"
+                status={ checked === 'second' ? 'checked' : 'unchecked' }
+                onPress={() => setChecked('second')}
+                />
+                </DataTable.Cell> */}
+                
+                
+                
                 </DataTable.Row>
                 );
                 
@@ -91,7 +102,9 @@ import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
                             <DataTable.Header>
                             {/* <DataTable.Title style={{color:'red', fontWeight:'bold'}}>Parking Area</DataTable.Title> */}
                             <DataTable.Title>Vehicle Type</DataTable.Title>
-                            <DataTable.Title>Fee per hour</DataTable.Title>
+                            <DataTable.Title>Fee/hour</DataTable.Title>
+                            {/* <DataTable.Title></DataTable.Title> */}
+
                             </DataTable.Header>
                             <Divider />
                             </>
@@ -149,19 +162,19 @@ import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
                                         <Text style={{color:'#fff', fontSize:14, textTransform:'capitalize'}}>Request parking</Text> 
                                         </Button>
                                         </View>
-
+                                        
                                         <View>
                                         <TouchableOpacity style={styles.callBtn} onPress={() =>  callHelpLine(phone_number)}>
                                         <FontAwesome5 name="phone-alt" size={18} color={design.colors.white}/>
                                         <Text style={{fontSize:16, paddingLeft:10, color:design.colors.white}}>Call Now</Text>
                                         </TouchableOpacity>
                                         </View>
-                                    
-                                    </View>
-                                   
+                                        
+                                        </View>
                                         
                                         
-                                     
+                                        
+                                        
                                         
                                         
                                         
@@ -252,6 +265,6 @@ import {SafeAreaView, Platform, StyleSheet, ScrollView, RefreshControl,Alert,
                                         alignItems: 'center',
                                         width:'70%',
                                         marginLeft:30,
-                                      },
+                                    },
                                     
                                 });

@@ -545,7 +545,7 @@ const HomeScreen = props => {
                                         defaultIndex={0}
                                         options={vehicleTypes}
                                         style={styles.vehiclesDropdown}
-                                        defaultValue={vehicleTypes[0]}
+                                        defaultValue={"Select Vehicle Type"}
                                         defaultTextStyle={{fontSize:18}}
                                         textStyle={{fontSize:18}}
                                         onSelect={(index, value) => handleVehicleTypeChange(value)}
@@ -567,7 +567,7 @@ const HomeScreen = props => {
                                           borderRadius:50,
                                           justifyContent: 'center', bottom:0,
                                           backgroundColor:design.colors.primary
-                                        }} onPress={ registerVehicle }>
+                                        }} onPress={()=>registerVehicle() }>
                                         {isLoading ?
                                           <UIActivityIndicator color='white' size={30} /> :
                                           <Text style={{color:design.colors.white, marginLeft:10, textTransform:'uppercase'}}>
