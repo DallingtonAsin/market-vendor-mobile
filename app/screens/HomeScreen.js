@@ -140,7 +140,7 @@ const HomeScreen = props => {
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS vehicles', []);
             txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS vehicles(id INTEGER PRIMARY KEY AUTOINCREMENT, number VARCHAR(20), name VARCHAR(30))',
+              'CREATE TABLE IF NOT EXISTS vehicles(id INTEGER PRIMARY KEY AUTOINCREMENT, number VARCHAR(20), name VARCHAR(30),  type VARCHAR(20))',
               []
               );
             }
@@ -633,6 +633,22 @@ const HomeScreen = props => {
                                         onSubmitEditing={Keyboard.dismiss}
                                         onChangeText={(val) => handleVehicleNameChange(val)}
                                         style={styles.input} placeholder={"Enter vehicle name"}/>
+                                        </View>
+
+                                        <View style={styles.inputContainer}>
+                                        <Text>Vehicle Type</Text>
+                                        <Dropdown
+                                        defaultIndex={0}
+                                        options={vehicleTypes}
+                                        style={styles.vehiclesDropdown}
+                                        defaultValue={"Select Vehicle Type"}
+                                        defaultTextStyle={{fontSize:18}}
+                                        textStyle={{fontSize:18}}
+                                        onSelect={(index, value) => handleVehicleTypeChange(value)}
+                                        renderRow={(option) => (
+                                          <Text style={styles.vehiclesDropdownOption}>{option}</Text>
+                                          )}
+                                          />
                                         </View>
                                         
                                         <View>
