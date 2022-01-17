@@ -204,14 +204,16 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                         const GotoFeesPage = (item) => { 
                             console.log("Parking Area ID", item.id);
                             console.log("Parking Area", item.name);
+                            console.log("Tel number", item.phone_number);
                             console.log("Image", item.image);
                             
                             
                             props.navigation.navigate("ParkingFees", {
                                 screen: 'ParkingFees',
                                 params: { parking_area_id: item.id, 
-                                    parking_area: item.name,
-                                    image: item.image,
+                                          parking_area: item.name,
+                                          phone_number: item.phone_number,
+                                          image: item.image,
                                 }
                             });
                         }

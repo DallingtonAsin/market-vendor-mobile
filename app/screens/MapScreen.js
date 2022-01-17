@@ -1233,8 +1233,6 @@ import { StyleSheet, Text, View,Button,Pressable,
                                   alignItems: 'center',
                                   width:'70%',
                                   marginLeft:30,
-                               
-                                  
                                 },
                                 dropdown1RowTxtStyle: { color: "#444", textAlign: "left" },
                                 
