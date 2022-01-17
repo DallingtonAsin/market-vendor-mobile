@@ -117,7 +117,7 @@ import { Text,Image,
       underlineColorAndroid="transparent"
       placeholder="Write your feedback here"
       placeholderTextColor="grey"
-      numberOfLines={8}
+      numberOfLines={3}
       multiline={true}
       value={state.description}
       mode="outlined"
@@ -156,7 +156,7 @@ import { Text,Image,
       },
       
       top:{
-        flex:2,
+        flex:3,
         backgroundColor: styles.colors.primary,
         justifyContent: 'center', 
         alignItems: 'center',
@@ -164,7 +164,7 @@ import { Text,Image,
       },
       
       body:{
-        flexGrow:5,
+        flexGrow:3,
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
         padding:30,

@@ -12,7 +12,7 @@ import { Text,
   import AsyncStorage from '@react-native-async-storage/async-storage';
   import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
   import design from '../../assets/css/styles';
-  import { TextInput as PtextInput, Avatar, Card, Title, Paragraph } from 'react-native-paper';
+  import { TextInput as RNTextInput, Avatar, Card, Title, Paragraph } from 'react-native-paper';
   import { FlutterwaveButton } from 'flutterwave-react-native';
   import MainService from '../redux/services/main.service';
   import PushNotification, {Importance} from "react-native-push-notification";
@@ -236,7 +236,7 @@ import { Text,
       /> 
       
       <ScrollView  style={styles.contentContainer}
-       
+      
       >
       <Card style={{ margin: 15, padding:30, borderWidth:1, borderRadius: 10, borderColor:'#e2e2e2',
       JustifyContent: 'center', backgroundColor:design.colors.primary, alignItems:'center' }}>
@@ -257,8 +257,19 @@ import { Text,
           
           <View style={{ margin: 20 }}>
           <Text style={{ fontSize: 15, opacity: 0.7, textTransform: 'capitalize', fontWeight:'bold'  }}>Enter Amount </Text>
-          <TextInput mode={'outlined'} placeholder="Eg. 10,000" value={state.rechargeAmount} keyboardType='numeric'
-          onChangeText={(text) => { onChangeAmount(text) }} style={styles.textInput} label="Topup amount" />
+          <RNTextInput
+          mode={'outlined'}
+          placeholder="Eg. 10,000"
+          value={state.rechargeAmount}
+          keyboardType='numeric'
+          selectionColor={design.colors.orange}
+          underlineColor={design.colors.orange}
+          outlineColor={design.colors.orange}
+          activeUnderlineColor={design.colors.orange}
+          activeOutlineColor={design.colors.orange}
+          onChangeText={(text) => { onChangeAmount(text) }}
+          //  label="Topup amount"
+            />
           <Text style={{ opacity: 0.5, color: state.warningColor }}>Min: {min_recharge_amount} and Max: {max_recharge_amount}</Text>
           </View>
           
@@ -279,7 +290,10 @@ import { Text,
           <TouchableOpacity>    
           {
             !state.editMode ? <Text style={{ fontSize: 16 }}>{state.phone_number}</Text>
-            : <TextInput mode={'outlined'} placeholder="Your phone number" value={state.phone_number} keyboardType='numeric'
+            : <TextInput mode={'outlined'}
+            placeholder="Your phone number"
+            value={state.phone_number} 
+            keyboardType='numeric'
             onChangeText={(text) => { onChangePhoneNumber(text) }} style={styles.textInput}  />
           }
           </TouchableOpacity>  
@@ -297,8 +311,8 @@ import { Text,
           } 
           
           </View>
-
-        
+          
+          
           
           </ScrollView >
           
@@ -313,61 +327,64 @@ import { Text,
           </TouchableOpacity>
           
           </View>
+          
+          
+          
+          
+          </KeyboardAvoidingView>
+          
+          );
+        }
         
+        export default TopUpScreen
+        
+        
+        const styles = StyleSheet.create({
+          container:{
+            flex:1,
+            margin: 15, 
+            borderWidth:0.8,
+            borderRadius:10,
+            borderColor:'#C0C0C0',
+            backgroundColor:'#fff',
+          },
+          contentContainer:{
+            flex:1,
+          },
+          TopupBtn: {
+            alignSelf:'center' , 
+          },
+          
+          paymentButton: {
+            color: '#fff',
+            borderRadius:5,
+            backgroundColor: design.colors.primary,
+            borderColor: design.colors.primary,
+            position: 'absolute',
+            bottom: 0,
+            width: '90%',
+          },
+          
+          bottom:{
+            marginBottom: 30,
+            flexDirection: 'row',
+            alignItems: 'center',
+            alignSelf: 'center',
+            justifyContent: 'center',
+            
+          },
+          paymentButtonText: {
+            color: '#000',
+            textTransform: 'uppercase',
+          },
           
           
-            
-            </KeyboardAvoidingView>
-            
-            );
+          textInput: {
+            // fontSize: 16,
+            borderBottomWidth: 1,
+            backgroundColor: design.colors.white,
+            fontWeight: 'normal',
+            borderRadius:30,
+            borderWidth:1,
           }
-          
-          export default TopUpScreen
-          
-          
-          const styles = StyleSheet.create({
-            container:{
-              flex:1,
-              margin: 15, 
-              borderWidth:0.8,
-              borderRadius:10,
-              borderColor:'#C0C0C0',
-              backgroundColor:'#fff',
-            },
-            contentContainer:{
-              flex:1,
-            },
-            TopupBtn: {
-              alignSelf:'center' , 
-            },
-            
-            paymentButton: {
-              color: '#fff',
-              borderRadius:5,
-              backgroundColor: design.colors.primary,
-              borderColor: design.colors.primary,
-              position: 'absolute',
-              bottom: 0,
-              width: '90%',
-            },
-            
-            bottom:{
-              marginBottom: 30,
-              flexDirection: 'row',
-              alignItems: 'center',
-              alignSelf: 'center',
-              justifyContent: 'center',
-              
-            },
-            paymentButtonText: {
-              color: '#000',
-              textTransform: 'uppercase',
-            },
-            
-            
-            textInput: {
-              borderBottomColor: 'lightblue',
-              fontSize: 18,
-              borderBottomWidth: 2  
-            }
-          })
+        })

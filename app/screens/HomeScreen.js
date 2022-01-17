@@ -9,7 +9,7 @@ import {
   FlatList,
   ImageBackground,StatusBar,
   TouchableHighlight,TextInput,
-  Dimensions,Button,TouchOpacity,
+  Dimensions,Button,
   SafeAreaView,Keyboard,
   Alert, Pressable,
 } from 'react-native';
@@ -19,19 +19,17 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Animated from 'react-native-reanimated';
 // import BottomSheet   from 'reanimated-bottom-sheet';
 import { BottomSheet as BrSheet } from 'react-native-btr';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Avatar, Modal, Divider, Portal  } from 'react-native-paper';
+import { Avatar, Divider, Portal  } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import design from '../../assets/css/styles';
 import ProfileContext from '../context/index';
 import { AuthContext } from '../context/context';
 import { openDatabase } from 'react-native-sqlite-storage';
 import { UIActivityIndicator } from 'react-native-indicators';
-import FastImage from 'react-native-fast-image';
+import * as theme from '../../assets/theme';
 import {currency} from '@env';
+import Dropdown from 'react-native-modal-dropdown';
 import BottomSheet, {
-  BottomSheetModal,
-  BottomSheetModalProvider,
   BottomSheetBackdrop,
   BottomSheetScrollView
 } from '@gorhom/bottom-sheet';
@@ -56,20 +54,18 @@ const initialVehicleState= {
   id: '',
   number: '',
   name: '',
+  type: '',
 }
 
 const HomeScreen = props => {
   
-  const favParkingRef = useRef();
-  const vehicleSheetRef = useRef();
-
    // ref
    const vehicleBottomSheetRef = useRef(0);
    const favouritesBottomSheetRef = useRef(0);
 
 
    // variables
-   const snapPoints = useMemo(() => ['25%', '50%'], []);
+   const snapPoints = useMemo(() => ['25%', '70%'], []);
  
    // callbacks
    const handlePresentModalPress = useCallback(() => {
@@ -97,7 +93,7 @@ const HomeScreen = props => {
   
   
   const {profile, setProfile} = useContext(ProfileContext);
-  const { getParkingAreas } = React.useContext(AuthContext);
+  const { getParkingAreas, getVehicleCategories } = React.useContext(AuthContext);
   
   const [isLoading, setIsLoading] = useState(false);
   const [isParkingsLoading, setIsParkingsLoading] = useState(true);
@@ -106,9 +102,7 @@ const HomeScreen = props => {
   const [vehicles, setVehicleState] = useState({});
   const [vehicle, setVehicleData] = React.useState(initialVehicleState);
   const [nearByParkings, setNearByParkings] = useState([]);
-
-
-  console.log("User profile", JSON.stringify(profile, null, 2));
+  const [vehicleTypes, setVehicleTypes] = useState([]);
 
   const renderVehiclesBackdrop = useCallback(
     props => (
@@ -159,7 +153,18 @@ const HomeScreen = props => {
       useEffect(() => {
         fetchParkings();
         populateVehicles();
+        populateVehicleTypes();
       }, []);
+
+      const populateVehicleTypes = async() => {
+          const data = await getVehicleCategories();
+          const vehicle_types = [];
+          for(let i=0; i<data.length; i++) {
+            vehicle_types.push(data[i]['name']);
+          }
+          console.log("Vehicle types in db", vehicle_types);
+          setVehicleTypes(vehicle_types);
+      }
 
       
       const populateVehicles = () =>{
@@ -189,15 +194,21 @@ const HomeScreen = props => {
             alert('Please fill vehicle name');
             return;
           }
+          if (!vehicle.type) {
+            alert('Please select vehicle type');
+            return;
+          }
           
           if(vehicle.number && vehicle.name) {
             setIsLoading(true);
             const number = vehicle.number;
             const name = vehicle.name;
+            const type = vehicle.type;
+
             db.transaction(function (tx) {
               tx.executeSql(
-                'INSERT INTO vehicles (number, name) VALUES (?, ?)',
-                [number, name],
+                'INSERT INTO vehicles (number, name, type) VALUES (?, ?, ?)',
+                [number, name, type],
                 (tx, results) => {
                   if (results.rowsAffected > 0) {
                     setVehicleData({...initialVehicleState});
@@ -231,6 +242,8 @@ const HomeScreen = props => {
               const id = vehicle.id;
               const number = vehicle.number;
               const name = vehicle.name;
+              const type = vehicle.type;
+
               
               if (!id) {
                 alert('Please fill vehicle id');
@@ -244,11 +257,15 @@ const HomeScreen = props => {
                 alert('Please fill vehicle name');
                 return;
               }
+              if (!type) {
+                alert('Please select vehicle type');
+                return;
+              }
               
               db.transaction((tx) => {
                 tx.executeSql(
-                  'UPDATE vehicles set number=?, name=? where id=?',
-                  [number, name, id],
+                  'UPDATE vehicles set number=?, name=?, type=? where id=?',
+                  [number, name, type, id],
                   (tx, results) => {
                     if (results.rowsAffected > 0) {
                       setVehicleData({...initialVehicleState});
@@ -317,6 +334,13 @@ const HomeScreen = props => {
                       setVehicleData({
                         ...vehicle,
                         name: val,
+                      });
+                    }
+
+                    const handleVehicleTypeChange = (val) => {
+                      setVehicleData({
+                        ...vehicle,
+                        type: val,
                       });
                     }
                    
@@ -500,7 +524,8 @@ const HomeScreen = props => {
                                         value={vehicle.number}
                                         onSubmitEditing={Keyboard.dismiss}
                                         onChangeText={(val) => handleVehicleNoChange(val)}   
-                                        style={styles.input} placeholder={"Enter vehicle number"}/>
+                                        style={styles.input}
+                                         placeholder={"Enter vehicle number e.g UAA 231Y"}/>
                                         </View>
                                         
                                         <View style={styles.inputContainer}>
@@ -510,7 +535,24 @@ const HomeScreen = props => {
                                         value={vehicle.name}
                                         onSubmitEditing={Keyboard.dismiss}
                                         onChangeText={(val) => handleVehicleNameChange(val)}
-                                        style={styles.input} placeholder={"Enter vehicle name"}/>
+                                        style={styles.input}
+                                         placeholder={"Enter vehicle name e.g Primo, Jeep, Benz etc"}/>
+                                        </View>
+
+                                        <View style={styles.inputContainer}>
+                                        <Text>Vehicle Type</Text>
+                                        <Dropdown
+                                        defaultIndex={0}
+                                        options={vehicleTypes}
+                                        style={styles.vehiclesDropdown}
+                                        defaultValue={vehicleTypes[0]}
+                                        defaultTextStyle={{fontSize:18}}
+                                        textStyle={{fontSize:18}}
+                                        onSelect={(index, value) => handleVehicleTypeChange(value)}
+                                        renderRow={(option) => (
+                                          <Text style={styles.vehiclesDropdownOption}>{option}</Text>
+                                          )}
+                                          />
                                         </View>
                                         
                                         <View>
@@ -669,7 +711,7 @@ const HomeScreen = props => {
                                         <OptionItem
                                         icon={icons.request}
                                         bgColor={['#fff', '#fff']}
-                                        label="Place Request"
+                                        label="Nearby parkings"
                                         tintColor={'#000'}
                                         borderRadius={5}
                                         tintColor={design.colors.orange}
@@ -678,7 +720,7 @@ const HomeScreen = props => {
                                         <OptionItem
                                         icon={icons.parking}
                                         bgColor={['#fff', '#fff']}
-                                        label="Parkings"
+                                        label="Place Request"
                                         tintColor={'#000'}
                                         tintColor={design.colors.orange}
                                         borderRadius={5}
@@ -791,7 +833,7 @@ const HomeScreen = props => {
                                         <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
 
                                         <View style={styles.SheetContentContainer}>
-                                  <Text style={{textAlign:'center'}}>Favourite parking areas</Text>
+                                  <Text style={{textAlign:'center', textTransform:'capitalize'}}>Favourite parking areas</Text>
                                   <Divider style={styles.divider}/>
                                   
                                   <SafeAreaView>
@@ -974,6 +1016,24 @@ const HomeScreen = props => {
                                           justifyContent: 'center',
                                           
                                         },
+
+                                        vehiclesDropdown: {
+                                          borderRadius: theme.SIZES.base / 2,
+                                          borderColor: theme.COLORS.overlay,
+                                          borderWidth: 1,
+                                          padding: theme.SIZES.base*1.3,
+                                          width:350,
+                                          justifyContent: 'center',
+                                          alignItems: 'center',
+                                          fontSize: theme.SIZES.font*0.95,
+                                        },
+
+                                        vehiclesDropdownOption: {
+                                          padding: 5,
+                                          fontSize: 18,
+                                        },
+
+
                                         
                                         
                                         

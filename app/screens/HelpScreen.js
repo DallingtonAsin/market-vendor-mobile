@@ -39,6 +39,8 @@ const CardComponent = ({info}) => (
       <Text style={{fontSize: 16, color: '#000', textAlign: 'center', paddingTop:5, paddingBottom:15,
     }}>Kindly contact us for any kind of assistance.</Text>
     <FlatList
+     showsVerticalScrollIndicator={false}
+     showsHorizontalScrollIndicator={false}
     data={communicationChannels}
     renderItem={({item}) => <CardComponent info={item} />}
     />
@@ -64,10 +66,12 @@ const CardComponent = ({info}) => (
       backgroundColor: design.colors.primary,
       justifyContent: 'center', 
       alignItems: 'center',
+      padding:20,
+      
     },
     
     body:{
-      flex:3,
+      flex:5,
       borderTopLeftRadius: 40,
       borderTopRightRadius: 40,
       padding:30,
