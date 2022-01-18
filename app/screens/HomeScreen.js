@@ -372,6 +372,8 @@ const HomeScreen = props => {
                                 id: item.id,
                                 number: item.number,
                                 name: item.name,
+                                type: item.type,
+
                               });
                               setIsEditSheetVisible(true);
                             }
