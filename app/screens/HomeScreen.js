@@ -807,13 +807,18 @@ const HomeScreen = props => {
                                         enablePanDownToClose={true}
                                         backdropComponent={renderVehiclesBackdrop}
                                         onChange={handleSheetChanges}
+                                        handleComponent={() =>
+                                           <View>
+                                           <Text  style={{fontSize:18, textAlign: 'center', fontWeight: '900'}}>My Vehicles</Text>
+                                          </View> 
+                                          }
                                       >
                                         <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
 
                                           <View style={{flexDirection: 'row'}}>
-                                          <View>
-                                            <Text style={{fontSize:18, fontWeight: '900'}}>My Vehicles</Text>
-                                          </View>
+                                          {/* <View>
+                                            <Text>My Vehicles</Text>
+                                          </View> */}
                                           <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                                           {/* <TouchableOpacity onPress={() => vehicleBottomSheetRef?.current.close()}>
                                              <Text>Close</Text>
@@ -847,11 +852,15 @@ const HomeScreen = props => {
                                         enablePanDownToClose={true}
                                         backdropComponent={renderFavouritesBackdrop}
                                         onChange={handleSheetChanges}
+                                        handleComponent={() =>
+                                          <View>
+                                          <Text  style={{fontSize:18, textAlign: 'center', fontWeight: '900', textTransform:'capitalize'}}>Favourite parking areas</Text>
+                                         </View> 
+                                         }
                                       >
                                         <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
 
                                         <View style={styles.SheetContentContainer}>
-                                  <Text style={{textAlign:'center', textTransform:'capitalize'}}>Favourite parking areas</Text>
                                   <Divider style={styles.divider}/>
                                   
                                   <SafeAreaView>

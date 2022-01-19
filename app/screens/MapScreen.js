@@ -22,14 +22,13 @@ import { StyleSheet, Text, View,Button,Pressable,
   import { UIActivityIndicator } from 'react-native-indicators';
   import DateTimePickerModal from "react-native-modal-datetime-picker";
   import {callHelpLine} from '../components/SharedCommons';
+  import RequestScreen from '../screens/RequestScreen';
   import DropDownPicker from 'react-native-dropdown-picker';
   // const { Marker } = MapView;
   
   const {height, width} = Dimensions.get('screen');
-  const ASPECT_RATIO = width / height;
-  const LATITUDE_DELTA = 0.0922 //Very high zoom level
+  const LATITUDE_DELTA = 0.0922 
   const LONGITUDE_DELTA =  LATITUDE_DELTA + (width / height);
-  const screenWidth = Dimensions.get('window').width;
   var db = openDatabase({ name: 'Customers.db' });
   Geocoder.init("AIzaSyCBrtM8sRgDkCkfe5eBq-P20qlVghWbYDc");
   
@@ -37,41 +36,44 @@ import { StyleSheet, Text, View,Button,Pressable,
   const deviceHeight = Dimensions.get("window").height;
   const availableHours = [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
   
+  const initialState = {
+    hours:{},
+    selectedVehicle: '',
+    startTime: '',
+    endTime: '',
+    
+    start_time: '',
+    end_time: '',
+    diff_hours : 0,
+    total_amount: 0,
+    active:null,
+    activeModal:null,
+  }
   
-  const ParkingMap = (props) => {
+  const mapInitialState =
+  {
+    location: null,
+    currentPosition: {  
+      latitude:0.353550,
+      longitude:32.618591,
+      latitudeDelta:0.0122,
+      longitudeDelta:0.0121 
+    },
+    markerCoords: {
+      latitude: 0,   
+      longitude: 0, 
+    },
+    destination: {  
+      latitude: 0,   
+      longitude: 0,  
+    },
+    active:null,
+    activeModal:null,
+  }
+  
+  const MapScreen = (props) => {
     
-    const initialState = {
-      hours:{},
-      selectedVehicle: '',
-      startTime: '',
-      endTime: '',
-      
-      start_time: '',
-      end_time: '',
-      diff_hours : 0,
-      total_amount: 0,
-    }
-    
-    const mapInitialState =
-    {
-      location: null,
-      currentPosition: {  
-        latitude:0.353550,
-        longitude:32.618591,
-        latitudeDelta:0.0122,
-        longitudeDelta:0.0121 
-      },
-      markerCoords: {
-        latitude: 0,   
-        longitude: 0, 
-      },
-      destination: {  
-        latitude: 0,   
-        longitude: 0,  
-      },
-      active:null,
-      activeModal:null,
-    }
+   
     
     const [state, setState] = useState(initialState);
     const [region, setRegion] = useState(mapInitialState);
@@ -91,30 +93,7 @@ import { StyleSheet, Text, View,Button,Pressable,
     const [start_time, setStartHourTime] = useState(null);
     const [end_time, setEndHourTime] = useState(null);
     
-    
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
-      {label: 'Apple', value: 'apple'},
-      {label: 'Banana', value: 'banana'}
-    ]);
-    
-    const [mydate, setDate] = useState(new Date());
-    const [displaymode, setMode] = useState('time');
-    const [isDisplayDate, setShow] = useState(false);
-    const changeSelectedDate = (event, selectedDate) => {
-      const currentDate = selectedDate || mydate;
-      setDate(currentDate);
-    };
-    const showMode = (currentMode) => {
-      setShow(true);
-      setMode(currentMode);
-    };
-    const displayTimepicker = () => {
-      showMode('time');
-    };
-    
-    
+   
     const {getParkingAreas, getVehicleCategories, submitParkingRequest} = React.useContext(AuthContext);
     
     const [isStartTimePickerVisible, setStartTimePickerVisibility] = useState(false);
@@ -199,11 +178,6 @@ import { StyleSheet, Text, View,Button,Pressable,
     
     
     const diff_hours = (dt2, dt1) => {
-      // dt1 = new Date(dt1);
-      // dt2 = new Date(dt2);
-      // var diff = (dt2.getTime() - dt1.getTime()) / 1000;
-      // diff /= (60 * 60);
-      // return Math.abs(Math.round(diff));
       var diff = Math.abs(new Date(dt2) - new Date(dt1));
       var minutes = Math.floor((diff/1000)/60);
       var hours = minutes/60;
@@ -422,7 +396,6 @@ import { StyleSheet, Text, View,Button,Pressable,
         
         const fetchNearByParkings = async() => {
           const near_parking_places = await getParkingAreas();
-          // console.log("Your nearby parkings are", near_parking_places);
           if(near_parking_places.length > 0) {
             setNearByParkings(near_parking_places);
           }
@@ -510,7 +483,7 @@ import { StyleSheet, Text, View,Button,Pressable,
               <TouchableWithoutFeedback key={`parking-${item.id}`} 
               onPress={() => { 
                 setState({...state, active: item.id });
-                setIsModalVisible(true);
+                setIsModalVisible(!isModalVisible);
                 
               }} >
               <View style={[styles.parking, styles.shadow]}>
@@ -632,10 +605,6 @@ import { StyleSheet, Text, View,Button,Pressable,
                         });
                       }
                       setVehicleState(myvehicles);
-                      //   console.log("My vehicles", myvehicles);
-                      
-                      
-                      
                     }
                     );
                   });
@@ -648,7 +617,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                     defaultIndex={0}
                     options={vehicles}
                     style={styles.vehiclesDropdown}
-                    defaultValue={vehicles[0]}
+                    defaultValue={"Select Vehicle"}
                     defaultTextStyle={{fontSize:16}}
                     textStyle={{fontSize:16}}
                     onSelect={(index, value) => handleVehicle(value)}
@@ -661,7 +630,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                     
                     const openOrderInfoModal = (item) =>{
                       setState({...state, activeModal: item });
-                      setIsModalVisible(true);
+                      setIsModalVisible(!isModalVisible);
                     }
                     
                     const handleVehicle = (selectedItem) => {
@@ -701,197 +670,8 @@ import { StyleSheet, Text, View,Button,Pressable,
                           const {activeModal, hours} = state;
                           
                           if (!activeModal) return null;
-                          return(
-                            <Modal 
-                            backdropColor={theme.COLORS.overlay}
-                            style={styles.modalContainer}
-                            isVisible={isModalVisible}
-                            deviceWidth={deviceWidth}
-                            deviceHeight={deviceHeight}
-                            useNativeDriver
-                            onBackButtonPress={()=>setState({...state, activeModal:null})}
-                            onBackdropPress={()=>setState({...state, activeModal:null})} 
-                            swipeDirection="down"
-                            propagateSwipe
-                            onSwipeComplete={()=>
-                              {
-                                setIsModalVisible(false);
-                                setState({...state, activeModal:null});
-                              }}
-                              
-                              // style={{paddingHorizontal:0}}   
-                              >
-                              <ScrollView contentContainerStyle={styles.modal}>
-                              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                              <View>
-                              <Text style={{fontSize: theme.SIZES.font *1.4}}>
-                              {activeModal.name}
-                              </Text>
-                              </View>
-                              <View>
-                              <TouchableOpacity onPress={() => setIsModalVisible(false)}>
-                              <FontAwesome name='times' size={30} color={theme.COLORS.gray}/>
-                              </TouchableOpacity>
-                              </View>
-                              </View>
-                              
-                              {/* <View style={{ marginTop:15, marginBottom:15 }}>
-                              <Text style={{fontSize: 15, color:'#000', fontWeight:'bold'}}>PARKING AREA INFORMATION</Text>
-                            </View> */}
-                            
-                            <View style={{paddingVertical:theme.SIZES.base}}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.2}}>
-                            {activeModal.description}
-                            </Text>
-                            </View>
-                            
-                            <View style={styles.modalInfo1}>
-                            
-                            <View style={{ flexDirection: 'column'}}>
-
-
-                            <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-                            <View style={[styles.parkingIcon,  ]}>
-                            <FontAwesome name='clock-o' size={theme.SIZES.icon*1.3} color={theme.COLORS.orange} style={{paddingTop:5}}/>
-                            {
-                              activeModal.is_open
-                              ? <Text style={{fontSize:theme.SIZES.icon*1.05, color: 'green', opacity:0.6}}> Open</Text>
-                              :  <Text style={{fontSize:theme.SIZES.icon*1.05, color: 'red', opacity:0.6}}> Closed</Text>
-                              
-                            }
-                            </View> 
-                            <View style={[styles.parkingIcon, ]}>
-                            <FontAwesome name='star' size={theme.SIZES.icon*1.5} color={theme.COLORS.orange} style={{paddingTop:5}}/>
-                            <Text style={{fontSize:theme.SIZES.icon*1.15}}> {activeModal.rating}</Text>
-                            </View>
-                            </View>
-                            
-                            <View style={{flexDirection: 'row',  justifyContent: 'space-evenly'}}>
-                            <View style={[styles.parkingIcon,  ]}>
-                            <FontAwesome name='road' size={theme.SIZES.icon*1.3} color={theme.COLORS.orange} style={{paddingTop:5}}/>
-                            <Text style={{fontSize:theme.SIZES.icon*1.05}}> {activeModal.distance}km</Text>
-                            </View>
-                            <View style={[styles.parkingIcon, {paddingLeft:10} ]}>
-                            <FontAwesome name='car' size={theme.SIZES.icon*1.3} color={theme.COLORS.orange} style={{paddingTop:5}}/>
-                            <Text style={{fontSize:theme.SIZES.icon*1.05}}> {activeModal.free}/{activeModal.spots}</Text>
-                            </View>
-                            </View>
-
-
-                            </View>
-                            
-                            
-                            <View>
-                            <TouchableOpacity style={styles.callBtn} onPress={() =>  callHelpLine(activeModal.phone_number)}>
-                            <FontAwesome5 name="phone-alt" size={18} color={design.colors.white}/>
-                            <Text style={{fontSize:16, paddingLeft:10, color:design.colors.white}}>Call Now</Text>
-                            </TouchableOpacity>
-                            </View>
-                            
-                            </View>
-                            
-                            
-                            
-                            
-                            
-                            <View>
-                            
-                            <View style={{marginTop:10}}>
-                            <Text style={{fontSize: 16, fontWeight:'bold', opacity:0.6, color:'#000', textTransform:'capitalize'}}>ORDER REQUEST INFORMATION</Text>
-                            </View>
-                            
-                            
-                            <View style={styles.orderInfo}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Vehicle</Text>
-                            <View style={styles.modalVehiclesDropdown}>
-                            {renderVehicles()}
-                            <Text style={{color:theme.COLORS.gray}}></Text>
-                            </View>
-                            
-                            
-                            </View>
-                            
-                            <View style={styles.orderInfo}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}> Vehicle Type</Text>
-                            <View style={styles.modalVehiclesDropdown}>
-                            {renderCarTypes()}
-                            <Text style={{color:theme.COLORS.gray}}></Text>
-                            </View>
-                            </View>
-                            
-                            
-                            <View style={{flexDirection: 'column'}}>
-                            
-                            
-                            <View style={[styles.orderInfo, {flexDirection: 'row'}]}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Start Time</Text>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1, fontWeight:'bold'}}>{startTime}</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <View style={styles.modalVehiclesDropdown}>
-                            <View  style={{width:110}}>
-                            <Button title="Start time" onPress={showStartTimePicker} color={design.colors.primary}/>
-                            </View>
-                            <DateTimePickerModal
-                            isVisible={isStartTimePickerVisible}
-                            mode="time"
-                            onConfirm={handleConfirmStartTime}
-                            onCancel={hideStartTimePicker}
-                            />
-                            </View>
-                            
-                            </View>
-                            </View>
-                            
-                            
-                            <View style={[styles.orderInfo, {flexDirection: 'row'}]}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>End Time</Text>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1, fontWeight:'bold'}}>{endTime}</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <View style={[styles.modalVehiclesDropdown, {marginLeft:10 }]}>
-                            <View  style={{width:110}}>
-                            <Button title="End time" onPress={showEndTimePicker} color={design.colors.primary} />
-                            </View>
-                            <DateTimePickerModal
-                            isVisible={isEndTimePickerVisible}
-                            mode="time"
-                            onConfirm={handleConfirmEndTime}
-                            onCancel={hideEndTimePicker}
-                            />
-                            </View>
-                            
-                            </View>
-                            </View>
-                            
-                            </View>
-                            
-                            <View style={styles.orderInfo}>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.font*1.1}}>Amount</Text>
-                            <Text style={{color:theme.COLORS.gray, fontSize:theme.SIZES.icon*1.15}}>
-                            {currency}.{activeModal.fees[`${carType}`]}
-                            </Text>
-                            </View>
-                            
-                            
-                            </View>
-                            
-                            
-                            <TouchableOpacity style={[styles.payBtn,
-                              activeModal.is_open ? {backgroundColor: theme.COLORS.primary}: {backgroundColor: 'gray'}]} 
-                              disabled={activeModal.is_open ? false : true}
-                              onPress={() => submitRequest()}
-                              >  
-                              <Text style={styles.payText}> 
-                              {isReqProcessing ? <UIActivityIndicator color='#fff' size={25}/> : 'Submit Request' }
-                              </Text>
-                              <FontAwesome name='angle-right' size={theme.SIZES.icon*1.75} color={theme.COLORS.white} />
-                              </TouchableOpacity> 
-                              
-                              
-                              
-                              
-                              </ScrollView>
-                              </Modal>
-                              )
+                          return <RequestScreen activeModal={activeModal} vehiclesList={vehicles} isVisible={isModalVisible}/>
+                      
                             }
                             // const {currentPosition, parkings} = props;
                             return(
@@ -958,7 +738,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                 )
                                 
                               }
-                              ParkingMap.defaultProps={
+                              MapScreen.defaultProps={
                                 currentPosition:{
                                   latitude:0.353550,
                                   longitude:32.618591,
@@ -967,7 +747,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                 },
                               }
                               
-                              export default ParkingMap;
+                              export default MapScreen;
                               
                               
                               const styles = StyleSheet.create({
