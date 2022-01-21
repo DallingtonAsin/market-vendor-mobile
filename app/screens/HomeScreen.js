@@ -432,6 +432,9 @@ const HomeScreen = props => {
                             />
                             );
                           }
+                          function capitalizeFirstLetter(string) {
+                            return string.charAt(0).toUpperCase() + string.slice(1);
+                          }
                           
                           const VehicleComponent = (item) => (
                             <View style={[design.vehicle.container,{padding:3}]}>
@@ -442,6 +445,9 @@ const HomeScreen = props => {
                             <View style={design.vehicle.middleContainer}>
                             <Text style={[design.vehicle.text, {color: '#000'}]}>{item.number}</Text>
                             <Text style={[design.vehicle.name, {color: '#000'}]}>{item.name}</Text>
+                            </View>
+                            <View style={design.vehicle.middleContainer}>
+                            <Text style={[design.vehicle.name, {color: '#000'}]}>{capitalizeFirstLetter(item.type)}</Text>
                             </View>
                             <View style={design.vehicle.rightContainer}>
                             <Pressable onPress={() => getVehicleNo(item) }>
@@ -473,11 +479,12 @@ const HomeScreen = props => {
                               )
                             
                                   
-                                  const renderHeader = () => {
+                                  const renderHeader = (title) => {
                                     return(
                                       <View style={styles.bottomSheetHeader}>
                                       <View style={styles.panelHeader}>
                                       <View style={styles.panelHandle} />
+                                      <Text style={{fontSize:18, textAlign: 'center', fontWeight: '900', textTransform:'capitalize'}}>{title}</Text>
                                       </View>
                                       </View>
                                       );
@@ -489,17 +496,6 @@ const HomeScreen = props => {
                                         <StatusBar
                                         backgroundColor={design.colors.primary}
                                         />
-                                        
-                                    
-                                        
-                                        {/* <BottomSheet
-                                        ref={favParkingRef}
-                                        snapPoints={[450, 0]}
-                                        renderContent={favParkings}
-                                        renderHeader={renderHeader}
-                                        initialSnap={1}
-                                        /> */}
-                                        
                                         
                                         <BrSheet
                                         visible={isSheetVisible}
@@ -807,22 +803,12 @@ const HomeScreen = props => {
                                         enablePanDownToClose={true}
                                         backdropComponent={renderVehiclesBackdrop}
                                         onChange={handleSheetChanges}
-                                        handleComponent={() =>
-                                           <View>
-                                           <Text  style={{fontSize:18, textAlign: 'center', fontWeight: '900'}}>My Vehicles</Text>
-                                          </View> 
-                                          }
+                                        handleComponent={() => renderHeader("My Vehicles") }
                                       >
                                         <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
 
                                           <View style={{flexDirection: 'row'}}>
-                                          {/* <View>
-                                            <Text>My Vehicles</Text>
-                                          </View> */}
                                           <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                                          {/* <TouchableOpacity onPress={() => vehicleBottomSheetRef?.current.close()}>
-                                             <Text>Close</Text>
-                                           </TouchableOpacity> */}
                                           </View>
                                           </View>
                                          
@@ -852,11 +838,7 @@ const HomeScreen = props => {
                                         enablePanDownToClose={true}
                                         backdropComponent={renderFavouritesBackdrop}
                                         onChange={handleSheetChanges}
-                                        handleComponent={() =>
-                                          <View>
-                                          <Text  style={{fontSize:18, textAlign: 'center', fontWeight: '900', textTransform:'capitalize'}}>Favourite parking areas</Text>
-                                         </View> 
-                                         }
+                                        handleComponent={() => renderHeader("favourite parking areas") }
                                       >
                                         <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
 
@@ -906,23 +888,7 @@ const HomeScreen = props => {
                                           alignItems: 'center'
                                         },
                                         
-                                        panel: {
-                                          // padding: 20,
-                                          backgroundColor: '#FFFFFF',
-                                          // paddingTop: 20,
-                                          // height: 600,
-                                        },
-                                        
-                                        panelTitle: {
-                                          fontSize: 22,
-                                          height: 35,
-                                        },
-                                        panelSubtitle: {
-                                          fontSize: 14,
-                                          color: 'gray',
-                                          height: 30,
-                                          marginBottom: 10,
-                                        },
+                                      
                                         
                                         shadow: {
                                           shadowColor: "#000",
@@ -989,24 +955,9 @@ const HomeScreen = props => {
                                           flexWrap: 'wrap',
                                         },
                                         
-                                        bottomSheetHeader: {
-                                          backgroundColor: '#FFFFFF',
-                                          shadowColor: '#333333',
-                                          borderTopLeftRadius: 20,
-                                          borderTopRightRadius: 20,
-                                        },
+                                       
                                         
-                                        panelHeader: {
-                                          alignItems: 'center',
-                                        },
-                                        
-                                        panelHandle: {
-                                          width: 45,
-                                          height: 8,
-                                          borderRadius: 4,
-                                          backgroundColor: '#00000040',
-                                          marginBottom: 10,
-                                        },
+                                       
                                         bottomSheetButton:{
                                           flexDirection: 'row',
                                           borderWidth:1, 
@@ -1058,6 +1009,58 @@ const HomeScreen = props => {
                                         vehiclesDropdownOption: {
                                           padding: 5,
                                           fontSize: 18,
+                                        },
+                                        indicator: {
+                                          position: "absolute",
+                                          width: 10,
+                                          height: 4,
+                                          backgroundColor: "#999",
+                                        },
+
+                                        customBottomSheetHeader: {
+                                          alignContent: "center",
+                                          alignItems: "center",
+                                          justifyContent: "center",
+                                          backgroundColor: "white",
+                                          paddingVertical: 14,
+                                          borderBottomWidth: 1,
+                                          borderBottomColor: "#fff",
+                                        },
+
+                                        bottomSheetHeader: {
+                                          backgroundColor: '#FFFFFF',
+                                          shadowColor: '#333333',
+                                          borderTopLeftRadius: 20,
+                                          borderTopRightRadius: 20,
+                                        },
+
+                                        panelHeader: {
+                                          alignItems: 'center',
+                                        },
+                                        
+                                        panelHandle: {
+                                          width: 40,
+                                          height: 8,
+                                          borderRadius: 4,
+                                          backgroundColor: '#999',
+                                          marginTop: 8,
+                                          marginBottom: 10,
+
+                                        },
+
+                                        panel: {
+                                          backgroundColor: '#FFFFFF',
+                                        },
+                                        
+                                        panelTitle: {
+                                          fontSize: 22,
+                                          height: 35,
+                                        },
+                                        panelSubtitle: {
+                                          fontSize: 14,
+                                          color: 'gray',
+                                          height: 30,
+                                          marginBottom: 10,
                                         },
 
 

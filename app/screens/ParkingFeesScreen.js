@@ -19,15 +19,8 @@ import {SafeAreaView, Platform, StyleSheet,
     const initialFeesData = [];
     
     const ParkingFeesScreen = ({route, navigation}) => {
-        
-        const mounted = useRef();
-        
-        // const { parking_area_id, parking_area } = route.params;
-        const parking_area_id = (typeof route.params.parking_area_id !== 'undefined')  ? route.params.parking_area_id :  0;
-        const parking_area = (typeof route.params.parking_area !== 'undefined')  ? route.params.parking_area : '';
-        const image_url = (typeof route.params.image !== 'undefined')  ? route.params.image : '';
-        const phone_number = (typeof route.params.phone_number !== 'undefined')  ? route.params.phone_number : '';
-        
+    
+        const { parking_area_id, parking_area, photo, phone_number } = route.params;
         
         const [fees, setFees] = useState(initialFeesData);
         const [done, setDone] = useState(false);
@@ -79,16 +72,6 @@ import {SafeAreaView, Platform, StyleSheet,
                 <DataTable.Row style={{opacity:0.7}}>
                 <DataTable.Cell>{props.item.vehicle_type}</DataTable.Cell>
                 <DataTable.Cell>{Monetize(props.item.fee_per_hour)}</DataTable.Cell>
-                {/* <DataTable.Cell>
-                <RadioButton
-                value="second"
-                status={ checked === 'second' ? 'checked' : 'unchecked' }
-                onPress={() => setChecked('second')}
-                />
-                </DataTable.Cell> */}
-                
-                
-                
                 </DataTable.Row>
                 );
                 
@@ -102,11 +85,8 @@ import {SafeAreaView, Platform, StyleSheet,
                         return (
                             <>
                             <DataTable.Header>
-                            {/* <DataTable.Title style={{color:'red', fontWeight:'bold'}}>Parking Area</DataTable.Title> */}
                             <DataTable.Title>Vehicle Type</DataTable.Title>
                             <DataTable.Title>Fee/hour</DataTable.Title>
-                            {/* <DataTable.Title></DataTable.Title> */}
-
                             </DataTable.Header>
                             <Divider />
                             </>
@@ -137,7 +117,7 @@ import {SafeAreaView, Platform, StyleSheet,
                                 
                                 <Card>
                                 
-                                <Card.Cover source={{ uri: image_url }} style={{width:'90%', height:'40%', margin:5, borderRadius:5}}/>
+                                <Card.Cover source={{ uri: photo }} style={{width:'90%', height:'40%', margin:5, borderRadius:5}}/>
                                 <Card.Content>
                                 <Title>{parking_area}</Title>
                                 <FlatList

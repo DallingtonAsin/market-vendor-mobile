@@ -57,7 +57,7 @@ import { StyleSheet, Text, View,Button,Pressable,
       latitude:0.353550,
       longitude:32.618591,
       latitudeDelta:0.0122,
-      longitudeDelta:0.0121 
+      longitudeDelta:0.0621 
     },
     markerCoords: {
       latitude: 0,   
@@ -681,9 +681,13 @@ import { StyleSheet, Text, View,Button,Pressable,
                               initialRegion={region.currentPosition}
                               style={styles.map}
                               customMapStyle={mapStyles.brownStyle}
+                              minZoomLevel={15.5}
+                              maxZoomLevel={19}
+                              showsUserLocation={true}
+
                               >
                               
-                              {/* <Marker 
+                              <Marker 
                                 key={`current-location-marker`}
                                 coordinate={region.markerCoords}
                                 title={'Current Location'}
@@ -692,7 +696,7 @@ import { StyleSheet, Text, View,Button,Pressable,
                                 <FontAwesome name='map-marker' size={theme.SIZES.icon*2.5} color={theme.COLORS.orange}/> 
                                 <FontAwesome name='car' size={theme.SIZES.icon*1.8} color={theme.COLORS.orange}/> 
                                 
-                              </Marker> */}
+                              </Marker>
                               
                               {
                                 nearByParkings.length > 0 ?

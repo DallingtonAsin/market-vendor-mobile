@@ -17,22 +17,12 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
     import FastImage from 'react-native-fast-image';
     import FontAwesome from 'react-native-vector-icons/FontAwesome';
     import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-    // const useIsMounted = () => {
-    //     let isMounted = useRef(false);
-    //     useEffect(() => {
-    //       isMounted.current = true;
-    //       return () => isMounted.current = false;
-    //     }, []);
     
-    //     return isMounted;
-    //   }
     
     const ParkingAreasScreen = (props) => {
         
         
         const { getParkingAreas } = React.useContext(AuthContext);
-        
-        // const isMounted = useIsMounted();
         const [refreshing, setRefreshing] = useState(false);
         const [parkingAreas, setParkingAreas] = useState([]);
         const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +35,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
             { key: 'first', title: 'Recent' },
             { key: 'second', title: 'price' },
             { key: 'third', title: 'rating' },
-            { key: 'third', title: 'distance' },
+            { key: 'fourth', title: 'distance' },
         ]);
         
         
@@ -69,6 +59,27 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
             </View>
             :  <CustomLoader color={design.colors.orange}/>
             );
+
+            const affordableParkings = () => (
+                !isLoading ? 
+                <View style={{marginTop:10}}>
+                <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                data={parkingAreas}
+                renderItem={({item}) => CardComponent(item)}
+                keyExtractor={(item, index) => index.toString()}
+                refreshControl={
+                    <RefreshControl
+                    refreshing={refreshing}
+                    onRefresh={onRefresh}
+                    />
+                    
+                }
+                />
+                </View>
+                :  <CustomLoader color={design.colors.orange}/>
+                );
             
             const favouriteParkings = () => (
                 !isLoading ? 
@@ -89,22 +100,38 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                 </View>
                 :  <CustomLoader color={design.colors.orange}/>
                 );
+                const nearByParkings = () => (
+                    !isLoading ? 
+                    <View style={{marginTop:20}}>
+                    <FlatList
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                    data={parkingAreas}
+                    renderItem={({item}) => CardComponent(item)}
+                    keyExtractor={(item, index) => index.toString()}
+                    refreshControl={
+                        <RefreshControl
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                        />
+                    }
+                    />
+                    </View>
+                    :  <CustomLoader color={design.colors.orange}/>
+                    );
                 
                 const renderScene = SceneMap({
                     first: RecentParkings,
                     second: favouriteParkings,
-                    third: RecentParkings,
-                    fourth: favouriteParkings,
+                    third: affordableParkings,
+                    fourth: nearByParkings,
                 });
                 
                 
                 
                 const CardComponent = (item) => (
                     <TouchableOpacity onPress={() => GotoFeesPage(item)}>
-                    
                     <View style={{flexDirection:'row'}}>
-                    
-                    {/* <Card.Cover source={{ uri: item.image }} style={{width:'45%', height:'98%'}}/> */}
                     <FastImage
                     style={{
                         width: '45%',
@@ -112,15 +139,12 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                         borderRadius: 15
                     }}
                     source={{
-                        uri: item.image ,
-                        // headers: { Authorization: 'someAuthToken' },
+                        uri: item.photo,
                         priority: FastImage.priority.normal,
                     }}
                     resizeMode={FastImage.resizeMode.contain}
                     />
-                    
                     <View style={{flexDirection:'column', padding:10}}>
-                    
                     <View style={{flexDirection:'column'}}>
                     <Title>{item.name}</Title>
                     <Paragraph>{item.address}</Paragraph>
@@ -202,18 +226,12 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                         };
                         
                         const GotoFeesPage = (item) => { 
-                            console.log("Parking Area ID", item.id);
-                            console.log("Parking Area", item.name);
-                            console.log("Tel number", item.phone_number);
-                            console.log("Image", item.image);
-                            
-                            
                             props.navigation.navigate("ParkingFees", {
                                 screen: 'ParkingFees',
                                 params: { parking_area_id: item.id, 
                                           parking_area: item.name,
                                           phone_number: item.phone_number,
-                                          image: item.image,
+                                          photo: item.photo,
                                 }
                             });
                         }

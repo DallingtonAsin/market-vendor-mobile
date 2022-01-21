@@ -96,6 +96,11 @@ import { StyleSheet, Text, View,Button,Pressable,
     const [isStartTimePickerVisible, setStartTimePickerVisibility] = useState(false);
     const [isEndTimePickerVisible, setEndTimePickerVisibility] = useState(false);
 
+    const closeModelOnSwipe = () => {
+      setIsModalVisible(false);
+      setState({...state, activeModal:null});
+    }
+
     useEffect(() => {
 
         fetchVehicleCategories();
@@ -410,13 +415,7 @@ import { StyleSheet, Text, View,Button,Pressable,
       onBackdropPress={()=>setState({...state, activeModal:null})} 
       swipeDirection="down"
       propagateSwipe
-      onSwipeComplete={()=>
-        {
-          setIsModalVisible(false);
-          setState({...state, activeModal:null});
-        }}
-        
-        // style={{paddingHorizontal:0}}   
+      onSwipeComplete={()=> closeModelOnSwipe() }
         >
         <ScrollView contentContainerStyle={styles.modal}>
         <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -857,6 +856,9 @@ import { StyleSheet, Text, View,Button,Pressable,
       width:'70%',
       marginLeft:30,
     },
+
     dropdown1RowTxtStyle: { color: "#444", textAlign: "left" },
+
+  
     
   });

@@ -55,16 +55,6 @@ import {APP_NAME, currency} from '@env';
     const showOrderInfo =(item) => {
         const order_no = item.order_no;
         const customer_id = item.customer_id;
-        console.log("Order No", order_no);
-        console.log("Customer ID", customer_id);
-
-        // navigation.navigate("OrderDetails", {
-        //     orderNo: order_no, 
-        //     customerId: customer_id,
-                
-        // });
-
-    
         navigation.navigate('OrderDetails', {
           screen: 'OrderDetails',
           params: { orderNo: order_no,  customerId: customer_id},
