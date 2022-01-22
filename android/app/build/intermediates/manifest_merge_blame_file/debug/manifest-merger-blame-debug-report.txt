@@ -9,63 +9,63 @@
 9        android:targetSdkVersion="29" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->C:\npx\react\jre\android\app\src\debug\AndroidManifest.xml:5:5-77
-11-->C:\npx\react\jre\android\app\src\debug\AndroidManifest.xml:5:22-75
+11-->C:\npx\react\mkt-vendor\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->C:\npx\react\mkt-vendor\android\app\src\debug\AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:4:5-67
-12-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:4:22-64
+12-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:4:5-67
+12-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:4:22-64
 13    <uses-permission android:name="android.permission.CAMERA" />
-13-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:5:5-64
-13-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:5:22-62
+13-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:5:5-64
+13-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:5:22-62
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:6:5-80
-14-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:6:22-78
+14-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:6:5-80
+14-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:6:22-78
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-15-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:7:5-79
-15-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:7:22-76
+15-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:7:5-79
+15-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:7:22-76
 16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:8:5-79
-16-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:8:22-76
+16-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:8:5-79
+16-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:8:22-76
 17    <uses-permission android:name="android.permission.VIBRATE" />
-17-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:9:5-66
-17-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:9:22-63
+17-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:9:5-66
+17-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:9:22-63
 18    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-18-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:10:5-80
-18-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:10:22-78
+18-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:10:5-80
+18-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:10:22-78
 19
 20    <uses-feature
-20-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:11:5-85
+20-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:11:5-85
 21        android:name="android.hardware.camera"
-21-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:11:19-57
+21-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:11:19-57
 22        android:required="false" />
-22-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:11:58-82
+22-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:11:58-82
 23    <uses-feature
-23-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:12:5-91
+23-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:12:5-91
 24        android:name="android.hardware.camera.front"
-24-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:12:19-63
+24-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:12:19-63
 25        android:required="false" /> <!-- for Android 5.0 (API level 21) or higher. -->
-25-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:12:64-88
+25-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:12:64-88
 26    <uses-feature android:name="android.hardware.location.gps" />
-26-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:16:5-66
-26-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:16:19-63
+26-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:16:5-66
+26-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:16:19-63
 27    <uses-feature android:name="android.hardware.location.network" />
-27-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:17:5-70
-27-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:17:19-67
+27-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:17:5-70
+27-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:17:19-67
 28
 29    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 29-->[com.facebook.flipper:flipper:0.75.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\a8f6015f96666ab8d93bfe5b64998bc8\jetified-flipper-0.75.1\AndroidManifest.xml:16:5-76
 29-->[com.facebook.flipper:flipper:0.75.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\a8f6015f96666ab8d93bfe5b64998bc8\jetified-flipper-0.75.1\AndroidManifest.xml:16:22-73
 30    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-30-->[:react-native-maps] C:\npx\react\jre\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
-30-->[:react-native-maps] C:\npx\react\jre\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:22-78
+30-->[:react-native-maps] C:\npx\react\mkt-vendor\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-81
+30-->[:react-native-maps] C:\npx\react\mkt-vendor\node_modules\react-native-maps\lib\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:22-78
 31
 32    <queries>
-32-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-14:15
+32-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:5-14:15
 33        <intent>
-33-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-13:18
+33-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:9-13:18
 34            <action android:name="android.media.action.IMAGE_CAPTURE" />
-34-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-73
-34-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:21-70
+34-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-73
+34-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:21-70
 35        </intent>
 36        <!-- Needs to be explicitly declared on Android R+ -->
 37        <package android:name="com.google.android.apps.maps" />
@@ -145,151 +145,151 @@
 68-->[com.google.android.play:core:1.8.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\7d57fa386d901ef31b42379f53162dc8\jetified-core-1.8.0\AndroidManifest.xml:8:20-72
 69
 70    <application
-70-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:19:5-56:19
+70-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:19:5-56:19
 71        android:name="com.parksmart.MainApplication"
-71-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:20:7-38
+71-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:20:7-38
 72        android:allowBackup="false"
-72-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:24:7-34
+72-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:24:7-34
 73        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 73-->[androidx.core:core:1.3.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\3975ffd70914deb17405b14313b8e4ba\core-1.3.1\AndroidManifest.xml:24:18-86
 74        android:debuggable="true"
 75        android:icon="@mipmap/ic_launcher"
-75-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:22:7-41
+75-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:22:7-41
 76        android:label="@string/app_name"
-76-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:21:7-39
+76-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:21:7-39
 77        android:roundIcon="@mipmap/ic_launcher_round"
-77-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:23:7-52
+77-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:23:7-52
 78        android:theme="@style/AppTheme"
-78-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:26:7-38
+78-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:26:7-38
 79        android:usesCleartextTraffic="true" >
-79-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:25:7-42
+79-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:25:7-42
 80        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-80-->C:\npx\react\jre\android\app\src\debug\AndroidManifest.xml:11:9-86
-80-->C:\npx\react\jre\android\app\src\debug\AndroidManifest.xml:11:19-83
+80-->C:\npx\react\mkt-vendor\android\app\src\debug\AndroidManifest.xml:11:9-86
+80-->C:\npx\react\mkt-vendor\android\app\src\debug\AndroidManifest.xml:11:19-83
 81
 82        <meta-data
-82-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:27:7-121
+82-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:27:7-121
 83            android:name="com.google.android.geo.API_KEY"
-83-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:27:18-63
+83-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:27:18-63
 84            android:value="AIzaSyCi37U2RYVZidLevjqPPyHZaAZLV9JODDg" /> <!-- Change the value to true to enable pop-up for in foreground on receiving remote notifications (for prevent duplicating while showing local notifications set this to false) -->
-84-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:27:64-119
+84-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:27:64-119
 85        <meta-data
-85-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:29:9-30:44
+85-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:29:9-30:44
 86            android:name="com.dieam.reactnativepushnotification.notification_foreground"
-86-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:29:21-97
+86-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:29:21-97
 87            android:value="false" /> <!-- Change the resource name to your App's accent color - or any other color you want -->
-87-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:30:21-42
+87-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:30:21-42
 88        <meta-data
-88-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:32:9-33:54
+88-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:32:9-33:54
 89            android:name="com.dieam.reactnativepushnotification.notification_color"
-89-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:32:21-92
+89-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:32:21-92
 90            android:resource="@color/white" /> <!-- or @android:color/{name} to use a standard color -->
-90-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:33:21-52
+90-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:33:21-52
 91        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationActions" />
-91-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:35:9-108
-91-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:35:19-105
+91-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:35:9-108
+91-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:35:19-105
 92        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
-92-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:36:9-110
-92-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:36:19-107
+92-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:36:9-110
+92-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:36:19-107
 93        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver" >
-93-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:37:9-43:20
-93-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:37:19-115
+93-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:37:9-43:20
+93-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:37:19-115
 94            <intent-filter>
-94-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:38:13-42:29
+94-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:38:13-42:29
 95                <action android:name="android.intent.action.BOOT_COMPLETED" />
-95-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:39:17-79
-95-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:39:25-76
+95-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:39:17-79
+95-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:39:25-76
 96                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-96-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:40:17-82
-96-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:40:25-79
+96-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:40:17-82
+96-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:40:25-79
 97                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-97-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:41:17-81
-97-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:41:25-79
+97-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:41:17-81
+97-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:41:25-79
 98            </intent-filter>
 99        </receiver>
 100
 101        <activity
-101-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:45:7-55:18
+101-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:45:7-55:18
 102            android:name="com.parksmart.MainActivity"
-102-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:46:9-37
+102-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:46:9-37
 103            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-103-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:48:9-86
+103-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:48:9-86
 104            android:label="@string/app_name"
-104-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:47:9-41
+104-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:47:9-41
 105            android:launchMode="singleTask"
-105-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:49:9-40
+105-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:49:9-40
 106            android:windowSoftInputMode="adjustPan" >
-106-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:50:9-48
+106-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:50:9-48
 107            <intent-filter>
-107-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:51:9-54:25
+107-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:51:9-54:25
 108                <action android:name="android.intent.action.MAIN" />
-108-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:52:13-65
-108-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:52:21-62
+108-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:52:13-65
+108-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:52:21-62
 109
 110                <category android:name="android.intent.category.LAUNCHER" />
-110-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:53:13-73
-110-->C:\npx\react\jre\android\app\src\main\AndroidManifest.xml:53:23-70
+110-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:53:13-73
+110-->C:\npx\react\mkt-vendor\android\app\src\main\AndroidManifest.xml:53:23-70
 111            </intent-filter>
 112        </activity>
 113
 114        <provider
-114-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-27:20
+114-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:9-27:20
 115            android:name="androidx.core.content.FileProvider"
-115-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-62
+115-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-62
 116            android:authorities="com.parksmart.provider"
-116-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-60
+116-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:13-60
 117            android:exported="false"
-117-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:13-37
+117-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:13-37
 118            android:grantUriPermissions="true" >
-118-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-47
+118-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-47
 119            <meta-data
-119-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:58
+119-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:58
 120                android:name="android.support.FILE_PROVIDER_PATHS"
-120-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
+120-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
 121                android:resource="@xml/provider_paths" />
-121-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-55
+121-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-55
 122        </provider>
 123
 124        <activity
-124-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:9-31:72
+124-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:9-31:72
 125            android:name="com.yalantis.ucrop.UCropActivity"
-125-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:13-60
+125-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:13-60
 126            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-126-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:31:13-69
+126-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:31:13-69
 127
 128        <provider
-128-->[:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
+128-->[:react-native-image-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
 129            android:name="com.imagepicker.ImagePickerProvider"
-129-->[:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
+129-->[:react-native-image-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
 130            android:authorities="com.parksmart.imagepickerprovider"
-130-->[:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-71
+130-->[:react-native-image-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-71
 131            android:exported="false"
-131-->[:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+131-->[:react-native-image-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
 132            android:grantUriPermissions="true" >
-132-->[:react-native-image-picker] C:\npx\react\jre\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+132-->[:react-native-image-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
 133            <meta-data
-133-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:58
+133-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:58
 134                android:name="android.support.FILE_PROVIDER_PATHS"
-134-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
+134-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
 135                android:resource="@xml/imagepicker_provider_paths" />
-135-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-55
+135-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-55
 136        </provider>
 137        <provider
-137-->[:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-18:20
+137-->[:react-native-share] C:\npx\react\mkt-vendor\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:10:9-18:20
 138            android:name="cl.json.RNShareFileProvider"
-138-->[:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-55
+138-->[:react-native-share] C:\npx\react\mkt-vendor\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-55
 139            android:authorities="com.parksmart.rnshare.fileprovider"
-139-->[:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-72
+139-->[:react-native-share] C:\npx\react\mkt-vendor\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:13-72
 140            android:exported="false"
-140-->[:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-37
+140-->[:react-native-share] C:\npx\react\mkt-vendor\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-37
 141            android:grantUriPermissions="true" >
-141-->[:react-native-share] C:\npx\react\jre\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-47
+141-->[:react-native-share] C:\npx\react\mkt-vendor\node_modules\react-native-share\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-47
 142            <meta-data
-142-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:58
+142-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-26:58
 143                android:name="android.support.FILE_PROVIDER_PATHS"
-143-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
+143-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:17-67
 144                android:resource="@xml/share_download_paths" />
-144-->[:react-native-image-crop-picker] C:\npx\react\jre\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-55
+144-->[:react-native-image-crop-picker] C:\npx\react\mkt-vendor\node_modules\react-native-image-crop-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:17-55
 145        </provider> <!-- Needs to be explicitly declared on P+ -->
 146        <uses-library
 146-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\efd0d19bbfbb8be14911aca5f5f8466c\jetified-play-services-maps-17.0.1\AndroidManifest.xml:39:9-41:40

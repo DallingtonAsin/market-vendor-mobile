@@ -26,8 +26,6 @@ const CardComponent = ({info}) => (
       {id: 2, iconName: "whatsapp", name:'Whatsap', text: whatsapLine, 'method': () => {inboxFromWhatsapp(whatsapLine)}},
       {id: 3, iconName: "sms", name:'SMS', text: 'Report a problem via sms', 'method': () => {SendSms(companyLine)}},
       {id: 4, iconName: "envelope", name:'Email', text: companyEmail, 'method': () => {SendEmail(companyEmail)}},
-      {id: 5, iconName: "comments", name:'Feedback', text: 'Suggest something to us', 'method': () => navigation.navigate('Suggestions')},
-      
     ];
 
     return(

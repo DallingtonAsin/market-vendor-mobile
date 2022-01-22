@@ -44,22 +44,15 @@ const CustomDrawer = (props) => {
       navOptionThumb: 'user-circle',
       navOptionName: 'My Profile',
       screenToNavigate:'Profile',
-      
     },
-    
+
     {
-      navOptionThumb: 'parking',
-      navOptionName: 'Nearby parkings',
-      screenToNavigate:'Map',
+      navOptionThumb: 'shopping-cart',
+      navOptionName: 'Orders',
+      screenToNavigate:'Orders',
     },
     
-    {
-      navOptionThumb: 'cloud-rain',
-      navOptionName: 'Weather info',
-      screenToNavigate:'Weather',
-    },
-    
-    
+ 
   ];
   
   const logout = async() => {
@@ -79,8 +72,9 @@ const CustomDrawer = (props) => {
     }
   };
   
-  const navigateToTerms = () => {
-    Linking.openURL("https://www.parkproug.com");
+ 
+  const goToAboutUsPage = () => {
+    Linking.openURL("https://www.keiphoneglobal.com/aboutus");
   }
   
   const RateUs = () => {
@@ -190,27 +184,21 @@ const CustomDrawer = (props) => {
       </TouchableOpacity>
       
       <TouchableOpacity style={styles.sideMenuItems} 
-      onPress={() => LoadPage("About")}>
+      onPress={() => goToAboutUsPage()}>
       <FontAwesome name="info-circle" style={styles.navOptionThumb}/>
       <Text style={styles.sideMenuText}>About Us</Text>
       </TouchableOpacity>
-      
-      
-      <TouchableOpacity style={styles.sideMenuItems}
-      onPress={() => navigateToTerms()}>
-      <FontAwesome name="file-contract" style={styles.navOptionThumb}/>
-      <Text style={styles.sideMenuText} 
-      >Terms & Conditions</Text>
-      </TouchableOpacity>
-      
-      
-      <View style={styles.divider}></View>
-      
+
       <TouchableOpacity style={styles.sideMenuItems} onPress={ () => {
         LoadPage('Settings'); }}>
         <Icon name="cog" style={styles.navOptionThumb}/>
         <Text style={styles.sideMenuText}>Settings</Text>
         </TouchableOpacity>
+      
+      
+      <View style={styles.divider}></View>
+      
+   
         
         <TouchableOpacity style={styles.sideMenuItems}
         onPress={logout}>

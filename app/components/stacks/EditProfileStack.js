@@ -16,7 +16,7 @@ const Stack = createStackNavigator();
         headerLeft: () => <HeaderBackButton tintColor={'#fff'}
         onPress={() => navigation.goBack()}/>,
         headerStyle:{
-          backgroundColor:styles.colors.parksmart,
+          backgroundColor:styles.colors.primary,
         },
         headerTitleStyle:{
           fontSize:18,

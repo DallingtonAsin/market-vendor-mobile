@@ -13,7 +13,7 @@ const ProfileStack = ({ navigation }) => {
         headerTitle: 'Profile',
         headerLeft: () =><HeaderBackButton tintColor={'#fff'} onPress={() => navigation.goBack(null)} />,
         headerStyle:{
-          backgroundColor:styles.colors.parksmart,
+          backgroundColor:styles.colors.primary,
         },
         headerTitleStyle:{
           fontSize:18,

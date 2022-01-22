@@ -14,7 +14,7 @@ const HomeStack = ({ navigation }) => {
         headerTitle: 'Home',
         headerLeft: () => <DrawerNavigationStructure color={styles.colors.white} navigationProps = {navigation}/>,
         headerStyle:{
-          backgroundColor: styles.colors.parksmart,
+          backgroundColor: styles.colors.primary,
         },
         headerTitleStyle:{
           fontSize:18,

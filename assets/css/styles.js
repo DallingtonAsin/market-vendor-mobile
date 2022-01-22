@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 export default {
 
 colors:{
-    primary: "#273746",
+    primary: '#009387', //"#273746",
     secondary: "#4ecdc4",
     white: '#ffffff',
     success: '#009387', //'#2F4F4F', // '#138D75',

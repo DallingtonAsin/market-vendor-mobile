@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { 
     View, 
     Text, 
@@ -16,15 +16,13 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import { AuthContext } from '../context/context';
 import { UIActivityIndicator } from 'react-native-indicators';
+import design from '../../assets/css/styles';
+import PhoneInput from "react-native-phone-number-input";
 
 const SignupScreen = ({route, navigation}) => {
 
-    const minPasswordLength = 8;
-    
-    const { phoneNumber } = route.params;
-
     let countryPicker = React.createRef(null);
-    let phone = React.createRef(null);
+    const phoneInput = useRef(null);
     
     const initialState = {
         first_name: '',
@@ -44,13 +42,16 @@ const SignupScreen = ({route, navigation}) => {
         isValidForm: null,
         formMessage: null,
         cca2: null,
+        isValidPhoneNumber: false,
         
     }
     
     const [state, setData] = useState(initialState);
     const { signUp } = React.useContext(AuthContext);
     const [isLoading, setIsLoading] = useState(false);
-    
+    const [value, setValue] = useState("");
+    const minPhoneChars = 13;
+    const minPasswordLength = 8;
     
     const handleFirstNameInputChange = (val) => {
         if( val.length >= 3 ) {
@@ -125,19 +126,19 @@ const SignupScreen = ({route, navigation}) => {
          }
     }
 
+    const onPhoneInputChange = (val) => {
 
-    const handlePasswordInput = (val) => {
-        if(validateStr(val.trim(), minPasswordLength)) {
+        if(validateStr(val.trim(), minPhoneChars)) {
             setData({
                 ...state,
-                password:val,
-                isValidPassword: true
+                phone_number: val,
+                isValidPhoneNumber: true
             });
         } else {
             setData({
                 ...state,
-                password: val,
-                isValidPassword: false
+                phone_number: val,
+                isValidPhoneNumber: false
             });
         }
     }
@@ -146,10 +147,46 @@ const SignupScreen = ({route, navigation}) => {
     const handleCustomerRegistration = async() =>{
         const first_name = state.first_name;
         const last_name = state.last_name;
+        const phone_number = state.phone_number;
         const password = state.password;
         const confirm_password = state.confirm_password;
-        if(first_name && last_name && phoneNumber && password && confirm_password) {
-            if(password == confirm_password){
+
+        if(!first_name){
+            alert("Please enter first name");
+            return;
+        }
+
+        if(!last_name){
+            alert("Please enter last name");
+            return;
+
+        }
+        if(!phone_number){
+            alert("Please enter your phone number");
+            return;
+
+        }
+
+        if(!password){
+            alert("Please enter password");
+            return;
+
+        }
+
+        if(!confirm_password){
+            alert("Please confirm your password");
+            return;
+
+        }
+
+        if(password != confirm_password){
+            alert("Please enter matching passwords");
+            return;
+
+        }
+
+
+        if(first_name && last_name && phone_number && password && confirm_password) {
                 const reqParams = {
                     first_name: first_name,
                     last_name: last_name,
@@ -158,7 +195,6 @@ const SignupScreen = ({route, navigation}) => {
                     confirm_password: confirm_password,
                 }
                 setIsLoading(true);
-                
                 let response = await signUp(reqParams);
                 let message = response.message
                 let statusCode = response.statusCode;
@@ -166,18 +202,12 @@ const SignupScreen = ({route, navigation}) => {
                 if(statusCode == 0){
                     Alert.alert("Message", "Registration failed! "+message+"");
                 }
-            }else{
-            Alert.alert("Message", 'Enter matching passwords to register');
-            }
-        
-        }else{
-            Alert.alert("Registration Error", 'Fill in all form fields to register');
         }
     }
     
     return (
         <View style={styles.container}>
-        <StatusBar backgroundColor='#273746' barStyle="light-content"/>
+        <StatusBar backgroundColor={design.colors.primary} barStyle="light-content"/>
         <View style={styles.header}>
         <Text style={styles.text_header}>Register Now!</Text>
         </View>
@@ -185,7 +215,10 @@ const SignupScreen = ({route, navigation}) => {
         animation="fadeInUpBig"
         style={styles.footer}
         >
-        <ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+        >
         
 
         
@@ -245,7 +278,23 @@ const SignupScreen = ({route, navigation}) => {
                 : null}
                 </View>
                 
-                <Text style={[styles.text_footer, {marginTop: 15}]}>Phone Number : {phoneNumber}</Text>
+                <Text style={[styles.text_footer, {marginTop: 15}]}>Phone Number : </Text>
+                
+<PhoneInput
+           ref={phoneInput}
+           defaultValue={value}
+           defaultCode="UG"
+           layout="first"
+           onChangeText={(text) => {
+             setValue(text);
+           }}
+           onChangeFormattedText={(text) => {
+            onPhoneInputChange(text);
+           }}
+           countryPickerProps={{ withAlphaFilter: true }}
+           withShadow
+           autoFocus
+         />
 
                 <Text style={[styles.text_footer, {
                     marginTop: 15
@@ -392,7 +441,7 @@ const SignupScreen = ({route, navigation}) => {
             const styles = StyleSheet.create({
                 container: {
                     flex: 1, 
-                    backgroundColor: '#273746'
+                    backgroundColor: design.colors.primary
                 },
                 header: {
                     flex: 1,

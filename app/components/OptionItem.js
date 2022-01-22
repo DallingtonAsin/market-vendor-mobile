@@ -20,30 +20,13 @@ const OptionItem = ({ bgColor, icon, label, tintColor, borderRadius, onPress, la
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         >
-        
-        {
-            
-            isSocialMedia ?
-            <FontAwesome name={icon} size={30} color={color}/>
-            :
-            <Image
-            source={icon}
-            resizeMode="cover"
-            style={{
-                tintColor: tintColor ? tintColor : '#fff',
-                width: iconWidth ? iconWidth : 45,
-                height: iconHeight ? iconHeight : 45,
-            }}
-            />
-              
-        } 
+            <FontAwesome name={icon} size={33} color={color}/>
         </LinearGradient>
         </View>
         {
             
-            isSocialMedia
-             ? <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:13, textAlign: 'center'}}>{label}</Text>
-             :  <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.primary, ...FONTS.body3, fontWeight:'normal', fontSize:16 }}>{label}</Text>
+         
+      <Text style={{ marginTop: SIZES.base, color: labelColor ? labelColor : design.colors.black, ...FONTS.body3, fontWeight:'normal', fontSize:16 }}>{label}</Text>
     
        }
        

@@ -14,7 +14,7 @@ const TopupStack = ({ navigation }) => {
         headerTitle: 'Top Up',
         headerLeft: () => <HeaderBackButton tintColor={styles.colors.white} onPress={() => navigation.goBack()} />, // <DrawerNavigationStructure color={'#fff'} navigationProps = {navigation}/>,
         headerStyle:{
-          backgroundColor:styles.colors.parksmart,
+          backgroundColor:styles.colors.primary,
         },
         headerTitleStyle:{
           fontSize:19,

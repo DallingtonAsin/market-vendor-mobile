@@ -5,10 +5,8 @@ import { MultiBarProvider, BottomTabBarWrapper} from 'react-native-multibar';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import HomeStack from './HomeStack';
 import HelpStack from './HelpStack';
-import MapStack from './MapStack';
-import WeatherStack from './WeatherStack';
 import NotificationStack from './NotificationStack';
-import OrdersStack from './OrdersStack';
+import ProfileStack from './ProfileStack';
 import styles from '../../../assets/css/styles';
 import { images, icons, COLORS, FONTS, SIZES } from '../../../constants';
 
@@ -72,13 +70,13 @@ const AppTabStack = () => {
                             </BottomTabBarWrapper>
                             )}
                             tabBarOptions ={{
-                                activeTintColor:styles.colors.orange,
+                                activeTintColor:styles.colors.primary,
                                 inactiveTintColor: styles.colors.black,
                                 style: {
                                     backgroundColor: styles.colors.white,
                                 },
                                 labelStyle:{
-                                    fontSize:12,
+                                    fontSize:13,
                                     textAlign:'center',
                                 },
                                 labelPosition:'below-icon',
@@ -92,7 +90,7 @@ const AppTabStack = () => {
                                     <Icon
                                     name="home"
                                     style={{
-                                        fontSize: 20,
+                                        fontSize: 22,
                                         color: color
                                     }}
                                     />
@@ -102,14 +100,14 @@ const AppTabStack = () => {
                                 
                                 
                                 <BottomTab.Screen
-                                name="Orders"
-                                component={OrdersStack}
+                                name="Profile"
+                                component={ProfileStack}
                                 options={{
                                     tabBarIcon: ({ color, size }) => (
                                         <Icon
-                                            name="list-ul"
+                                            name="user"
                                             style={{
-                                                fontSize: 20,
+                                                fontSize: 22,
                                                 color: color
                                             }}
                                             />
@@ -118,14 +116,14 @@ const AppTabStack = () => {
                                     />
                                     
                                     <BottomTab.Screen
-                                    name="Alerts"
+                                    name="Notifications"
                                     component={NotificationStack}
                                     options={{
                                         tabBarIcon: ({ color, size }) => (
                                             <Icon
                                             name="bell"
                                             style={{
-                                                fontSize: 20,
+                                                fontSize: 22,
                                                 color: color
                                             }}
                                             />
@@ -133,21 +131,7 @@ const AppTabStack = () => {
                                         }}
                                         />
                                         
-                                         <BottomTab.Screen
-                                        name="Weather"
-                                        component={WeatherStack}
-                                        options={{
-                                            tabBarIcon: ({ color, size }) => (
-                                                <Icon
-                                                name="cloud-rain"
-                                                style={{
-                                                    fontSize: 20,
-                                                    color: color
-                                                }}
-                                                />
-                                                )
-                                            }}
-                                            />
+                                     
                                             
                                             
                                             <BottomTab.Screen
@@ -158,7 +142,7 @@ const AppTabStack = () => {
                                                     <Icon
                                                     name="question-circle"
                                                     style={{
-                                                        fontSize: 20,
+                                                        fontSize: 22,
                                                         color: color
                                                     }}
                                                     />

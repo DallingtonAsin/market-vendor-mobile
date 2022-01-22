@@ -13,7 +13,7 @@ const PaymentStatementStack = ({ navigation }) => {
         headerTitle: 'Transaction History',
         headerLeft: () => <HeaderBackButton tintColor={styles.colors.white} onPress={() => navigation.goBack(null)} />, // <DrawerNavigationStructure color={'#fff'} navigationProps = {navigation}/>,
         headerStyle:{
-          backgroundColor:styles.colors.parksmart,
+          backgroundColor:styles.colors.primary,
         },
         headerTitleStyle:{
           fontSize:18,

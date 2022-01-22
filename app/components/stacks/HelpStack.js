@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
         headerTitle: 'Contact Us',
         headerLeft: () => <HeaderBackButton tintColor={styles.colors.white} onPress={() => navigation.goBack()} />,
         headerStyle:{
-          backgroundColor:styles.colors.parksmart,
+          backgroundColor:styles.colors.primary,
         },
         headerTitleStyle:{
           fontSize:18,

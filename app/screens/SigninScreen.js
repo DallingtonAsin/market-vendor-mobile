@@ -43,16 +43,9 @@ const SigninScreen = ({ navigation }) => {
 
     const phoneInput = useRef(null);
     const [value, setValue] = useState("");
-    const [formattedValue, setFormattedValue] = useState("");
-    
+  
     const [data, setData] = useState(initialState);
     const [checked, setChecked] = useState(true);
-
-    const initialLoginState = {
-        isLoading: true,
-        userName: null,
-        userToken: null,
-      }
 
     const { signIn } = React.useContext(AuthContext);
     const minPhoneChars = 13;
@@ -100,8 +93,6 @@ const SigninScreen = ({ navigation }) => {
                 isValidPhoneNumber: false
             });
         }
-
-     
     }
 
     const handlePasswordInput = (val) => {
@@ -156,7 +147,7 @@ const SigninScreen = ({ navigation }) => {
         <>
         
         <View style={styles.container}>
-        <StatusBar backgroundColor='#273746' barStyle="light-content"/>
+        <StatusBar backgroundColor={design.colors.primary} barStyle="light-content"/>
         <View style={styles.header}>
         <Text style={styles.text_header}>Welcome!</Text>
         </View>
@@ -324,7 +315,7 @@ const SigninScreen = ({ navigation }) => {
             
             <TouchableOpacity
             
-            onPress={() => navigation.navigate('PhoneNumber')}
+            onPress={() => navigation.navigate('Signup')}
             style={[styles.signIn, {
                 borderColor: '#273746',
                 borderWidth: 1,
@@ -350,7 +341,7 @@ const SigninScreen = ({ navigation }) => {
         const styles = StyleSheet.create({
             container: {
                 flex: 1, 
-                backgroundColor: '#273746'
+                backgroundColor: design.colors.primary
             },
             header: {
                 flex: 1,

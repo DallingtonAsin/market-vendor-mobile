@@ -429,7 +429,7 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           });
           unsubscribe();
           
-          let fontName = 'RobotoCondensed-Light'
+          let fontName = 'Roboto'
           GlobalFont.applyGlobal(fontName);
           
           
