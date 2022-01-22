@@ -247,9 +247,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 <View style={styles.header}>
              {
                   !isUpdatingImage ? 
-                  state.image ?
+                  profile.image ?
                   <Avatar.Image size={120} style={styles.avatar} 
-                  source={{uri: state.image }} />
+                  source={{uri: profile.image }} />
                   : <Avatar.Image size={120} style={styles.avatar} 
                   source={require('../../assets/user-profile9.png')} />
                   : 
@@ -362,17 +362,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
                   body:{
                     flex:3,
                     padding:15,
-                    // height:'100%',
-                    // marginTop:35,
                   },
 
           
-
-         
-              
-
                   text:{
-                    color: design.colors.primary, 
+                    color: design.colors.dark, 
                     fontWeight: 'bold',
                     opacity:0.8,
                     textTransform:'capitalize'

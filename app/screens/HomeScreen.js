@@ -46,7 +46,7 @@ const initialUserState = {
   lastname: '',
   phoneNo: '',
   email: '',
-  account_balance: '',
+  account_balance: 0,
   image: '',
 }
 
@@ -738,7 +738,7 @@ const HomeScreen = props => {
                                                 tintColor={'#000'}
                                                 tintColor={design.colors.primary}
                                                 borderRadius={5}
-                                                onPress={() => props.navigation.navigate("ParkingAreas") }
+                                                onPress={() => props.navigation.navigate("Orders") }
                                                 />
                                                 
                                                 <OptionItem
@@ -748,7 +748,8 @@ const HomeScreen = props => {
                                                 tintColor={'#000'}
                                                 borderRadius={5}
                                                 tintColor={design.colors.primary}
-                                                onPress={() => openVehiclesSheet(1)}
+                                                onPress={() => props.navigation.navigate("Vendors") }
+                                                // onPress={() => openVehiclesSheet(1)}
                                                 />
                                                 
                                                 

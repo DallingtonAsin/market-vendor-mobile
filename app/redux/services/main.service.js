@@ -74,11 +74,6 @@ export default class MainService{
         return await Service.fetchData(endpoint);
     }
     
-    static fetchTransactionHistory = async(telephone_number) => {
-        const endpoint = 'customer/transaction/history?telephone_no='+telephone_number+'';
-        return await Service.fetchData(endpoint);
-    }
-    
     static getTransactionHistory = async(id) => {
         const endpoint = 'customer/transactions?id='+id+'';
         return await Service.fetchData(endpoint);
@@ -108,6 +103,26 @@ export default class MainService{
     
     static filterParkingAreas = async(search) => {
         const endpoint = 'parking-areas/search?search='+search+'';
+        return await Service.fetchData(endpoint);
+    }
+
+    static fetchVendors = async() => {
+        const endpoint = 'device/vendors';
+        return await Service.fetchData(endpoint);
+    }
+
+    static fetchVendorDetails = async(id) => {
+        const endpoint = 'device/vendors/' + id;
+        return await Service.fetchData(endpoint);
+    }
+
+    static fetchMyOrders = async(customer_id) => {
+        const endpoint = 'device/orders/customer/' + customer_id;
+        return await Service.fetchData(endpoint);
+    }
+
+    static fetchOrderDetails= async(order_no) => {
+        const endpoint = 'customer/orders/' + order_no;
         return await Service.fetchData(endpoint);
     }
     

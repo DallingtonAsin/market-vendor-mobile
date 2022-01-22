@@ -257,18 +257,13 @@ import { Text,
           
           <View style={{ margin: 20 }}>
           <Text style={{ fontSize: 15, opacity: 0.7, textTransform: 'capitalize', fontWeight:'bold'  }}>Enter Amount </Text>
-          <RNTextInput
+          <TextInput
           mode={'outlined'}
           placeholder="Eg. 10,000"
           value={state.rechargeAmount}
           keyboardType='numeric'
-          selectionColor={design.colors.orange}
-          underlineColor={design.colors.orange}
-          outlineColor={design.colors.orange}
-          activeUnderlineColor={design.colors.orange}
-          activeOutlineColor={design.colors.orange}
           onChangeText={(text) => { onChangeAmount(text) }}
-          //  label="Topup amount"
+          style={styles.textInput}
             />
           <Text style={{ opacity: 0.5, color: state.warningColor }}>Min: {min_recharge_amount} and Max: {max_recharge_amount}</Text>
           </View>
@@ -380,11 +375,10 @@ import { Text,
           
           
           textInput: {
-            // fontSize: 16,
+            fontSize: 16,
             borderBottomWidth: 1,
             backgroundColor: design.colors.white,
             fontWeight: 'normal',
-            borderRadius:30,
-            borderWidth:1,
+            borderBottomColor: design.colors.primary,
           }
         })

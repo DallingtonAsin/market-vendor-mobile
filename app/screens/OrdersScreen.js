@@ -12,19 +12,18 @@ import ProfileContext from '../context/index';
 import { icons } from '../../constants';
 import {APP_NAME, currency} from '@env';
   
-  
   const wait = (timeout) => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   }
   
   const  OrdersScreen = ({ navigation }) => {
     
-    const [parkingRequests, setParkingRequests] = useState([]);
+    const [orders, setOrders] = useState([]);
     const [refreshing, setRefreshing] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(true);
     const {profile, setProfile} = useContext(ProfileContext);
 
-    const { fetchMyParkingRequests } = React.useContext(AuthContext);
+    const { getMyOrders } = React.useContext(AuthContext);
     
     React.useEffect(() => {
       fetchOrders();
@@ -41,10 +40,11 @@ import {APP_NAME, currency} from '@env';
     const fetchOrders = async() => {
       try{
         const id = profile.id;
-        let parkingRequests = await fetchMyParkingRequests(id);
-        console.log("Parking requests", parkingRequests);
-        if(parkingRequests.length > 0){
-          setParkingRequests(parkingRequests);
+        console.log("My id", id);
+        let data = await getMyOrders(id);
+        console.log("Orders", data);
+        if(data.length > 0){
+          setOrders(data);
         }
         setIsLoading(false);
       }catch(e){
@@ -54,10 +54,9 @@ import {APP_NAME, currency} from '@env';
     
     const showOrderInfo =(item) => {
         const order_no = item.order_no;
-        const customer_id = item.customer_id;
         navigation.navigate('OrderDetails', {
           screen: 'OrderDetails',
-          params: { orderNo: order_no,  customerId: customer_id},
+          params: { orderNo: order_no},
         });
     
     }
@@ -69,18 +68,7 @@ import {APP_NAME, currency} from '@env';
         style={{flexDirection: 'row', justifyContent: 'space-around', padding:5}}
         onPress={() => showOrderInfo(item) }
         >
-        <View>
-        {/* <Image source={require('../../assets/icons/money.jpg')}  style={{ width:70, height:70, borderRadius:50} }  /> */}
-        <Image
-        source={icons.parking6}
-        resizeMode="contain"
-        style={{
-            width: 55,
-            height: 55,
-        }}
-        />
-
-        </View>
+         <FontAwesome name={"shopping-cart"} size={50} style={styles.vehicle.icon} color={styles.colors.success}/>
         
         <View style={{ flexDirection: 'column'}}>
         <Text style={{ fontWeight:'bold',opacity:0.9, fontSize:16, color:styles.colors.parksmart }}>Order</Text>
@@ -123,16 +111,17 @@ import {APP_NAME, currency} from '@env';
           
           return ( 
             <SafeAreaView style={{flex: 1, backgroundColor:'#fff'}}>
-            <Text style={{fontSize:19, color:'#808080', padding:5, marginLeft:5}}>Last Orders</Text>
+           
             {  !isLoading ?
               <FlatList style= {{ backgroundColor:'#ffffff', height:'100%' }}
-              data={parkingRequests}
+              data={orders}
               renderItem={({ item }) => renderComponent(item)}
               keyExtractor={(item, index) => String(index)}
               ListEmptyComponent={<NoOrders/>} 
+              ListHeaderComponent={ orders.length > 0 ? <Text style={{fontSize:18, color:'#808080', padding:5, marginLeft:5}}>Last Orders</Text> : ''}
               ItemSeparatorComponent={FlatListItemSeparator}
               refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>}
-              /> 
+              />
               : <CustomLoader color={styles.colors.orange}/>
             }
             </SafeAreaView>

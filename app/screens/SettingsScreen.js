@@ -150,10 +150,10 @@ const initialState = {
           setIsVisible(true);
           break;
         case "Copyrights":
-          Linking.openURL(`https://parkproug.com`);
+          Linking.openURL(`https://www.keiphoneglobal.com/aboutus`);
           break;
         case "LegalPolicies":
-          Linking.openURL(`https://parkproug.com`);
+          Linking.openURL(`https://www.keiphoneglobal.com/aboutus`);
           break;
         default:
         Toast.show("coming up soon");
@@ -289,7 +289,7 @@ const css = StyleSheet.create({
   },
   title:{
     left:15,
-    color:styles.colors.orange, 
+    color:styles.colors.primary, 
     fontWeight:'bold',
     fontSize:16
   },

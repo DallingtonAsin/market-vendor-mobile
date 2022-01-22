@@ -22,8 +22,7 @@ const Profile = props => {
   const [state, setData] = useState(initialState);
   const {profile, setProfile} = useContext(ProfileContext);
   const name = profile.first_name + " " + profile.last_name;
-  const [image, setImage] = useState('https://dallingtonasingwire.com/img/user-profile9.png');
-
+ 
   
   React.useEffect(() => {
     const unsubscribe = props.navigation.addListener('focus', () => {
@@ -67,7 +66,7 @@ const Profile = props => {
                         pictureStyle={styles.avatar} 
                     />
                   : <Avatar.Image size={120} style={styles.avatar} 
-                  source={{uri: image }} />
+                  source={require('../../assets/user-profile9.png')} />
                 }
     </View>
                
@@ -145,15 +144,16 @@ const Profile = props => {
     },
     header:{
       backgroundColor: design.colors.white,
-      height:130,
+      height:100,
       flex: 1,
+      padding:20,
     },
     body:{
-      flex: 3,
+      flex: 4,
       padding:35,
     },
     text:{
-      color: design.colors.primary, 
+      color: design.colors.black, 
       opacity:0.8,
       textTransform:'capitalize',
       fontWeight:'bold',
@@ -170,9 +170,10 @@ const Profile = props => {
       borderWidth: 1,
       borderColor: "#e2e2e2",
       backgroundColor:'white',
-      marginTop:40,
+      marginTop:20,
       position: 'absolute',
       alignSelf:'center',
+     
     },
 
     avatar1: {

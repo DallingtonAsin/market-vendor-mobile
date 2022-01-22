@@ -1,16 +1,16 @@
 import React from 'react';
 import { createStackNavigator, HeaderBackButton} from '@react-navigation/stack'
-import ParkingAreasScreen from '../../screens/ParkingAreasScreen'
+import VendorsScreen from '../../screens/VendorsScreen'
 import styles from '../../../assets/css/styles';
 
 const Stack = createStackNavigator();
 
- const ParkingAreasStack = ({ navigation }) => {
+ const VendorsStack = ({ navigation }) => {
     return(
-      <Stack.Navigator initialRouteName="ParkingAreas">
-      <Stack.Screen name="ParkingAreas" component={ ParkingAreasScreen }
+      <Stack.Navigator initialRouteName="Vendors">
+      <Stack.Screen name="ParkingAreas" component={ VendorsScreen }
       options = {() => ({
-        headerTitle: 'Parking Areas',
+        headerTitle: 'Vendors',
         headerLeft: () =><HeaderBackButton tintColor={'#fff'} onPress={() => navigation.goBack(null)} />,
         headerStyle:{
           backgroundColor:styles.colors.primary,
@@ -27,4 +27,4 @@ const Stack = createStackNavigator();
     )
 }
 
-export default ParkingAreasStack;
+export default VendorsStack;

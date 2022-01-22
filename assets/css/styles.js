@@ -192,13 +192,12 @@ bottom: {
       },
 
       helpIcon:{
-        color:'#FFA500',
-        // fontSize:20,
+        color:'#009387',
         borderRadius:30,
         padding: 13,
         borderWidth:0.5,
         backgroundColor:'#fff',
-        borderColor:'#FFA500',
+        borderColor:'#009387',
       },
 
       helpText:{
@@ -725,16 +724,16 @@ theme : {
     color: '#fff',
     margin: 5,
     borderRadius:35,
-    backgroundColor: '#273746',
-    borderColor: '#273746'
+    backgroundColor: '#009387',
+    borderColor: '#009387'
   },
 
   btnPrimary: {
     color: '#fff',
     borderRadius:30,
     padding:15,
-    backgroundColor: '#273746',
-    borderColor: '#273746',
+    backgroundColor: '#009387',
+    borderColor: '#009387',
     position: 'absolute',
     bottom: 0,
     width: '90%',
@@ -747,7 +746,7 @@ theme : {
   btnSecondary: {
     padding:15,
     backgroundColor: '#fff',
-    borderColor: '#273746',
+    borderColor: '#009387',
     position: 'absolute',
     bottom: 0,
     width: '90%',

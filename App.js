@@ -306,6 +306,19 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
               return data;
             });
           },
+
+          getVendors: async() => {
+            return await MainService.fetchVendors().then(async(res) => {
+              const statusCode = res.statusCode;
+              let data;
+              if(statusCode == 1){
+                data = res.data;
+              }else{
+                data = [];
+              }
+              return data;
+            });
+          },
           
           getVehicleCategories: async() => {
             return await MainService.getCarTypes().then(async(res) => {
@@ -389,6 +402,45 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           
           fetchOrderInfo: async(order_no, customer_id) => {
             return await MainService.getOrderDetails(order_no, customer_id).then(async(res) => {
+              const statusCode = res.statusCode;
+              let data;
+              if(statusCode == 1){
+                data = res.data;
+              }else{
+                data = [];
+              }
+              return data;
+            });
+          },
+
+          fetchVendorInfo: async(vendor_id) => {
+            return await MainService.fetchVendorDetails(vendor_id).then(async(res) => {
+              const statusCode = res.statusCode;
+              let data;
+              if(statusCode == 1){
+                data = res.data;
+              }else{
+                data = [];
+              }
+              return data;
+            });
+          },
+
+          getMyOrders: async(customer_id) => {
+            return await MainService.fetchMyOrders(customer_id).then(async(res) => {
+              const statusCode = res.statusCode;
+              let data;
+              if(statusCode == 1){
+                data = res.data;
+              }else{
+                data = [];
+              }
+              return data;
+            });
+          },
+
+          getOrderInfo: async(order_no) => {
+            return await MainService.fetchOrderDetails(order_no).then(async(res) => {
               const statusCode = res.statusCode;
               let data;
               if(statusCode == 1){

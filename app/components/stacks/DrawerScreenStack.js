@@ -3,7 +3,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawer from '../../navigators/CustomDrawer';
 import { Dimensions } from 'react-native';
 
-import ParkingAreasStack from  './ParkingAreasStack';
+import VendorsStack from  './VendorsStack';
 import ProfileStack from  './ProfileStack';
 import ParkingFeesStack from  './ParkingFeesStack';
 
@@ -15,6 +15,8 @@ import EditProfileStack from  './EditProfileStack';
 import NotificationStack from  './NotificationStack';
 import OrdersStack from  './OrdersStack';
 import OrderDetailsStack from  './OrderDetailsStack';
+import VendorDetailsStack from  './VendorDetailsStack';
+
 
 import SettingsStack from  './SettingsStack';
 import ChangePasswordStack from  './ChangePasswordStack';
@@ -33,7 +35,6 @@ const DrawerScreenStack = () => {
         <Drawer.Screen name="Profile" component={ProfileStack}/>
         <Drawer.Screen name="EditProfile" component={EditProfileStack}/>
         <Drawer.Screen name="PaymentHistory" component={PaymentStatementStack}/>
-        <Drawer.Screen name="ParkingAreas" component={ParkingAreasStack}/>
         <Drawer.Screen name="ParkingFees" component={ParkingFeesStack}/>
 
     
@@ -43,6 +44,12 @@ const DrawerScreenStack = () => {
         <Drawer.Screen name="ChangePassword" component={ChangePasswordStack}/>
         <Drawer.Screen name="Orders" component={OrdersStack}/>
         <Drawer.Screen name="OrderDetails" component={OrderDetailsStack}/>
+
+        <Drawer.Screen name="Vendors" component={VendorsStack}/>
+        <Drawer.Screen name="VendorDetails" component={VendorDetailsStack}/>
+
+
+
 
         <Drawer.Screen name="OtherServices" component={ExtraServicesStack}/>
         <Drawer.Screen name="TopUp" component={TopupStack}/>

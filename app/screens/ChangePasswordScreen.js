@@ -50,8 +50,28 @@ const Password = () => {
     const oldPassword = state.old_password;
     const newPassword = state.new_password;
     const confirmPassword = state.confirm_password;
+
+    if(!oldPassword){
+      alert("Enter your current passowrd");
+      return;
+    }
+
+    if(!newPassword){
+      alert("Enter your new passowrd");
+      return;
+    }
+
+    if(!confirmPassword){
+      alert("Confirm your new passowrd");
+      return;
+    }
+
+    if(newPassword != confirmPassword){
+      alert("Enter your matching passowrd");
+      return;
+    }
+
     if(oldPassword  && newPassword && confirmPassword){
-      if(newPassword == confirmPassword){
         if(profile.id){
           const data = {
             id: profile.id,
@@ -79,12 +99,7 @@ const Password = () => {
         }else{
           Alert.alert("Message", "Unable to fetch user details");
         }
-      }else{
-        Alert.alert("Message", "Enter new matching passwords");
-      }
-      
-    }else{
-      Alert.alert("Message", "Fill in all passwords");
+
     }
   }
   
