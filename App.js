@@ -339,7 +339,6 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
             let userToken;
             userToken = null;
             return await MainService.changePassword(data).then(async(res) => {
-              // console.log("Change Password response", res);
               const statusCode = res.statusCode;
               const message = res.message;
               if(statusCode == 1){
@@ -452,6 +451,21 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
             });
           },
           
+          submitShoppingOrder: async(data) => {
+            return await MainService.submitOrdertoVendor(data).then(async(res) => {
+              const statusCode = res.statusCode;
+              const message = res.message;
+              if(statusCode == 1){
+                try{
+                  return {"message": message, "statusCode": statusCode};
+                }catch(e){
+                  return {"message": e.message, "statusCode": 0};
+                }
+              }else{
+                return {"message": message, "statusCode": statusCode};
+              }
+            });
+          },
           
           
           

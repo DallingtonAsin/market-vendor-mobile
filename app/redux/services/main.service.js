@@ -21,6 +21,13 @@ export default class MainService{
         const endpoint = "customer/profile/update";
         return await Service.PutData(endpoint, data);
     }
+
+    static submitOrdertoVendor = async(data) => {
+        const endpoint = "shopping-orders";
+        return await Service.PostData(endpoint, data);
+    }
+
+    
     
     static changePassword = async(data) => {
         const endpoint = 'customer/password/change';

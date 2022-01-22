@@ -15,9 +15,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
     import { TabView,TabBar, SceneMap } from 'react-native-tab-view';
     import { AuthContext } from '../context/context';
     import FastImage from 'react-native-fast-image';
-    import FontAwesome from 'react-native-vector-icons/FontAwesome';
-    import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-    
+    import DropDownPicker from 'react-native-dropdown-picker';
     
     const VendorsScreen = (props) => {
         
@@ -29,7 +27,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
         const [searchQuery, setSearchQuery] = useState('');
        
        
-                const nearByParkings = () => (
+                const getVendorsList = () => (
                     !isLoading ? 
                     <View style={{marginTop:20}}>
                     <FlatList
@@ -126,7 +124,7 @@ import {SafeAreaView, Platform,SectionList,Dimensions,
                                     <ScrollView 
                                     horizontal={true} 
                                     contentContainerStyle={{width: '100%'}}>
-                                     {nearByParkings()}
+                                     {getVendorsList()}
                                     </ScrollView>
                                     
                                     </SafeAreaView>
