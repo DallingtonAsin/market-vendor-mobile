@@ -101,19 +101,22 @@ const ShopScreen = () => {
     if(vendor && item && quantity && address && delivery_date && customer_id){
         let reqParams = {
           item: item,
-          quantity: quantity,
+          quantity: parseFloat(quantity),
           vendor: vendor,
           delivery_date: delivery_date,
           customer_id: customer_id,
           address: address,
         }
+        console.log("Request order params", reqParams);
         setIsLoading(true);
         let response = await submitShoppingOrder(reqParams);
+        let message = response.message
+        let statusCode = response.statusCode;
         console.log("Response", response);
-        if(response.statusCode == 1){
+        console.log("Response from order submission", response);
+        if(statusCode == 1){
           setState(initialState);
         }
-        let message = response.message
         setIsLoading(false);
         Alert.alert("Message", message);
      

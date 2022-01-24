@@ -22,8 +22,8 @@ export default class MainService{
         return await Service.PutData(endpoint, data);
     }
 
-    static submitOrdertoVendor = async(data) => {
-        const endpoint = "shopping-orders";
+    static postShoppingOrder = async(data) => {
+        const endpoint = "device/shopping-orders";
         return await Service.PostData(endpoint, data);
     }
 

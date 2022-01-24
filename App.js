@@ -336,8 +336,6 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           
           
           updatePassword: async(data) => {
-            let userToken;
-            userToken = null;
             return await MainService.changePassword(data).then(async(res) => {
               const statusCode = res.statusCode;
               const message = res.message;
@@ -452,7 +450,7 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
           },
           
           submitShoppingOrder: async(data) => {
-            return await MainService.submitOrdertoVendor(data).then(async(res) => {
+            return await MainService.postShoppingOrder(data).then(async(res) => {
               const statusCode = res.statusCode;
               const message = res.message;
               if(statusCode == 1){
@@ -465,9 +463,8 @@ import { View, ActivityIndicator, TouchableOpacity, Image, RefreshControl,  Text
                 return {"message": message, "statusCode": statusCode};
               }
             });
-          },
-          
-          
+        
+          }
           
           
           

@@ -43,7 +43,6 @@ export default class Service{
 
    // Post data using fetch api
     static PostData = async(endPoint, data) => {
-      console.log("Login data", data);
       const url = APP_URL+""+ endPoint;
       const bearToken = await Service.getToken();
       let response = await fetch(url, {
@@ -54,11 +53,12 @@ export default class Service{
         },
         body: JSON.stringify(data)
       });
-      
+ 
       var resultSet;
       (response.ok) 
       ? resultSet = await response.json()
       : resultSet = "HTTP-Error: " + response.status;
+      console.log("Got this response resultSet", resultSet);
       return resultSet;
       
     }
